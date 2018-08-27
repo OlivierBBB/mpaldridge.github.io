@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Matthew Aldridge, postdoctoral research fellow in mathematics at the University of Bath" />
+	<meta name="keywords" content="Aldridge,Matthew Aldridge,Matt Aldridge,Bristol,Bath,maths,math,mathematics,information theory" />
+	<meta name="author" content="Matthew Aldridge" />
+	<link rel="stylesheet" type="text/css" href="1024px.css" title="1024px" media="screen,projection" />
+	<title>Matthew Aldridge | Home</title>
+</head>
+
+<body>
+<div id="wrap">
+
+	<div id="header">
+                <p></p>
+		<h1><a class="title" href="#">Matthew Aldridge</a></h1>
+		<p></p>
+	</div>
+
+	<div id="content">
+
+ 		<p>&nbsp;</p>
+		
+		<img src="images/matthew-aldridge.jpg"  class="left" alt="Photo of Matthew Aldridge" />
+
+		<p>Hi. I'm Matt.</p>
+		
+		<p>I'm a Postdoctoral Research Fellow in the <a href="http://www.bath.ac.uk/math-sci/">Department of Mathematical Sciences</a> at the <a href="http://www.bath.ac.uk/">University of Bath</a>.</p>
+
+		<p>I study information theory. I look at  applying information theory to combinatorial
+		group testing problems.  I'm also interested in ways of coping with interference in large multiuser
+		communications networks.</p>
+		
+
+		<p>You might like to look at some of my <a href="publications">papers</a> or
+		<a href="research">learn about my research</a>.</p>
+
+		<p>You can also find me <a href="http://arxiv.org/a/aldridge_m_1">on the arXiv</a> or
+		<a href="http://scholar.google.com/citations?user=NHIm6XcAAAAJ">on Google Scholar</a>.</p>
+
+		<h3>Recent Updates</h3>
+
+		<p><b>November 2015:</b> A preprint of my paper <a href="http://arxiv.org/abs/1511.05201">The 
+		capacity of Bernoulli nonadaptive group testing</a> is now available at
+		<a href="http://arxiv.org/abs/1511.05201">arXiv:1511.05201 [cs.IT]</a>.</p>
+
+		<p><b>October 2015:</b> My paper <a href="https://doi.org/10.1007/s10878-015-9951-1">Almost
+		separable matrices</a> with
+		<a href="https://uk.linkedin.com/in/leonardo-baldassini-765ba923/en">Leonardo Baldassini</a>
+		and <a href="http://server.math.umanitoba.ca/~kgunderson/">Karen Gunderson</a> in the
+		<i>Journal of Combinatorial Optimization</i> is now published online at
+		<a href="https://doi.org/10.1007/s10878-015-9951-1">doi:10.1007/s10878-015-9951-1</a>.
+		(Preprint at <a href="http://arxiv.org/abs/1410.1826">arXiv:1410.1826 [math.CO]</a>.)</p>
+
+		<p><b>September 2014:</b> I'm now a research fellow in the <a href="http://www.bath.ac.uk/math-sci/">Department of
+		Mathematical Sciences</a> at the <a href="http://www.bath.ac.uk/">University of Bath</a>.
+		My new email address is <a href="mailto:m.aldridge@bath.ac.uk">m.aldridge@bath.ac.uk</a>.</p>
+
+
+
+	</div>
+
+	<div id="sidebar">
+
+		<ul>
+			<li><a class="current" href="#">Home</a></li>
+			<li><a class="menu" href="me">About Me</a></li>
+			<li><a class="menu" href="research">Research</a></li>
+			<li><a class="menu" href="publications">Publications</a></li>
+			<li><a class="menu" href="links">Links</a></li>
+			<li><a class="menu" href="reading-group">Reading Group</a></li>
+		</ul>
+
+	</div>
+
+
+</div>
+</body>
+</html>

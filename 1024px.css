@@ -1,0 +1,61 @@
+/*
+Current design: Matthew Aldridge
+
+Original design: 1024px (v3.0 - Jun 01, 2010) - A free xhtml/css website template by Andreas Viklund.
+For more information, see http://andreasviklund.com/templates/1024px/
+*/
+
+/* General tags */
+body {background:url(images/background.gif) repeat-y top center #fff; color:#000000; font:75% Arial,sans-serif; line-height:1.2em; margin:0 auto; padding:0;}
+a {color:#004586; font-weight:700; text-decoration:none;}
+a:hover {text-decoration:underline;}
+a img {border:0;}
+p {margin:10px 0 18px 10px; font-size:1.2em;}
+ul,ol,dl {font-size:1.1em; margin:2px 20px 16px 45px;}
+ul ul,ol ol {margin:4px 0 4px 35px;}
+blockquote {border:1px solid #dadada; font-size:1.2em; margin:10px 120px 20px 60px; padding:8px;}
+blockquote p {margin:0;}
+
+/* Headers */
+h1 {color:#000000; font-size:3.5em; letter-spacing:0px; margin:80px 0px 40px 0px; text-align:center; font-weight:700;}
+h1 a.title {color:#000000; font-size:1.3em; letter-spacing:0px; margin:80px 0px 40px 0px; text-align:center; font-weight:700; text-transform:none;}
+h1 a:hover {color:#000000; text-decoration:none;}
+h2 { color:#00000; font-size:2.2em; letter-spacing:0px; line-height:1.2em; margin:40px 0px 40px 0px; padding:0 2px 2px 5px; text-align:center;}
+h3 { color:#00000; font-size:1.6em; font-weight:700; margin:00px 0px 20px 0px; padding:1px 2px 2px 3px; text-align:left;}
+
+/* Main wrap */
+#wrap {color:#000000; margin:10px auto; padding:0; width:970px;}
+#header {margin:10px;}
+#toplinks {font-size:0.9em; padding:5px 2px 2px 3px; text-align:right;}
+/* #toplinks a {color:gray;} */
+#slogan {color:gray; font-size:1.5em; font-weight:700; letter-spacing:-1px; line-height:1.2em; margin:15px 0 20px 35px;}
+
+/* Sidebar and menu */
+#sidebar {float:left; line-height:1.7em; margin:40px 0 5px; padding:1px 0 0; width:225px;} a.menu{color:#000000; font-weight:400;}
+#sidebar ul {font-size:1.4em; line-height:1.4em; list-style:none; margin:0; padding:0 0 15px 20px; font-weight:200;}
+#sidebar li {list-style:none; margin:0 0 8px; padding:0; font-weight:100;} a.current {color:#C5000B; font-weight:700;}
+#sidebar ul ul {line-height:1.1em; font-size:1.2em; margin:4px 0 15px 15px; padding:0;}
+#sidebar ul ul li a {font-weight:300;}
+#sidebar h2 {margin:3px 0 0px; font-size:1.9em;}
+
+/* Main content */
+#content {float:right; line-height:1.6em; margin-right:40px; padding:0; text-align:left; width:680px;}
+#contentalt {float:left; line-height:1.5em; margin-right:40px; padding:0; text-align:left; width:660px;}
+#content h3,#contentalt h3 {margin:24px 0 12px;}
+#content li {margin:0px 0 8px 0}
+
+
+
+/* Additional classes */
+.box {background:#4088b8; border:1px solid #c8c8c8; color:#fff; font-size:0.9em; line-height:1.4em; padding:10px 10px 10px 13px;}
+.box a {color:#f0f0f0;}
+.left {float:left; margin:0 15px 4px 0;}
+.right {float:right; margin:0 0 4px 15px;}
+.readmore {margin:-10px 10px 12px 0; text-align:right;}
+.timestamp {font-size:1.2em; margin:-5px 0 15px 10px;}
+.timestamp a {font-weight:normal;}
+.blue {color:#4088b8;}
+.clear {clear:both;}
+.fade {color:#c8c8c8;}
+.gray {color:#000000;}
+.photo {background:#fff; border:0px solid #bababa; margin:6px 18px 2px 5px; padding:2px;}

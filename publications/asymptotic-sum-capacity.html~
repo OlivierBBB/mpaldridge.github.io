@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Asymptotic Sum-Capacity" by Matthew Aldridge, postdoctoral research fellow in mathematics at the University of Bristol" />
+	<meta name="keywords" content="Aldridge,Matthew Aldridge,Matt Aldridge,Bristol,maths,math,mathematics,information theory,pulications,papers,articles,journal,capacity,interference,alignment,mitigation,wireless,networks,wireless networks,isit,isit2010,austen,texas" />
+	<meta name="author" content="Matthew Aldridge" />
+	<link rel="stylesheet" type="text/css" href="../1024px.css" title="1024px" media="screen,projection" />
+	<title>Asymptotic sum-capacity of random Gaussian interference networks using interference alignment | Matthew Aldridge</title>
+</head>
+
+<body>
+<div id="wrap">
+
+	<div id="header">
+                <p></p>
+		<h1><a class="title" href="../">Matthew Aldridge</a></h1>
+		<p></p>
+	</div>
+
+	<div id="content">
+
+ 		<h2>Asymptotic sum-capacity of random Gaussian interference networks<br />using interference alignment</h2>
+		
+<blockquote>Asymptotic sum-capacity of random Gaussian interference networks using interference alignment<br />
+M Aldridge, O Johnson, and R Piechocki<br />
+<em>2010 IEEE International Symposium on Information Theory Proceedings</em>, 410-414, 2010</blockquote>
+
+<p><strong><a href="asymptotic-sum-capacity.pdf">Download (PDF, 0.1 MB)</a></strong><br />
+<strong>View on <a href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5513390">IEEE Xplore</a></strong></p>
+
+
+<h3>Abstract</h3>
+
+<p>We consider a dense n-user Gaussian interference network formed by paired transmitters and receivers placed independently at random in Euclidean space. Under natural conditions on the node position distributions and signal attenuation, we prove convergence in probability of the average per-user capacity C_Sigma/n to 1/2 E log(1 + 2SNR). The achievability result follows directly from results based on an interference alignment scheme presented in recent work of Nazer et al. Our main contribution comes through the converse result, motivated by ideas of `bottleneck links' developed in recent work of Jafar. An information theoretic argument gives a capacity bound on such bottleneck links, and probabilistic counting arguments show there are sufficiently many such links to tightly bound the sum-capacity of the whole network.</p>
+
+
+<h3>BibTeX</h3>
+
+
+<p>@INPROCEEDINGS{asymptotic-sum-capacity,<br />
+&nbsp;&nbsp;&nbsp;author={Aldridge, M. and Johnson, O. and Piechocki, R.},<br />
+&nbsp;&nbsp;&nbsp;booktitle={Information Theory Proceedings (ISIT), 2010 IEEE International Symposium on},<br />
+&nbsp;&nbsp;&nbsp;title={Asymptotic sum-capacity of random Gaussian interference networks using interference alignment},<br />
+&nbsp;&nbsp;&nbsp;year={2010},<br />
+&nbsp;&nbsp;&nbsp;month={june},<br />
+&nbsp;&nbsp;&nbsp;pages={410 -414},<br />
+&nbsp;&nbsp;&nbsp;doi={10.1109/ISIT.2010.5513390},<br />
+}</p>
+
+
+
+
+	</div>
+
+
+	<div id="sidebar">
+
+		<ul>
+			<li><a class="menu" href="../">Home</a></li>
+			<li><a class="menu" href="../me">About Me</a></li>
+			<li><a class="menu" href="../research">Research</a></li>
+			<li><a class="current" href="../publications">Publications</a></li>
+			<li><a class="menu" href="../links">Links</a></li>
+			<li><a class="menu" href="../reading-group">Reading Group</a></li>
+		</ul>
+
+	</div>
+
+
+</div>
+</body>
+</html>
