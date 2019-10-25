@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>MATH2750 Introduction to Markov Processes</title>
-  <meta name="description" content="MATH2750 Introduction to Markov Processes" />
+  <title>How to solve linear difference equations | MATH2750 Introduction to Markov Processes</title>
+  <meta name="description" content="How to solve linear difference equations | MATH2750 Introduction to Markov Processes" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="MATH2750 Introduction to Markov Processes" />
+  <meta property="og:title" content="How to solve linear difference equations | MATH2750 Introduction to Markov Processes" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="MATH2750 Introduction to Markov Processes" />
+  <meta name="twitter:title" content="How to solve linear difference equations | MATH2750 Introduction to Markov Processes" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="stochastic-processes-and-the-markov-property.html"/>
+<link rel="prev" href="linear-difference-equations.html"/>
+<link rel="next" href="discrete-time-markov-chains.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -188,94 +188,62 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">MATH2750 Introduction to Markov Processes</h1>
-<p class="author"><em>Matthew Aldridge</em></p>
-<p class="date"><em>Semester 2, 2019–20</em></p>
+<div id="how-to-solve-linear-difference-equations" class="section level1 unnumbered">
+<h1>How to solve linear difference equations</h1>
+<p>This handout accompanies <strong>Lecture 4: Linear difference equations</strong>. We summarise the techniques from the lecture, and give some extra examples.</p>
+<div id="how-to-solve-homogeneous-linear-difference-equations" class="section level2 unnumbered">
+<h2>How to solve homogeneous linear difference equations</h2>
+<p><em>Homogeneous linear difference equations</em> are of the form <span class="math display">\[  a_k x_{n+k} + a_{k-1} x_{n+k-1} + \cdots + a_1 x_{n+1} + a_0 x_n = 0 \]</span> with <span class="math inline">\(0\)</span> on the right hand side. Here, the <span class="math inline">\((a_i)\)</span> are constants, and we want to solve for <span class="math inline">\((x_n)\)</span>. We are given extra conditions, such as initial conditions (the values of <span class="math inline">\(x_0, x_1, \dots\)</span>).</p>
+<p><strong>Step 1.</strong> <em>Solve the characteristic equation to find the general solution.</em></p>
+<p>The characteristic equation is <span class="math display">\[  a_k \lambda^{k} + a_{k-1} \lambda^{k-1} + \cdots + a_1 \lambda + a_0 = 0 .\]</span></p>
+<p>If the solutions <span class="math inline">\(\lambda_1, \lambda_2, \dots, \lambda_k\)</span> are distinct, then the general solution is <span class="math display">\[ x_n = C_1 \lambda_1^n + C_2 \lambda_2^n + \cdots + C_k\lambda_k^n , \]</span> for constants <span class="math inline">\(C_1, C_2, \dots, C_k\)</span>.</p>
+<p>If we have a repeated root – say, <span class="math inline">\(\lambda_1 = \lambda_2 = \cdots = \lambda_r\)</span> is repeated <span class="math inline">\(r\)</span> times – than a solution is given by <span class="math display">\[ x_n = (D_0 + D_1 n + \cdots + D_{r-1} n^{r-1}) \lambda_1^n , \]</span> which should take its place in the general solution.</p>
+<p><strong>Step 2.</strong> <em>Use the extra conditions to solve for the constants in the general solution.</em></p>
+<p>The extra conditions can be substituted into the general solution. This gives a number of simultaneous equations which can be solved to find the values of the constants <span class="math inline">\(C_1, C_2, \dots, C_k\)</span>.</p>
+<p><strong>Example.</strong> <em>Solve the homogeneous linear difference equation</em> <span class="math display">\[ x_{n+2} - x_{n+1} - 6x_n = 0 \qquad \text{\emph{subject to} \quad $x_0 = 3$,\quad $x_1 = 4$.} \]</span></p>
+<p><em>Step 1.</em> The characteristic equation is <span class="math display">\[ \lambda^2 - \lambda - 6 = 0 . \]</span> We can solve this by factorising it as <span class="math inline">\((\lambda - 3) (\lambda + 2) = 0\)</span>, to find the solutions <span class="math inline">\(\lambda_1 = -2\)</span> and <span class="math inline">\(\lambda_2 = 3\)</span>. Thus the general solution is <span class="math display">\[ x_n = A(-2)^n + B3^n . \]</span> (We’ve used the more convenient <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> rather than <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>.)</p>
+<em>Step 2.</em> Substituting the initial conditions into the general solution, we have
+<span class="math display">\[\begin{align*}
+x_0 &amp;= A(-2)^0 + B3^0 = A + B = 3 \\
+x_1 &amp;= A(-2)^1 + B3^1 = -2A + 3B = 4 .
+\end{align*}\]</span>
+<p>We can add twice the first equation from the second to get <span class="math inline">\(5B = 10\)</span>, so <span class="math inline">\(B=2\)</span>. We can substitute this into the first equation to get <span class="math inline">\(A = 1\)</span>.</p>
+<p>The solution is therefore <span class="math display">\[ x_n = 1\cdot(-2)^n + 2 \cdot 3^n = \cdot(-2)^n + 2 \cdot 3^n . \]</span></p>
+<p><strong>Example.</strong> <em>Solve the homogeneous linear difference equation</em> <span class="math display">\[ x_{n+2} + 4x_{n+1} +4x_n = 0 \qquad \text{\emph{subject to} \quad $x_0 = 2$,\quad $x_1 = -6$.} \]</span></p>
+<p><em>Step 1.</em> The characteristic equation is <span class="math display">\[ \lambda^2 + 4\lambda + 4 = 0 . \]</span> We can solve this by factorising it as <span class="math inline">\((\lambda + 2)^2 = 0\)</span>, to find a repeated root <span class="math inline">\(\lambda_1 = \lambda_2 = -2\)</span>. Thus the general solution is <span class="math display">\[ x_n = (A + Bn) (-2)^n . \]</span></p>
+<em>Step 2.</em> Substituting the initial conditions into the general solution, we have
+<span class="math display">\[\begin{align*}
+x_0 &amp;= (A + B0)(-2)^0 = A = 2 \\
+x_1 &amp;= (A + B1)(-2)^1 = -2A - 2B = -6 .
+\end{align*}\]</span>
+<p>The first immediately gives <span class="math inline">\(A = 2\)</span>, and substituting this into the second equation gives <span class="math inline">\(B = 1\)</span>.</p>
+<p>The solution is therefore <span class="math display">\[ x_n = (2 + n)(-2)^n . \]</span></p>
 </div>
-<div id="about-the-module" class="section level1 unnumbered">
-<h1>About the module</h1>
-<p>This module is <code>MATH2750</code> <strong>Introduction to Markov Processes</strong>. The module organiser and lecturer is Dr Matthew Aldridge, and my email address is <code>m.aldridge@leeds.ac.uk</code>.</p>
-<div id="organisation-of-the-module" class="section level2 unnumbered">
-<h2>Organisation of the module</h2>
-<p>This module lasts for 11 weeks. The first nine weeks run from 28 January to 29 March, then we break for Easter, then the final two weeks run from 29 April to 10 May.</p>
-<div id="lectures" class="section level3 unnumbered">
-<h3>Lectures</h3>
-<p>There are two lectures each week, for a total of 22 lectures. Lectures are on Tuesdays at 1400 and Thursdays at 1000, both in Roger Stevens LT 20 (7M.20). Attendance at lectures is mandatory.</p>
-<p>Outline lecture notes summarising the main definitions and theorems from the course will be made available on Minerva. I’m very keen to hear about errors, mathematical, typographical or otherwise, in the lecture notes – please email me or talk to me after lectures. The notes are not a substitute for attending the lectures. The lectures will be videoed on the lecture capture system.</p>
-</div>
-<div id="problem-sheets" class="section level3 unnumbered">
-<h3>Problem sheets</h3>
-<p>There will be 10 problem sheets; Problem Sheet <span class="math inline">\(n\)</span> covers the material from two lectures in week <span class="math inline">\(n\)</span>, and will be discussed in your workshop in week <span class="math inline">\(n+1\)</span>.</p>
-<p>The best way of learning the material in this course is to spend plenty of time working on the problem sheets in advance of your workshop and writing up your answers. Collaboration is encouraged when working through the problems, but I recommend writing up your work on your own.</p>
-</div>
-<div id="workshops" class="section level3 unnumbered">
-<h3>Workshops</h3>
-<p>There will be 10 workshops, starting in the second week. The main goal of the workshops will be to go over your answers to the problems sheets in smaller classes. You will have been assigned to one of five workshop groups, meeting on Mondays or Tuesdays, led by Dr Andrew Baczkowski, Dario Domingo (two groups), Dr Graham Murphy or me. Check your timetable for details.</p>
-</div>
-<div id="assessments" class="section level3 unnumbered">
-<h3>Assessments</h3>
-<p>There will be three pieces of assessed coursework, each making up 5% of your mark for the module, for a total of 15%. These will involve writing up answer to a few problems, in a similar style to the problem sheets. While you may want to discuss the assessment with others in advance of completing it by yourself, copying is not allowed and will be dealt with in accordance with University rules.</p>
-<p>The assessments will be due on Thursdays 21 February, 14 March and 2 May at 1400.</p>
-</div>
-<div id="computer-practicals" class="section level3 unnumbered">
-<h3>Computer practicals</h3>
-<p>There will be two computer practicals, to be completed in the fourth and seventh weeks of the module. There will be practical classes run during those weeks where you can work on the problems, get help with any difficulties, and have your work marked. (This does not form part of your official mark for the module.)</p>
-</div>
-<div id="exam" class="section level3 unnumbered">
-<h3>Exam</h3>
-<p>There will be a two-hour exam after the end of the module, making up the other 85% of your mark. The exam will consist of four questions, and you are expected to answer all of them. We will talk more about the exam in the revision sessions (Lectures 21 and 22).</p>
-</div>
-<div id="office-hours" class="section level3 unnumbered">
-<h3>Office hours</h3>
-<p>I will run office hours on Mondays and Wednesdays at 1500 in my office: 9.320, Physics Research Deck. This is your opportunity to discuss with me anything that you want from the course, including material you are confused about and problems you don’t understand. If you can’t make these times, try emailing me to arrange a meeting, or knock on my office door and see if I’m free.</p>
-<p>(The Physics Research Deck is easiest to reach from the 8th floor of EC Stoner at staircase 4. If you haven’t been there before, I recommend asking a friend who has for directions. Once in the maths area on the 9th floor of the PRD, my office is back on yourself, towards the Observatory.)</p>
-</div>
-</div>
-<div id="content-of-the-module" class="section level2 unnumbered">
-<h2>Content of the module</h2>
-<p>The course has two major parts: the first part will cover processes in discrete time and the second part processes in continuous time.</p>
-<p>An outline plan of the lectures is the following:</p>
+<div id="how-to-solve-inhomogeneous-linear-difference-equations" class="section level2 unnumbered">
+<h2>How to solve inhomogeneous linear difference equations</h2>
+<p><em>Inhomogeneous linear difference equations</em> are of the form <span class="math display">\[  a_k x_{n+k} + a_{k-1} x_{n+k-1} + \cdots + a_1 x_{n+1} + a_0 x_n = f(n) \]</span> with a nonzero right hand side <span class="math inline">\(f(n)\)</span>. As before, we are given extra conditions, such as initial conditions (the values of <span class="math inline">\(x_0, x_1, \dots\)</span>).</p>
+<p><strong>Step 1.</strong> <em>Solve the characteristic equation to find the general solution to the homogeneous equation.</em></p>
+<p>As before, the characteristic equation is <span class="math display">\[  a_k \lambda^{k} + a_{k-1} \lambda^{k-1} + \cdots + a_1 \lambda + a_0 = 0 .\]</span> We form the general solution to the homogeneous equation in the usual way: if the solutions <span class="math inline">\(\lambda_1, \lambda_2, \dots, \lambda_k\)</span> are distinct, then the general solution is <span class="math display">\[ x_n = C_1 \lambda_1^n + C_2 \lambda_2^n + \cdots + C_k\lambda_k^n , \]</span> for constants <span class="math inline">\(C_1, C_2, \dots, C_k\)</span>, while we require adjustments for repeated roots.</p>
+<p><strong>Step 2.</strong> <em>Find a particular solution to the inhomogeneous equation, usually by guessing the `shape’ of the solution and solving for any constants. The general solution of the inhomogeneous equation is the particular solution plus the general solution of the homogeneous equation from step 1.</em></p>
+<p>A ‘particular solution’ is any solution of the inhomogeneous equation. We can usually find such a solution by guessing the `shape’ of the solution to be the same as the right hand side <span class="math inline">\(f(n)\)</span>. A few suggestions are</p>
 <ul>
-<li>Introduction to stochastic processes [1 lecture]</li>
-<li>Discrete time Markov chains [10 lectures]
-<ul>
-<li>Important examples: Random walk, gambler’s ruin, linear difference equations [3 lectures]</li>
-<li>General theory: transition probabilities, communicating classes, hitting times, recurrence and transience, stationary distribution, long-term behaviour [7 lectures]</li>
-</ul></li>
-<li>Continuous time Markov jump processes [9 lectures]
-<ul>
-<li>Important examples: Poisson process, birth processes [4 lectures]</li>
-<li>General theory: holding times and jump chains, forward and backward equations, hitting times, stationary distribution, long-term behaviour, queues [5 lectures]</li>
-</ul></li>
-<li>Revision [2 lectures]</li>
+<li>If <span class="math inline">\(f(n)\)</span> is a constant, try a constant <span class="math inline">\(x_n = C\)</span>. (If <span class="math inline">\(1\)</span> was a root of the characteristic equation, this will not work: try <span class="math inline">\(x_n = Cn\)</span> instead. If the root <span class="math inline">\(1\)</span> was repeated <span class="math inline">\(r\)</span> times, try <span class="math inline">\(x_n = Cn^r\)</span>.) This is the main case we will use here.</li>
+<li>If <span class="math inline">\(f(n)\)</span> is a degree-<span class="math inline">\(d\)</span> polynomial, try a polynomial of degree <span class="math inline">\(d\)</span>.</li>
+<li>If <span class="math inline">\(f(n)\)</span> is an exponential <span class="math inline">\(b^n\)</span>, try a multiple of the same exponential <span class="math inline">\(Cb^n\)</span>.</li>
 </ul>
-<div id="books" class="section level3 unnumbered">
-<h3>Books</h3>
-<p>You can do well on this module by attending the lectures and workshops, plus working on the problem sheets, assignments and practicals, without any further reading. However, for students who would like some book recommendations for optional extra background reading or an alternative view on the material, I recommend the following.</p>
-<p>The two books I found most useful in planning the course were:</p>
-<ul>
-<li>J.R. Norris, <em>Markov Chains</em>, Cambridge Series in Statistical and Probabilistic Mathematics, Cambridge University Press, 1997. Chapters 1-3.</li>
-<li>G.R. Grimmett and D.R. Stirzaker, <em>Probability and Random Processes</em>, 3rd edition, Oxford University Press, 2001. Chapter 6.</li>
-</ul>
-<p>Norris discusses only Markov processes, and has some more detailed material that goes beyond this module. Chapter 1 on discrete time Markov chains is <a href="http://www.statslab.cam.ac.uk/~james/Markov/">available online</a>. Grimmet and Stirzaker is an excellent handbook that covers most of undergraduate probability. Chapter 9 on Markov processes is available on Minerva.</p>
-<p>The approach of Grimmet and Stirzaker is very closely mirrored in</p>
-<ul>
-<li>G. Grimmet and D. Walsh, <em>Probability: an introduction</em>, 2nd edition, Oxford University Press, 2014. Chapter 12.</li>
-</ul>
-<p>which might be useful if you have a copy to hand, or if the library runs out of Grimmet and Stirzaker.</p>
-<p>A gentler introduction with plenty of examples is provided by</p>
-<ul>
-<li>P.W. Jones and P. Smith, <em>Stochastic Processes: an introduction</em>, 3nd edition, Texts in Statistical Science, CRC Press, 2018. Chapters 2-7.</li>
-</ul>
-<p>although it doesn’t cover everything in this module. It’s available online via the University library.</p>
-<p>Finally, I’ve heard good things about</p>
-<ul>
-<li>D.R. Stirzaker, <em>Elementary Probability</em>, 2nd edition, Cambridge University Press, 2003. Chapter 9.</li>
-</ul>
-<p>although I haven’t used it myself. It’s also available online.</p>
-<p>(I also benefited from reading lecture notes from former lecturers of this course, particularly Dr Graham Murphy, whose help was invaluable.)</p>
-</div>
+<p>After guessing the shape, we can substitute the guess into the inhomogeneous linear difference equation to find the value of any constants in our guess.</p>
+<p><strong>Step 3.</strong> <em>Use the extra conditions to solve for the constants in the general solution to the inhomogeneous equation.</em></p>
+<p>As before, the extra conditions can be substituted into the general solution to give a number of simultaneous equations which can be solved to find the values of the constants <span class="math inline">\(C_1, C_2, \dots, C_k\)</span>.</p>
+<p><strong>Example.</strong> <em>Solve the inhomogeneous linear difference equation</em> <span class="math display">\[ 10 x_{n+2} - 7x_{n+1} + x_n = 8 \qquad \text{\emph{subject to} \quad $x_0 = 0$,\quad $x_1 = \tfrac{13}{10} $.} \]</span></p>
+<p><em>Step 1.</em> The characteristic equation is <span class="math display">\[ 10\lambda^2 - 7\lambda + 1 = 0 . \]</span> We can solve this by factorising it as <span class="math display">\[ (2\lambda - 1) (5\lambda - 1) = 0 , \]</span> to find the solutions <span class="math inline">\(\lambda_1 = \frac12\)</span> and <span class="math inline">\(\lambda_2 = \frac15\)</span>. Thus the general solution of the homogeneous equation is <span class="math display">\[ x_n = A\left(\frac12\right)^n + B\left(\frac15\right)^n . \]</span></p>
+<p><em>Step 2.</em> Since the right hand side of the inhomogeneous equation is a constant, we guess a constant particular solution with shape <span class="math inline">\(x_n = C\)</span>. Substituting in this guess, we get <span class="math display">\[ 10C - 7C + C = 4C = 8 \]</span> with solution <span class="math inline">\(C=2\)</span>. Thus a particular solution is <span class="math inline">\(x_n = 2\)</span>, and the general solution to the inhomogeneous equation is <span class="math display">\[ x_n = 2 + A\left(\frac12\right)^n + B\left(\frac15\right)^n . \]</span></p>
+<em>Step 3.</em> Substituting the initial conditions into the general solution, we have
+<span class="math display">\[\begin{align*}
+x_0 = 2 + A\left(\frac12\right)^0 + B\left(\frac15\right)^0 = 2 + A + B = 0 \quad &amp;\Rightarrow \quad A + B = -2 \\
+x_1 = 2 + A\left(\frac12\right)^1 + B\left(\frac15\right)^1 = 2 + A\frac12 + B\frac15 = \frac{13}{10} \quad &amp;\Rightarrow \quad 5A + 2B = -7.
+\end{align*}\]</span>
+<p>We can subtract twice the first equation from the second to get <span class="math inline">\(3A = -3\)</span>, so <span class="math inline">\(A = -1\)</span>. We can substitute this into the second equation to get <span class="math inline">\(B = -1\)</span>.</p>
+<p>The solution is therefore <span class="math display">\[ x_n = 2 - \left(\frac12\right)^n - \left(\frac15\right)^n . \]</span></p>
 </div>
 </div>
             </section>
@@ -283,8 +251,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-
-<a href="stochastic-processes-and-the-markov-property.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="linear-difference-equations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="discrete-time-markov-chains.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

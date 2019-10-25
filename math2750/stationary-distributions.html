@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>MATH2750 Introduction to Markov Processes</title>
-  <meta name="description" content="MATH2750 Introduction to Markov Processes" />
+  <title>10 Stationary distributions | MATH2750 Introduction to Markov Processes</title>
+  <meta name="description" content="10 Stationary distributions | MATH2750 Introduction to Markov Processes" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="MATH2750 Introduction to Markov Processes" />
+  <meta property="og:title" content="10 Stationary distributions | MATH2750 Introduction to Markov Processes" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="MATH2750 Introduction to Markov Processes" />
+  <meta name="twitter:title" content="10 Stationary distributions | MATH2750 Introduction to Markov Processes" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="stochastic-processes-and-the-markov-property.html"/>
+<link rel="prev" href="recurrence-and-transience.html"/>
+<link rel="next" href="how-to-find-stationary-distributions.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -188,103 +188,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">MATH2750 Introduction to Markov Processes</h1>
-<p class="author"><em>Matthew Aldridge</em></p>
-<p class="date"><em>Semester 2, 2019–20</em></p>
-</div>
-<div id="about-the-module" class="section level1 unnumbered">
-<h1>About the module</h1>
-<p>This module is <code>MATH2750</code> <strong>Introduction to Markov Processes</strong>. The module organiser and lecturer is Dr Matthew Aldridge, and my email address is <code>m.aldridge@leeds.ac.uk</code>.</p>
-<div id="organisation-of-the-module" class="section level2 unnumbered">
-<h2>Organisation of the module</h2>
-<p>This module lasts for 11 weeks. The first nine weeks run from 28 January to 29 March, then we break for Easter, then the final two weeks run from 29 April to 10 May.</p>
-<div id="lectures" class="section level3 unnumbered">
-<h3>Lectures</h3>
-<p>There are two lectures each week, for a total of 22 lectures. Lectures are on Tuesdays at 1400 and Thursdays at 1000, both in Roger Stevens LT 20 (7M.20). Attendance at lectures is mandatory.</p>
-<p>Outline lecture notes summarising the main definitions and theorems from the course will be made available on Minerva. I’m very keen to hear about errors, mathematical, typographical or otherwise, in the lecture notes – please email me or talk to me after lectures. The notes are not a substitute for attending the lectures. The lectures will be videoed on the lecture capture system.</p>
-</div>
-<div id="problem-sheets" class="section level3 unnumbered">
-<h3>Problem sheets</h3>
-<p>There will be 10 problem sheets; Problem Sheet <span class="math inline">\(n\)</span> covers the material from two lectures in week <span class="math inline">\(n\)</span>, and will be discussed in your workshop in week <span class="math inline">\(n+1\)</span>.</p>
-<p>The best way of learning the material in this course is to spend plenty of time working on the problem sheets in advance of your workshop and writing up your answers. Collaboration is encouraged when working through the problems, but I recommend writing up your work on your own.</p>
-</div>
-<div id="workshops" class="section level3 unnumbered">
-<h3>Workshops</h3>
-<p>There will be 10 workshops, starting in the second week. The main goal of the workshops will be to go over your answers to the problems sheets in smaller classes. You will have been assigned to one of five workshop groups, meeting on Mondays or Tuesdays, led by Dr Andrew Baczkowski, Dario Domingo (two groups), Dr Graham Murphy or me. Check your timetable for details.</p>
-</div>
-<div id="assessments" class="section level3 unnumbered">
-<h3>Assessments</h3>
-<p>There will be three pieces of assessed coursework, each making up 5% of your mark for the module, for a total of 15%. These will involve writing up answer to a few problems, in a similar style to the problem sheets. While you may want to discuss the assessment with others in advance of completing it by yourself, copying is not allowed and will be dealt with in accordance with University rules.</p>
-<p>The assessments will be due on Thursdays 21 February, 14 March and 2 May at 1400.</p>
-</div>
-<div id="computer-practicals" class="section level3 unnumbered">
-<h3>Computer practicals</h3>
-<p>There will be two computer practicals, to be completed in the fourth and seventh weeks of the module. There will be practical classes run during those weeks where you can work on the problems, get help with any difficulties, and have your work marked. (This does not form part of your official mark for the module.)</p>
-</div>
-<div id="exam" class="section level3 unnumbered">
-<h3>Exam</h3>
-<p>There will be a two-hour exam after the end of the module, making up the other 85% of your mark. The exam will consist of four questions, and you are expected to answer all of them. We will talk more about the exam in the revision sessions (Lectures 21 and 22).</p>
-</div>
-<div id="office-hours" class="section level3 unnumbered">
-<h3>Office hours</h3>
-<p>I will run office hours on Mondays and Wednesdays at 1500 in my office: 9.320, Physics Research Deck. This is your opportunity to discuss with me anything that you want from the course, including material you are confused about and problems you don’t understand. If you can’t make these times, try emailing me to arrange a meeting, or knock on my office door and see if I’m free.</p>
-<p>(The Physics Research Deck is easiest to reach from the 8th floor of EC Stoner at staircase 4. If you haven’t been there before, I recommend asking a friend who has for directions. Once in the maths area on the 9th floor of the PRD, my office is back on yourself, towards the Observatory.)</p>
-</div>
-</div>
-<div id="content-of-the-module" class="section level2 unnumbered">
-<h2>Content of the module</h2>
-<p>The course has two major parts: the first part will cover processes in discrete time and the second part processes in continuous time.</p>
-<p>An outline plan of the lectures is the following:</p>
-<ul>
-<li>Introduction to stochastic processes [1 lecture]</li>
-<li>Discrete time Markov chains [10 lectures]
-<ul>
-<li>Important examples: Random walk, gambler’s ruin, linear difference equations [3 lectures]</li>
-<li>General theory: transition probabilities, communicating classes, hitting times, recurrence and transience, stationary distribution, long-term behaviour [7 lectures]</li>
-</ul></li>
-<li>Continuous time Markov jump processes [9 lectures]
-<ul>
-<li>Important examples: Poisson process, birth processes [4 lectures]</li>
-<li>General theory: holding times and jump chains, forward and backward equations, hitting times, stationary distribution, long-term behaviour, queues [5 lectures]</li>
-</ul></li>
-<li>Revision [2 lectures]</li>
-</ul>
-<div id="books" class="section level3 unnumbered">
-<h3>Books</h3>
-<p>You can do well on this module by attending the lectures and workshops, plus working on the problem sheets, assignments and practicals, without any further reading. However, for students who would like some book recommendations for optional extra background reading or an alternative view on the material, I recommend the following.</p>
-<p>The two books I found most useful in planning the course were:</p>
-<ul>
-<li>J.R. Norris, <em>Markov Chains</em>, Cambridge Series in Statistical and Probabilistic Mathematics, Cambridge University Press, 1997. Chapters 1-3.</li>
-<li>G.R. Grimmett and D.R. Stirzaker, <em>Probability and Random Processes</em>, 3rd edition, Oxford University Press, 2001. Chapter 6.</li>
-</ul>
-<p>Norris discusses only Markov processes, and has some more detailed material that goes beyond this module. Chapter 1 on discrete time Markov chains is <a href="http://www.statslab.cam.ac.uk/~james/Markov/">available online</a>. Grimmet and Stirzaker is an excellent handbook that covers most of undergraduate probability. Chapter 9 on Markov processes is available on Minerva.</p>
-<p>The approach of Grimmet and Stirzaker is very closely mirrored in</p>
-<ul>
-<li>G. Grimmet and D. Walsh, <em>Probability: an introduction</em>, 2nd edition, Oxford University Press, 2014. Chapter 12.</li>
-</ul>
-<p>which might be useful if you have a copy to hand, or if the library runs out of Grimmet and Stirzaker.</p>
-<p>A gentler introduction with plenty of examples is provided by</p>
-<ul>
-<li>P.W. Jones and P. Smith, <em>Stochastic Processes: an introduction</em>, 3nd edition, Texts in Statistical Science, CRC Press, 2018. Chapters 2-7.</li>
-</ul>
-<p>although it doesn’t cover everything in this module. It’s available online via the University library.</p>
-<p>Finally, I’ve heard good things about</p>
-<ul>
-<li>D.R. Stirzaker, <em>Elementary Probability</em>, 2nd edition, Cambridge University Press, 2003. Chapter 9.</li>
-</ul>
-<p>although I haven’t used it myself. It’s also available online.</p>
-<p>(I also benefited from reading lecture notes from former lecturers of this course, particularly Dr Graham Murphy, whose help was invaluable.)</p>
-</div>
-</div>
+<div id="stationary-distributions" class="section level1">
+<h1><span class="header-section-number">10</span> Stationary distributions</h1>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="stochastic-processes-and-the-markov-property.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="recurrence-and-transience.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="how-to-find-stationary-distributions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
