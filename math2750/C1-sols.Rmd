@@ -17,7 +17,7 @@ The function `Z <- rbinom(N, n, p)` produces a vector $\mathbf{Z}$ of $N$ indepe
 p <- 0.6
 N <- 10
 Z <- rbinom(N, 1, p)
-Z <- 2*Z - 1
+Z <- 2 * Z - 1
 ```
 produces the increments process. We then use the cumulative sum command `cumsum` to form the random walk $\mathbf{X}$ from the increments.
 ```{r}
@@ -27,7 +27,7 @@ X
 
 If needed, we can add the starting point $X_0 = 0$ with
 ```{r}
-c(0,X)
+c(0, X)
 ```
 
 
@@ -37,14 +37,14 @@ c(0,X)
 
 For $N = 10$, we plot the random walk with
 ```{r}
-plot(0:N, c(0,X),
-     type="b", col="blue",
-     xlab="time step, n",
-     ylim=c(-N,N), ylab=bquote("Random walk, " ~ X[n]),  # This gives X_n with a subscript
-     main="Simple random walk, 10 steps")
+plot(0:N, c(0, X),
+     type = "b", col = "blue",
+     xlab = "time step, n",
+     ylim = c(-N, N), ylab = bquote("Random walk, " ~ X[n]),  # This gives X_n with a subscript
+     main = "Simple random walk, 10 steps")
 ```
 
-Here, `type="b"` means we plot **both** points and lines. By plotting `c(0,X)` against `0:N` ${}= (0,1,\dots, N)$, we ensure our plot also includes the starting point $X_0 = 0$ of the random walk.
+Here, `type = "b"` means we plot **both** points and lines. By plotting `c(0, X)` against `0:N` ${}= (0,1,\dots, N)$, we ensure our plot also includes the starting point $X_0 = 0$ of the random walk.
 
 We see that the random walk takes steps up $1$ and down $1$ roughly equally, although slightly more likely to be up on average. There is (usually) quite a lot of variation, in that the walk often goes up then down rather than a regular drift upwards.
 
@@ -52,16 +52,16 @@ We can repeat this for $N = 10000$, to get
 ```{r}
 N <- 10000
 Z <- rbinom(N, 1, p)
-Z <- 2*Z - 1
+Z <- 2 * Z - 1
 X <- cumsum(Z)
-plot(0:N, c(0,X),
-     type="l", col="blue",
-     xlab="time step, n", 
-     ylab=bquote("Random walk, " ~ X[n]),
-     main="Simple random walk, 10000 steps")
+plot(0:N, c(0, X),
+     type = "l", col = "blue",
+     xlab = "time step, n", 
+     ylab = bquote("Random walk, " ~ X[n]),
+     main = "Simple random walk, 10000 steps")
 ```
 
-Here, `type="l"` just gives **lines**, which is easier to read when there are many datapoints. 
+Here, `type = "l"` just gives **lines**, which is easier to read when there are many datapoints. 
 
 We see that the main drift of the random walk is steadily upwards, although there are some small variations within the linear drift. This is because the standard deviation is $\sqrt{4pqn}$, which scales like $\sqrt{n}$, while the drift is $(p-q)n$, which scales like $n$. So as the number of steps gets larger, the drift becomes much more important than the variation, and the curve looks increasinly smooth.
 
@@ -70,33 +70,37 @@ We see that the main drift of the random walk is steadily upwards, although ther
 **Question 3.** *Make a function in R that produces a sample of a simple random walk for given $p$ of length $N$. Test your function to check it works. What are the advantages of making a a function like this?*
 
 
-Our function is
+We used two functions. First, the "random plus-or-minus" function `rpm(N, p)` gives $N$ random $\pm 1$s.
 ```{r}
-RandomWalk <- function(N, p)
-  {
-    Z <- rbinom(N, 1, p)
-    Z <- 2*Z - 1
-    cumsum(Z)
-  }
+rpm <- function(N, p) {
+  Z <- rbinom(N, 1, p)
+  2 * Z - 1
+}
+```
+Second, we have the function for the random walk itself
+```{r}
+RandomWalk <- function(N, p) {
+  Z <- rpm(N,  p)
+  cumsum(Z)
+}
 ```
 
 We can also make a function to plot the random walk.
 ```{r}
-PlotRandomWalk <- function(X)
-  {
-    plot(0:length(X), c(0,X),
-         type="l", col="blue",
-         xlab="time step, n", 
-         ylab=bquote("Random walk, " ~ X[n]),
-         main="Simple random walk")
-  }
+PlotRandomWalk <- function(X) {
+  plot(0:length(X), c(0, X),
+       type = "l", col = "blue",
+       xlab = "time step, n", 
+       ylab = bquote("Random walk, " ~ X[n]),
+       main = "Simple random walk")
+}
 ```
 
 This has the advantage that we can now very quickly produce and plot random walks without writing (or copy-pasting) many lines of code.
 
 We can test it works by producing a simple random walk of length $50$ with $p = 0.3$
 ```{r}
-X <- RandomWalk(50,0.3)
+X <- RandomWalk(50, 0.3)
 PlotRandomWalk(X)
 ```
 
@@ -112,7 +116,7 @@ We use the `replicate` function to get $10000$ samples of the random walk, and p
 ```{r}
 N <- 100
 trials <- 10000
-samples <- replicate(trials, RandomWalk(N,p)[N])
+samples <- replicate(trials, RandomWalk(N, p)[N])
 mean(samples)
 ```
 This simulated value of $`r mean(samples)`$ is very close to the true value of $20$.
@@ -124,17 +128,15 @@ This simulated value of $`r mean(samples)`$ is very close to the true value of $
 
 Let's try investigating the ruin probability of a gambler's ruin problem.
 ```{r}
-GamblersRuin <- function(p,a,m)
-  {
-    Money <- a  # Alice starts with £a
+GamblersRuin <- function(p, a, m) {
+  Money <- a  # Alice starts with £a
     
-    while(Money > 0 && Money < m)  # until the game finishes...
-      {
-        Money <- Money + (2*rbinom(1,1,p) - 1)  # ...play another round
-      }
-    
-    ifelse(Money == 0, 1, 0) # outputs 1 if Alice ruins; outputs 0 if Bob ruins
+  while (Money > 0 && Money < m) {  # until the game finishes...
+    Money <- Money + rpm(1, p)      # ...play another round
   }
+    
+  ifelse(Money == 0, 1, 0) # outputs 1 if Alice ruins; outputs 0 if Bob ruins
+}
 
 
 p <- 0.4
@@ -142,7 +144,7 @@ a <- 2
 m <- 5
 
 trials <- 10000
-GRsamples <- replicate(trials, GamblersRuin(p,a,m))
+GRsamples <- replicate(trials, GamblersRuin(p, a, m))
 mean(GRsamples)  # estimated ruin probability
 ```
 
@@ -150,13 +152,25 @@ We can compare this simulated answer $`r mean(GRsamples)`$ to the true ruin prob
 $$ r_a = \frac{\rho^a - \rho^m}{1 - \rho^m} ,$$
 where $\rho = q/p$. We calculate this in R.
 ```{r}
-TrueRuinProb <- function(p,a,m)
-  {
-    rho <- (1-p)/p
-    (rho^a - rho^m)/(1 - rho^m)
+TrueRuinProb <- function(p, a, m) {
+  rho <- (1 - p) / p
+  (rho^a - rho^m) / (1 - rho^m)
 }
 
-TrueRuinProb(p,a,m)
+TrueRuinProb(p, a, m)
 ```
 
-This formula gives the answer $r_a = `r TrueRuinProb(p,a,m)`$, which is close to the simulated answer $`r mean(GRsamples)`$.
+This formula gives the answer $r_a = `r TrueRuinProb(p, a, m)`$, which is close to the simulated answer $`r mean(GRsamples)`$.
+
+
+### Note on this report
+
+This example report was written using **R Markdown**, which allows the easy integration of text, LaTeX, displayed R code, and executed R code in one document. You do *not* have to write your report using R Markdown, although some students might like to try. 
+
+Some useful guides on R Markdown include:
+ 
+* [Using R Markdown for Class Reports ](https://www.stat.cmu.edu/~cshalizi/rmarkdown/) by Cosma Shalizi
+* [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, JJ Allaire, and Garrett Grolemund
+* The offical [R Markdown guide](https://rmarkdown.rstudio.com/lesson-1.html)
+
+You can download the R markdown source code for this report at <https://mpaldridge.github.io/math2750/C1-sols.Rmd>. If you open that file in RStudio and click on `knit`, it should produce the HTML file as seen at <https://mpaldridge.github.io/math2750/C1-sols.html> --  although note that the R code (including generation of random numbers) is run anew, so your graphs and sample estimates will not be exactly the same.
