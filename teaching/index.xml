@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Teachings on Matthew Aldridge</title>
+    <link>/teaching/</link>
+    <description>Recent content in Teachings on Matthew Aldridge</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	<atom:link href="/teaching/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MA40042 Measure Theory and Integration</title>
+      <link>/teaching/math40042/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/teaching/math40042/</guid>
+      <description>This course is MA40042 Measure Theory and Integration for the year 2016&amp;ndash;17.
+Lectures take place on:
+ Tuesdays at 1415 in 3 West 4.7, Thursdays at 1015 in 4 East 3.5. Fridays at 1715 in Chancellor&amp;rsquo;s Building 3.9.  This year, the course will be split into two parts:
+ Measure theory is the first part of the course, will be lectured by me, and will last about five weeks; Integration is the second part of the course, will be lectured by Dr Matt Roberts, and will last about six weeks.</description>
+    </item>
+    
+  </channel>
+</rss>

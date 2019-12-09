@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Matthew Aldridge</title>
+    <link>/</link>
+    <description>Recent content on Matthew Aldridge</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A brief guide to leaving this website</title>
+      <link>/links/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/links/</guid>
+      <description>People Some of my neighbourhood in the collaboration graph:
+ Me: Matthew Aldridge Coauthors: Oliver Johnson | Jonathan Scarlett | Leonardo Baldassini | Robert Piechocki | Karen Gunderson Coauthors of coauthors include: Jennifer Chakravarty | Fraser Daly | Thomas Kealy | Dino Sejdinovic | Jason Semeraro Coauthors of coauthors of coauthors include: Paul Erdős  My academic ancestry goes me &amp;mdash; Oliver Johnson &amp;mdash; Yuri Suhov &amp;mdash; Yakov Sinai &amp;mdash; Andrey Kolmogorov &amp;mdash; Nikolai Luzin &amp;mdash; Dmitri Egorov &amp;mdash; Nikolai Bugaev, who apparently had three supervisors, so it gets kind of complicated, but you can probably get to whomever you want from there.</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>/me/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/me/</guid>
+      <description>Contact Me  Email: My email address is m.aldridge@leeds.ac.uk.
+ In person: My office is PRD 9.320 in the Physics Research Deck. Here&amp;rsquo;s a map of where the building is. The usual route to the Physics Research deck is from the 8th floor of EC Stoner at staircase 4. Once up to the Maths area on the 9th floor, my office is back on yourself, towards the Observatory.
+ Post: My postal address is:</description>
+    </item>
+    
+    <item>
+      <title>MA40042 Measure Theory and Integration</title>
+      <link>/teaching/math40042/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/teaching/math40042/</guid>
+      <description>This course is MA40042 Measure Theory and Integration for the year 2016&amp;ndash;17.
+Lectures take place on:
+ Tuesdays at 1415 in 3 West 4.7, Thursdays at 1015 in 4 East 3.5. Fridays at 1715 in Chancellor&amp;rsquo;s Building 3.9.  This year, the course will be split into two parts:
+ Measure theory is the first part of the course, will be lectured by me, and will last about five weeks; Integration is the second part of the course, will be lectured by Dr Matt Roberts, and will last about six weeks.</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>/publications/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/</guid>
+      <description>Other places to find my work include on the arXiv on the arXiv, on Google Scholar, and on my ORCID page.
+Preprints  Rates of adaptive group testing in the linear regime
+M Aldridge
+To appear in 2019 IEEE International Symposium on Information Theory Proceedings
+Preprint: arXiv:1901.09687  Published papers  Group testing: an information theory persepective
+M Aldridge, O Johnson, J Scarlett
+Foundations and Trends in Communications and Information Theory, 15:3&amp;ndash;4, 196&amp;ndash;392</description>
+    </item>
+    
+    <item>
+      <title>Teaching</title>
+      <link>/teaching/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/teaching/</guid>
+      <description>MATH2750 Introduction to Markov Processes Course material on Minerva
+MATH3015 History of Mathematics With Dr Philip Walker and Dr Nicola Gambino.
+I am teaching one third of the course on History of Statistics.
+Details to follow.
+Other I am supervising a MATH3001 project on &amp;ldquo;Data compression&amp;rdquo; (6 students).
+I am supervising MATH5004M assignment on &amp;ldquo;Horse racing and betting&amp;rdquo;.
+I lead workshops for MATH2735 Statistical Modelling and MATH2750 Introduction to Markov Processes.</description>
+    </item>
+    
+  </channel>
+</rss>
