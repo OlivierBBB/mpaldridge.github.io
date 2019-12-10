@@ -249,15 +249,15 @@ ul li {
 }
 @media (max-width: 750px) {
   body {
-      padding-left:20px;
-      padding-right:20px;
+      padding-left:10px;
+      padding-right:10px;
  }
   #nav h1 a {
       font-size: 32px;
  }
   #nav li {
       font-size: 16px;
-      padding: 0 12px;
+      padding: 0 8px;
  }
   #content {
       margin-top: 0;
@@ -271,7 +271,7 @@ ul li {
       font-size: 18px;
  }
    #content h3 {
-      font-size: 14px;
+      font-size: 16px;
  }
  p {
   margin: 6px 0;
@@ -282,15 +282,15 @@ ul li {
 }
 @media (max-width: 400px) {
   body {
-      padding-left:20px;
-      padding-right:20px;
+      padding-left:10px;
+      padding-right:10px;
  }
   #nav h1 a {
       font-size: 32px;
  }
   #nav li {
       font-size: 15px;
-      padding: 0 8px;
+      padding: 0 6px;
  }
   #content {
       margin-top: 0;
@@ -304,7 +304,7 @@ ul li {
       font-size: 18px;
  }
    #content h3 {
-      font-size: 14px;
+      font-size: 16px;
  }
  p {
   margin: 6px 0;
