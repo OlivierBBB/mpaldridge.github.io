@@ -253,16 +253,16 @@ ul li {
       padding-right:20px;
  }
   #nav h1 a {
-      font-size: 28px;
+      font-size: 32px;
  }
   #nav li {
       font-size: 16px;
-      padding: 0 16px;
+      padding: 0 12px;
  }
   #content {
       margin-top: 0;
       padding-top: 50px;
-      font-size: 14px;
+      font-size: 15px;
  }
   #content h1 {
       font-size: 28px;
@@ -274,7 +274,7 @@ ul li {
       font-size: 14px;
  }
  p {
-  margin: 8px 0;
+  margin: 6px 0;
 }
   .posts_listing li div {
       font-size: 12px;
@@ -286,16 +286,16 @@ ul li {
       padding-right:20px;
  }
   #nav h1 a {
-      font-size: 28px;
+      font-size: 32px;
  }
   #nav li {
       font-size: 15px;
-      padding: 0 12px;
+      padding: 0 8px;
  }
   #content {
       margin-top: 0;
       padding-top: 20px;
-      font-size: 14px;
+      font-size: 15px;
  }
   #content h1 {
       font-size: 28px;
@@ -307,7 +307,7 @@ ul li {
       font-size: 14px;
  }
  p {
-  margin: 8px 0;
+  margin: 6px 0;
 }
   .posts_listing li div{
       font-size: 12px;
