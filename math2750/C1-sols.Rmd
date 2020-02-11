@@ -1,31 +1,45 @@
 ---
-title: "Computational Practical 1 -- Example Report"
-author: "Matthew Aldridge"
-date: "*MATH2750 Introduction to Markov Processes*"
+title:  "Computational Practical 1 -- Example Report"
+author: "[Matthew Aldridge](mailto:m.aldridge@leeds.ac.uk)"
+date:   "*MATH2750 Introduction to Markov Processes*"
 output: html_document
 ---
-  
+<!-- or "output: pdf_document" to make a LaTeXed PDF -->
 
 
-*We will be studying the simple random walk starting from $X_0 = 0$ with up probability $p = 0.6$ and down probability $q = 1 - p = 0.4$.*
 
-**Question 1.** *Produce a sample of the first $N = 10$ steps of this simple random walk.*
+*The following is an example report answering the questions on the Computational Practical 1 problem sheet. You can view the original problem sheet [in HTML format](https://mpaldridge.github.io/math2750/C1.html) or [as an Rmd file](https://mpaldridge.github.io/math2750/C1.Rmd).*
 
 
-The function `Z <- rbinom(N, n, p)` produces a vector $\mathbf{Z}$ of $N$ independent Binomial$(n,p)$ random variables. Setting $n = 1$, we get $N$ Bernoulli trials, which we can use to form our increments process. To get the increments to be $-1$ and $1$ rather than $0$ and $1$, we can take instead $2\mathbf{Z} - 1$, since $2\times 1 - 1 = 1$ and $2 \times 0 - 1 = -1$. We could alternatively have used `Z[Z == 0] = -1`, which rewrites all the values of $\mathbf{Z}$ that equal $0$ to now be $-1$. Thus the code
+
+***
+
+
+
+**Question 1.** *We will be studying the simple random walk starting from $X_0 = 0$ with up probability $p = 0.6$ and down probability $q = 1 - p = 0.4$. Produce a sample of the first $N = 10$ steps of this simple random walk.*
+
+
+First we use the `sample` function to produces the increments process -- a vector of $N$ independent values that are $+1$ with probability $p = 0.6$ and $-1$ with probability $q = 1 - p = 0.4$.
+
 ```{r}
 p <- 0.6
+q <- 1 - p
 N <- 10
-Z <- rbinom(N, 1, p)
-Z <- 2 * Z - 1
+Z <- sample(c(1, -1), N, replace = TRUE, prob = c(p, q))
+Z
 ```
-produces the increments process. We then use the cumulative sum command `cumsum` to form the random walk $\mathbf{X}$ from the increments.
+
+We use `replace = TRUE` as we are repeatedly sampling *with replacement* from the set $\{+1, -1\}$.
+
+We then form the random walk as the cumulative sums of the increments process.
+
 ```{r}
 X <- cumsum(Z)
 X
 ```
 
 If needed, we can add the starting point $X_0 = 0$ with
+
 ```{r}
 c(0, X)
 ```
@@ -38,27 +52,32 @@ c(0, X)
 For $N = 10$, we plot the random walk with
 ```{r}
 plot(0:N, c(0, X),
-     type = "b", col = "blue",
+     type = "b",
+     col  = "blue",
      xlab = "time step, n",
-     ylim = c(-N, N), ylab = bquote("Random walk, " ~ X[n]),  # This gives X_n with a subscript
-     main = "Simple random walk, 10 steps")
+     ylim = c(-N, N),
+     # The following `bquote` syntax allows some fancy titling
+     # but is an optional extra
+     ylab = bquote("Random walk, " ~ X[n]), 
+     main = bquote("Simple random walk," ~ .(N) ~ "steps, p =" ~ .(p)))
 ```
 
 Here, `type = "b"` means we plot **both** points and lines. By plotting `c(0, X)` against `0:N` ${}= (0,1,\dots, N)$, we ensure our plot also includes the starting point $X_0 = 0$ of the random walk.
 
 We see that the random walk takes steps up $1$ and down $1$ roughly equally, although slightly more likely to be up on average. There is (usually) quite a lot of variation, in that the walk often goes up then down rather than a regular drift upwards.
 
-We can repeat this for $N = 10000$, to get
+We can repeat this for $N = 10000$.
+
 ```{r}
 N <- 10000
-Z <- rbinom(N, 1, p)
-Z <- 2 * Z - 1
+Z <- sample(c(1, -1), N, replace = TRUE, prob = c(p, q))
 X <- cumsum(Z)
 plot(0:N, c(0, X),
-     type = "l", col = "blue",
-     xlab = "time step, n", 
-     ylab = bquote("Random walk, " ~ X[n]),
-     main = "Simple random walk, 10000 steps")
+     type = "l",
+     col  = "blue",
+     xlab = "time step, n",
+     ylab = bquote("Random walk, " ~ X[n]), 
+     main = bquote("Simple random walk," ~ .(N) ~ "steps, p =" ~ .(p)))
 ```
 
 Here, `type = "l"` just gives **lines**, which is easier to read when there are many datapoints. 
@@ -70,14 +89,17 @@ We see that the main drift of the random walk is steadily upwards, although ther
 **Question 3.** *Make a function in R that produces a sample of a simple random walk for given $p$ of length $N$. Test your function to check it works. What are the advantages of making a a function like this?*
 
 
-We used two functions. First, the "random plus-or-minus" function `rpm(N, p)` gives $N$ random $\pm 1$s.
+We used two functions. First, the "random plus-or-minus" function `rpm` gives $N$ random $\pm 1$s.
+
 ```{r}
 rpm <- function(N, p) {
-  Z <- rbinom(N, 1, p)
-  2 * Z - 1
+  q <- 1 - p
+  sample(c(1, -1), N, replace = TRUE, prob = c(p, q))
 }
 ```
-Second, we have the function for the random walk itself
+
+Second, we use `rpm` in our function for the random walk itself.
+
 ```{r}
 RandomWalk <- function(N, p) {
   Z <- rpm(N,  p)
@@ -85,23 +107,26 @@ RandomWalk <- function(N, p) {
 }
 ```
 
-We can also make a function to plot the random walk.
+We can also make a function to plot a random walk.
+
 ```{r}
-PlotRandomWalk <- function(X) {
-  plot(0:length(X), c(0, X),
-       type = "l", col = "blue",
-       xlab = "time step, n", 
-       ylab = bquote("Random walk, " ~ X[n]),
-       main = "Simple random walk")
+PlotRandomWalk <- function(N, p, mytype = "l") {
+  X <- RandomWalk(N, p)
+  plot(0:N, c(0, X),
+       type = mytype,
+       col  = "blue",
+       xlab = "time step, n",
+       ylab = bquote("Random walk, " ~ X[n]), 
+       main = bquote("Simple random walk," ~ .(N) ~ "steps, p =" ~ .(p)))
 }
 ```
 
 This has the advantage that we can now very quickly produce and plot random walks without writing (or copy-pasting) many lines of code.
 
-We can test it works by producing a simple random walk of length $50$ with $p = 0.3$
+We can test it works by producing a simple random walk of length $50$ with $p = 0.3$.
+
 ```{r}
-X <- RandomWalk(50, 0.3)
-PlotRandomWalk(X)
+PlotRandomWalk(50, 0.3)
 ```
 
 
@@ -109,16 +134,18 @@ PlotRandomWalk(X)
 **Question 4.** *Estimate the expected value of of the simple random walk at $N = 100$ steps by simulating many random walks and taking an average. How does this compare with the true answer?*
 
 
-We know that the true expectation is
-\[ \mathbb{E}X_{100} = 100(p-q) = 100(0.6 - 0.4) = 20 . \]
-  
-We use the `replicate` function to get $10000$ samples of the random walk, and print the mean value of $X_{100}$,
+We use the `replicate` function to get $10000$ samples of the random walk, and print the mean value of $X_{100}$.
+
 ```{r}
 N <- 100
 trials <- 10000
 samples <- replicate(trials, RandomWalk(N, p)[N])
 mean(samples)
 ```
+
+We know that the true expectation is
+\[ \mathbb{E}X_{100} = 100(p-q) = 100(0.6 - 0.4) = 20 . \]
+
 This simulated value of $`r mean(samples)`$ is very close to the true value of $20$.
 
 
@@ -126,19 +153,33 @@ This simulated value of $`r mean(samples)`$ is very close to the true value of $
 **Question 5.** (Optional) *Investigate estimating other properties of the simple random walk through simulation.*
 
 
-Let's try investigating the ruin probability of a gambler's ruin problem.
+Some things we could investigate include:
+
+* variance or standard deviation of the random walk;
+* $\mathbb P(a \leq X_n \leq b)$ for some approriate $a < b$, and comparing with a normal approximation;
+* ruin probability or expected duration for the gambler's ruin.
+
+Let's try investigating the ruin probability of a gambler's ruin problem. First we have a function that simulates a gambler's ruin process, and outputs whether or not Alice ruins.
+
 ```{r}
 GamblersRuin <- function(p, a, m) {
-  Money <- a  # Alice starts with £a
+  alice_money <- a  # Alice starts with £a
     
-  while (Money > 0 && Money < m) {  # until the game finishes...
-    Money <- Money + rpm(1, p)      # ...play another round
+  while (alice_money > 0 && alice_money < m) {  # until the game finishes...
+    alice_money <- alice_money + rpm(1, p)      # ...play another round
   }
     
-  ifelse(Money == 0, 1, 0) # outputs 1 if Alice ruins; outputs 0 if Bob ruins
+  if (alice_money == 0) {
+    return(1)  # returns 1 if Alice ruins
+  } else {
+    return(0)  # returns 0 if Bob ruins
+  }
 }
+```
 
+We can test this with a gambler's ruin problem where Alice starts with £$a$ = £2, and Bob starts with £3, so the total pot is $m = 2 + 3 = 5$. Let's say Alice wins each round with probability $p = 0.4$.
 
+```{r}
 p <- 0.4
 a <- 2
 m <- 5
@@ -150,27 +191,35 @@ mean(GRsamples)  # estimated ruin probability
 
 We can compare this simulated answer $`r mean(GRsamples)`$ to the true ruin probability given by
 $$ r_a = \frac{\rho^a - \rho^m}{1 - \rho^m} ,$$
-where $\rho = q/p$. We calculate this in R.
+where $\rho = q/p$. We can calculate this in R.
+
 ```{r}
 TrueRuinProb <- function(p, a, m) {
-  rho <- (1 - p) / p
+  q   <- 1 - p
+  rho <- q / p
   (rho^a - rho^m) / (1 - rho^m)
 }
 
 TrueRuinProb(p, a, m)
 ```
 
-This formula gives the answer $r_a = `r TrueRuinProb(p, a, m)`$, which is close to the simulated answer $`r mean(GRsamples)`$.
+This formula gives the answer $r_a = `r round(TrueRuinProb(p, a, m), 4)`$, which is close to the simulated answer $`r mean(GRsamples)`$.
+
+
+
+***
+
 
 
 ### Note on this report
 
-This example report was written using **R Markdown**, which allows the easy integration of text, LaTeX, displayed R code, and executed R code in one document. You do *not* have to write your report using R Markdown, although some students might like to try. 
+
+This example report was written using **R Markdown**, which allows the easy integration of text, LaTeX, displayed R code, and executed R code in one document. You do *not* have to write your report using R Markdown, although you might like to try. 
 
 Some useful guides on R Markdown include:
  
 * [Using R Markdown for Class Reports ](https://www.stat.cmu.edu/~cshalizi/rmarkdown/) by Cosma Shalizi
 * [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, JJ Allaire, and Garrett Grolemund
-* The offical [R Markdown guide](https://rmarkdown.rstudio.com/lesson-1.html)
+* The official [R Markdown guide](https://rmarkdown.rstudio.com/lesson-1.html)
 
-You can download the R markdown source code for this report at <https://mpaldridge.github.io/math2750/C1-sols.Rmd>. If you open that file in RStudio and click on `knit`, it should produce the HTML file as seen at <https://mpaldridge.github.io/math2750/C1-sols.html> --  although note that the R code (including generation of random numbers) is run anew, so your graphs and sample estimates will not be exactly the same.
+You can download the [R markdown source code for this report here](https://mpaldridge.github.io/math2750/C1-sols.Rmd). If you open that file in RStudio and click on `knit`, it should produce [the HTML version of the report](https://mpaldridge.github.io/math2750/C1-sols.html) --  although note that the R code (including generation of random numbers) is run anew, so your graphs and sample estimates will not be exactly the same.
