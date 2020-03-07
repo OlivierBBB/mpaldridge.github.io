@@ -144,7 +144,7 @@ stationary <- StatDist(P)
 rbind(proportion_time, stationary)
 ```
 
-One way to compare them might be to add points to your plot that represent the stationary distribution with something like this:
+You might find it useful to draw a bar chart comparing the proportion of time spent in each state with stationary distribution. The basic code to draw a bargraph works like this:
 
 ```{r, eval = FALSE}
 barplot(rbind(proportion_time, stationary), beside = TRUE, legend.text = TRUE)
@@ -171,6 +171,8 @@ Another useful function is the function `diff`, which produces the consecutive d
 Can you use `which` and `diff` together to find the return times to your chosen state, and thus calculate the mean return time?
 
 Another result from the course (see Lecture 10) says that, for an irreducible finite-state Markov chain, the stationary distribution $\boldsymbol\pi$ and the expected return times $\mu_i$ are related by $\pi_i = 1/\mu_i$.
+
+Again, a chart might be a useful way of making a comparison.
 
 
 

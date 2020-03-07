@@ -265,7 +265,7 @@ proportion_time &lt;- # your code here</code></pre>
 <p>You can compare this with the stationary distribution produced by <code>StatDist</code>. (See lecture 10 for more on stationary distributions.)</p>
 <pre class="r"><code>stationary &lt;- StatDist(P)
 rbind(proportion_time, stationary)</code></pre>
-<p>One way to compare them might be to add points to your plot that represent the stationary distribution with something like this:</p>
+<p>You might find it useful to draw a bar chart comparing the proportion of time spent in each state with stationary distribution. The basic code to draw a bargraph works like this:</p>
 <pre class="r"><code>barplot(rbind(proportion_time, stationary), beside = TRUE, legend.text = TRUE)</code></pre>
 <p>You might want to label your plot or change the legend text – reading the help file <code>?barplot</code> may be helpful here.</p>
 <p>A result from the course called <em>the ergodic theorem</em> (see Lecture 11) says that when the number of steps <span class="math inline">\(N\)</span> of an irreducible finite-state Markov chain is very large, then the proportion of time spent in each state tends to the stationary distribution. Make sure you have checked what happens with your code for a large value of <span class="math inline">\(N\)</span> – something like <span class="math inline">\(N = 100\,000\)</span> or even more might be appropriate.</p>
@@ -276,6 +276,7 @@ rbind(proportion_time, stationary)</code></pre>
 <p>Another useful function is the function <code>diff</code>, which produces the consecutive differences of a vector; so, for example, <span class="math display">\[ \mathtt{diff}(a, b, c, d, e) = (b - a, c - b, d - c, e - d). \]</span></p>
 <p>Can you use <code>which</code> and <code>diff</code> together to find the return times to your chosen state, and thus calculate the mean return time?</p>
 <p>Another result from the course (see Lecture 10) says that, for an irreducible finite-state Markov chain, the stationary distribution <span class="math inline">\(\boldsymbol\pi\)</span> and the expected return times <span class="math inline">\(\mu_i\)</span> are related by <span class="math inline">\(\pi_i = 1/\mu_i\)</span>.</p>
+<p>Again, a chart might be a useful way of making a comparison.</p>
 <p><strong>Question 4.</strong> <em>What do you think would happen if you were to repeat the above exercises with <span class="math inline">\(\epsilon = 0.01\)</span>? What about <span class="math inline">\(\epsilon = 10^{-6}\)</span>? What about <span class="math inline">\(\epsilon = 0\)</span>? Explain your answers.</em></p>
 <p>A few sentences here is sufficient (and maybe a diagram); no R coding is required.</p>
 
