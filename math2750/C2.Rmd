@@ -9,7 +9,7 @@ output: html_document
   
 *This computer practical is an oppotunity to learn more about Markov chains using R. This practical doubles as **Assessment 2**, and is an assessed part of the course.*
 
-*This assessment counts as 4% of your final module grade. You should write a report on your work (see Question 0 below), answering the questions and showing any relevant R code. The deadline for submission is **Thursday 26 March at 2pm**. You can write your report in any format you like, but your report should be handed in **on paper** to your marker's pigeonhole on level 8 of the School of Mathematics. (You can find out who your marker is in the red folder by the pigeonholes.) Please staple multiple pages. Your script must clearly show your name, your marker's name, and your student number. Scripts which cannot be identified may not be marked. Late submissions up to Friday 27 March at 2pm will still be marked, but the total mark will be reduced by 50%. You must email your marker to let them know you have submitted a late script. Scripts handed in after Friday 27 March at 2pm will not be marked.*
+*This assessment counts as 4% of your final module grade. You should write a report on your work (see Question 0 below), answering the questions and showing any relevant R code. The deadline for submission is **Thursday 26 March at 2pm**. Your report should be handed in **electronically, via Minerva**. Best formats are PDF or HTML; a Word document is fine; plain text files (eg .Rmd) are discouraged. Your work must clearly show your name and your student number. Late submissions up to Thursday 2 April at 2pm will still be marked, but the total mark will be reduced by 50%. You must email your marker to submit late work. Work submitted after Thursday 2 April at 2pm will not be marked.*
 
 *Your report will by marked out of 4, with 1 mark each available for Questions 1--4. For each question, a mostly correct (or better) answer will receive 1 mark; a mostly incorrect (or worse) answer will receive 0 marks.*
 
@@ -18,9 +18,9 @@ output: html_document
 *This question sheet is available in two formats*
 
 * *[`C2.html`](https://mpaldridge.github.io/math2750/C2.html) is an easy-to-read HTML file of the questions and comments. You should open this in a web browser.*
-* *[`C2.Rmd`](https://mpaldridge.github.io/math2750/C2.Rmd) is a plain text file. I recommend opening this file in RStudio. This will make it easy to run the R code included here, by clicking the green "play" button by each chunk of R code. (This file is written in a language called "R Markdown"; see the bottom of the document for more information on R Markdown.)*
+* *[`C2.Rmd`](https://mpaldridge.github.io/math2750/C2.Rmd) is a plain text file. I recommend opening this file in RStudio. This will make it easy to run the R code included here, by clicking the green "play" button by each chunk of R code. (This file is written in a language called ["R Markdown"](https://www.stat.cmu.edu/~cshalizi/rmarkdown/).)*
 
-*This question sheet assumes you can open RStudio (or operate R in whatever way you prefer), and that you can use basic commands such as `x <- c(1, 2, 3)` and `mean(x)`. The University of Leeds* [Introduction to R](http://www1.maths.leeds.ac.uk/statistics/R/Rintro.pdf) *covers more basic topics.*
+*This question sheet assumes you can open RStudio (or operate R in whatever way you prefer), and that you can use basic commands such as `x <- c(1, 2, 3)` and `mean(x)`. The University of Leeds* [Introduction to R](http://www1.maths.leeds.ac.uk/statistics/R/Rintro.pdf) *covers more basic topics. If you have access to a computer but you can't install R on it, I recommend the [RStudio Cloud](https://rstudio.cloud/) online.*
 
 
 
@@ -126,7 +126,7 @@ If you plot a graph of the Markov chain, you may want to add extra options to la
 **Question 2.** *Calculate the proportion of time spent in each state. What if you choose $N$ to be very large? How does this compare with the stationary distribution? Relate what you have found to a result in the course.*
 
 
-One way to count the number of visits to each state is to use the `table` function, although you may be able to think of a different way. The command `table(X)` gives the number of entries in a vetor `X` that have each value. (If your Markov chain did not visit every state, `table(factor(X, 1:6))` will ensure it counts 0 for the unvisited states.)
+One way to count the number of visits to each state is to use the `table` function, although you may be able to think of a different way. The command `table(X)` gives the number of entries in a vector `X` that have each value. (If your Markov chain did not visit every state, `table(factor(X, 1:6))` will ensure it counts 0 for the unvisited states.)
 
 ```{r, eval = FALSE}
 num_visits <- table(factor(X, 1:6))
