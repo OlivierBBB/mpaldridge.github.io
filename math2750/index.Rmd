@@ -436,7 +436,7 @@ We start by guessing there might be a solution of the form $x_n = \lambda^n$ for
   \[ \lambda^{n+2} - 5 \lambda^{n+1} + 6\lambda^n = 0 . \]
 After cancelling off a common factor of $\lambda^n$, we get
   \[ \lambda^2 - 5 \lambda + 6 = 0 . \]
-This is called the *characteristic equation*. For a general homogeneous linear difference equation \eqref{lde}, the characteristic equation is 
+This is called the *characteristic equation*. For a general homogeneous linear difference equation $(*)$, the characteristic equation is 
   \begin{equation} \label {cheq} a_k \lambda^{k} + a_{k-1} \lambda^{k-1} + \cdots + a_1 \lambda + a_0 = 0 . \end{equation}
   
 We can now solve the characteristic equation for $\lambda$. In our example, we can factor the left-hand side to $(\lambda - 3)(\lambda - 2) = 0$, to find the solutions $\lambda = 2$ and $\lambda = 3$. Thus $x_n = 2^n$ and $x_n = 3^n$ both solve our equation. In fact, since the right-hand side of the equation is $0$, any linear combination of these two solutions is a solution also, thus we get the *general solution*
@@ -518,7 +518,7 @@ Let's work through the example
 We already know from earlier that the general solution to the homogeneous equation $x_{n+2} - 5x_{n+1} + 6x_{n} - 0$ (with a zero on the right-hand side) is
   \[ x_n = A2^n + B3^n . \]
  
-We now need to find a *particular solution* -- that is, any solution -- to our new inhomogeneous equation. A general hint here is to guess a solution with the same `shape' as the right-hand side. For example, if the right-hand side is a polynomial of degree $d$, try a polynomial of degree $d$. Here our right-hand side is a constant ($2$), so we should try a constant. Substituting in $x_n = C$ for all $n$ gives us $C - 5C + 6C = 2$, thus $2C = 2$ and $C = 1$, giving a particular solution $x_n = 1$. The general solution to the inhomogeneous equation is therefore
+We now need to find a *particular solution* -- that is, any solution -- to our new inhomogeneous equation. A general hint here is to guess a solution with the same 'shape' as the right-hand side. For example, if the right-hand side is a polynomial of degree $d$, try a polynomial of degree $d$. Here our right-hand side is a constant ($2$), so we should try a constant. Substituting in $x_n = C$ for all $n$ gives us $C - 5C + 6C = 2$, thus $2C = 2$ and $C = 1$, giving a particular solution $x_n = 1$. The general solution to the inhomogeneous equation is therefore
   \[ x_n = 1 + A2^n + B3^n . \]
   
 Again, we use the initial conditions to get the constants $A$ and $B$. We have
