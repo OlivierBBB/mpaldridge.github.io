@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Conditional Probability and Independence | MATH1710 Probability and Statistics 1</title>
+  <meta name="description" content="Lecture notes for MATH1710 Probability and Statistics 1 at the University of Leeds." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Conditional Probability and Independence | MATH1710 Probability and Statistics 1" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lecture notes for MATH1710 Probability and Statistics 1 at the University of Leeds." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Conditional Probability and Independence | MATH1710 Probability and Statistics 1" />
+  
+  <meta name="twitter:description" content="Lecture notes for MATH1710 Probability and Statistics 1 at the University of Leeds." />
+  
+
+<meta name="author" content="Robert G Aykroyd" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="basic-probability.html"/>
+<link rel="next" href="random-variables.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>MATH1710</b></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Module Overview</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contact-information"><i class="fa fa-check"></i>Contact Information</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#syllabus-details"><i class="fa fa-check"></i>Syllabus Details</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#methods-of-teaching"><i class="fa fa-check"></i>Methods of Teaching</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#booklist"><i class="fa fa-check"></i>Booklist</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>1</b> Exploratory Data Analysis in R</a><ul>
+<li class="chapter" data-level="1.1" data-path="eda.html"><a href="eda.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="eda.html"><a href="eda.html#frequency-and-relative-frequency"><i class="fa fa-check"></i><b>1.2</b> Frequency and relative frequency</a></li>
+<li class="chapter" data-level="1.3" data-path="eda.html"><a href="eda.html#histograms-time-series-plots-and-scatterplots"><i class="fa fa-check"></i><b>1.3</b> Histograms, time series plots and scatterplots</a></li>
+<li class="chapter" data-level="1.4" data-path="eda.html"><a href="eda.html#numerical-summary-statistics"><i class="fa fa-check"></i><b>1.4</b> Numerical summary statistics</a></li>
+<li class="chapter" data-level="1.5" data-path="eda.html"><a href="eda.html#the-5-figure-summary-and-boxplots"><i class="fa fa-check"></i><b>1.5</b> The 5-figure summary and boxplots</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-probability.html"><a href="basic-probability.html"><i class="fa fa-check"></i><b>2</b> Basic Probability</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="2.1" data-path="basic-probability.html"><a href="basic-probability.html#sample-space-and-events"><i class="fa fa-check"></i><b>2.1</b> Sample space and events</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#the-venn-diagram"><i class="fa fa-check"></i>The Venn diagram</a></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#operations-with-events"><i class="fa fa-check"></i>Operations with events</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-probability.html"><a href="basic-probability.html#the-axioms-and-basic-rules-of-probability"><i class="fa fa-check"></i><b>2.2</b> The axioms and basic rules of probability</a></li>
+<li class="chapter" data-level="2.3" data-path="basic-probability.html"><a href="basic-probability.html#assignment-of-probability"><i class="fa fa-check"></i><b>2.3</b> Assignment of probability</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#classical-probability-for-equally-likely-events"><i class="fa fa-check"></i>Classical probability for equally-likely events</a></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#probability-as-relative-frequency-and-the-law-of-large-numbers"><i class="fa fa-check"></i>Probability as relative frequency and the Law of Large Numbers</a></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#subjective-assignment-of-probability"><i class="fa fa-check"></i>Subjective assignment of probability</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#combinatorics"><i class="fa fa-check"></i>Combinatorics</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#basic-definitions"><i class="fa fa-check"></i>Basic definitions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html"><i class="fa fa-check"></i><b>3</b> Conditional Probability and Independence</a><ul>
+<li class="chapter" data-level="3.1" data-path="eda.html"><a href="eda.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#definitions"><i class="fa fa-check"></i><b>3.2</b> Definitions</a></li>
+<li class="chapter" data-level="3.3" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#independent-events"><i class="fa fa-check"></i><b>3.3</b> Independent events</a></li>
+<li class="chapter" data-level="3.4" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#theorem-of-total-probability-and-bayes-theorem"><i class="fa fa-check"></i><b>3.4</b> Theorem of total probability and Bayes’ theorem</a><ul>
+<li class="chapter" data-level="" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#total-probability-formula"><i class="fa fa-check"></i>Total probability formula</a></li>
+<li class="chapter" data-level="" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#bayes-rule"><i class="fa fa-check"></i>Bayes’ rule</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>4</b> Random Variables</a></li>
+<li class="chapter" data-level="5" data-path="models-for-count-data.html"><a href="models-for-count-data.html"><i class="fa fa-check"></i><b>5</b> Models for Count Data</a></li>
+<li class="chapter" data-level="6" data-path="models-for-measurement-data.html"><a href="models-for-measurement-data.html"><i class="fa fa-check"></i><b>6</b> Models for Measurement Data</a></li>
+<li class="chapter" data-level="7" data-path="bayesian-methods.html"><a href="bayesian-methods.html"><i class="fa fa-check"></i><b>7</b> Bayesian Methods</a></li>
+<li class="divider"></li>
+<li><a href="https://www.leeds.ac.uk/">University of Leeds</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH1710 Probability and Statistics 1</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="conditional-probability-and-independence" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Conditional Probability and Independence</h1>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">3.1</span> Introduction</h2>
+<p>Sometimes we need to change probabilities in light of
+additional information.</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-1" class="example"><strong>Example 3.1  </strong></span>Consider data on the height of 89 first year students.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">&lt; 178cm</th>
+<th align="center">≥ 178cm</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Male</strong></td>
+<td align="center">27</td>
+<td align="center">24</td>
+<td align="center">51</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Female</strong></td>
+<td align="center">33</td>
+<td align="center">5</td>
+<td align="center">38</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Total</strong></td>
+<td align="center">60</td>
+<td align="center">29</td>
+<td align="center">89</td>
+</tr>
+</tbody>
+</table>
+<p>The probability that an individual is at least
+178cm is <span class="math inline">\(29/89=0.326\)</span>.</p>
+<p>If we are now told that the individual is:</p>
+<ul>
+<li>Male, then the probability changes to <span class="math inline">\(24/51=0.471\)</span>,</li>
+<li>Female, then the probability changes to <span class="math inline">\(5/38=0.132\)</span>.
+</div></li>
+</ul>
+<p>Examples of events which might modify probabilities:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Event 1</th>
+<th align="right">Event 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A patient has a certain illness</td>
+<td align="right">A test is negative</td>
+</tr>
+<tr class="even">
+<td align="left">A political party wins an election</td>
+<td align="right">Opinion poll results</td>
+</tr>
+<tr class="odd">
+<td align="left">Your soccer team win</td>
+<td align="right">Play at home</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="definitions" class="section level2">
+<h2><span class="header-section-number">3.2</span> Definitions</h2>
+<p>The <strong>conditional probability</strong> of event <span class="math inline">\(A\)</span> occurring given (conditional on) event <span class="math inline">\(B\)</span> having definitely occurred is defined by:
+<span class="math display">\[
+Pr(A|B) = \frac{Pr(A\cap B)}{Pr(B)} \qquad \left[\mbox{provided } Pr(B)&gt;0\right].
+\]</span>
+This is sometimes thought of as the “fourth axiom”.</p>
+<p><strong>Example 3.1 continued</strong>
+If <span class="math inline">\(A=\{\mbox{Height at least 178cm}\}\)</span> and
+<span class="math inline">\(B=\{\mbox{Female}\}\)</span>, then, as before,
+<span class="math display">\[
+Pr(A|B) = \frac{Pr(A\cap B)}{Pr(B)} 
+= \frac{5/89}{38/89} = \frac{5}{38} = 0.132.
+\]</span></p>
+<p>Notice that here <span class="math inline">\(Pr(A|B) &lt; Pr(A)\)</span> (recall that <span class="math inline">\(Pr(A)=29/89=0.326\)</span>), and so we say that event <span class="math inline">\(B\)</span> is unfavourable for event <span class="math inline">\(A\)</span>.</p>
+<p>If we already have the conditional probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span>, and the probability of <span class="math inline">\(B\)</span>, then we can find the probability that both occur together using the
+<strong>multiplication rule</strong> which is a rearrangement of the definition of conditional probability
+<span class="math display">\[
+Pr(A\cap B) = Pr(A|B)Pr(B).
+\]</span>
+In some examples we are interested in the probabilities of intersections, but it is (much) easier to first evaluate conditional probabilities.</p>
+<p>If we consider a sequence of <span class="math inline">\(n\)</span> events, <span class="math inline">\(A_1, A_2,\ldots , A_n\)</span>, then the generalisation is
+<span class="math display">\[
+Pr(A_1\cap A_2\cap\ldots \cap A_n)
+=
+Pr(A_1)Pr(A_2|A_1)Pr(A_3|A_2\cap A_1) \cdots
+Pr(A_n|  A_{n-1}\cap \cdots \cap A_1 ).
+\]</span>
+Typically, these events may be related to successive stages of an experiment.</p>
+</div>
+<div id="independent-events" class="section level2">
+<h2><span class="header-section-number">3.3</span> Independent events</h2>
+<p>This is a very important idea in general statistics, not just when considering events as here.
+For some pairs of events
+<span class="math display">\[
+Pr(A|B) &gt;Pr(A) \quad \mbox{and then also} \quad 
+Pr(B|A) &gt;Pr(B) \qquad
+\begin{array}{l}
+A \mbox{ is favourable for } B \\
+B \mbox{ is favourable for } A
+\end{array} 
+\]</span>
+or
+<span class="math display">\[
+Pr(A|B) &lt; Pr(A) \quad \mbox{and then also} \quad 
+Pr(B|A) &lt; Pr(B) \qquad
+\begin{array}{l}
+A \mbox{ is unfavourable for } B \\
+B \mbox{ is unfavourable for } A.
+\end{array} 
+\]</span>
+Sometimes, however, we have
+<span class="math display">\[
+Pr(A|B) =Pr(A) \quad \mbox{and then also} \quad 
+Pr(B|A) =Pr(B) .
+\]</span>
+in this case <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are said to be <strong>independent</strong>. That is, knowing that one of these events has definitely occurred does not change the likelihood that the other will occur.</p>
+<p><strong>Definition:</strong> Two events are
+<strong>statistically independent</strong> if and only if
+<span class="math display">\[
+Pr(A\cap B) =Pr(A)Pr(B).
+\]</span></p>
+<p><strong>Comments:</strong></p>
+<ul>
+<li>This expression comes from a re-arrangement of the definition of conditional probability. It gives a single, symmetric equation which works even if <span class="math inline">\(Pr(A)\)</span> or <span class="math inline">\(Pr(B)\)</span> is zero.</li>
+<li>Do not confuse independence with mutually exclusive! If events are mutually exclusive then <span class="math inline">\(A\cap B= \emptyset\)</span> and so <span class="math inline">\(Pr(A\cap B)=0\)</span>, whereas for independence <span class="math inline">\(Pr(A\cap B) = Pr(A)Pr(B)\)</span> which, in general, is not zero (only if <span class="math inline">\(A=\emptyset\)</span> or <span class="math inline">\(B=\emptyset\)</span>, or both).</li>
+<li>In a practical situation, that is when considering data, we can compare the relative frequencies and look for approximate equality.</li>
+<li>If we <strong>know</strong> that the events are <strong>physically independent</strong>, then we can evaluate <span class="math inline">\(Pr(A\cap B)\)</span> using the product <span class="math inline">\(Pr(A)Pr(B)\)</span>; or we can use this as a test for independence by evaluating <span class="math inline">\(Pr(A\cap B)\)</span>and <span class="math inline">\(Pr(A)Pr(B)\)</span> separately and comparing the values.</li>
+<li>Statistical independence concerns only “balance of probabilities” – knowing that <span class="math inline">\(B\)</span> has occurred does not change the probability of <span class="math inline">\(A\)</span> occurring. Physical independence, however, is a stronger situation requiring no change in the number of outcomes.</li>
+</ul>
+<p>For example, consider the roll of a fair six-sided die. Then, <span class="math inline">\(\Omega =\{1,2,,,5,\}\)</span>. Let <span class="math inline">\(A=\{2,,6\}\)</span>, <span class="math inline">\(B=\{1,2\}\)</span> and then <span class="math inline">\(A\cap B = \{2\}\)</span>. So, <span class="math inline">\(Pr(A)=1/2\)</span>, <span class="math inline">\(Pr(B)=13/\)</span> and <span class="math inline">\(Pr(A\cap B)=1/6\)</span> and hence <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are statistically independent.</p>
+<p>Physical independence implies statistical independence, but statistical independence <strong>does not</strong> imply physical independence.
+If we use the above as a test, then if the condition holds we can only claim statistical independence, whereas if the
+condition does not hold then the events are neither statistically nor physically independent.</p>
+<p><strong>Comment:</strong>
+Three events <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span>, are <strong>pairwise</strong> independent is and only is
+<span class="math display">\[\begin{align*}
+ Pr(A\cap B) &amp; = Pr(A)Pr(B)\\
+ Pr(B\cap C) &amp; = Pr(B)Pr(C), \mbox{ and}\\
+ Pr(A\cap C) &amp; = Pr(A)Pr(C).
+\end{align*}\]</span>
+They are (completely) independent if and only if they are pairwise independent <strong>and</strong>
+<span class="math display">\[
+Pr(A\cap B \cap C) = Pr(A)Pr(B)Pr(C).
+\]</span></p>
+<hr />
+<p><em>Now complete Worksheet 5 on conditional probability and independence
+to check your understanding.</em></p>
+<hr />
+</div>
+<div id="theorem-of-total-probability-and-bayes-theorem" class="section level2">
+<h2><span class="header-section-number">3.4</span> Theorem of total probability and Bayes’ theorem</h2>
+
+<div class="example">
+<span id="exm:unnamed-chunk-2" class="example"><strong>Example 3.2  </strong></span>Suppose that there are two biased coins with probability of heads <span class="math inline">\(p_1=0.3\)</span> and <span class="math inline">\(p_2=0.9\)</span>.
+In an experiment, a coin is selected at random and tossed once.
+What is the probability of getting <span class="math inline">\(\{{\tt Heads}\}\)</span>?
+Suppose that the outcome is <span class="math inline">\(\{{\tt Heads}\}\)</span>, then what is the probability that Coin 1 was selected?
+</div>
+
+<div id="total-probability-formula" class="section level3 unnumbered">
+<h3>Total probability formula</h3>
+<p>Suppose that we are interested in the probability of some event <span class="math inline">\(A\)</span>, but that it is not easy to evaluate <span class="math inline">\(Pr(A)\)</span> directly.</p>
+<p>Also, suppose that there are a set of
+events <span class="math inline">\(B_1, B_2,\ldots, B_k\)</span> which <strong>partition</strong> the sample space, and that we can easily find
+<span class="math inline">\(Pr(A|B_1), \ldots, Pr(A|B_k)\)</span> and
+<span class="math inline">\(Pr(B_1), \ldots, Pr(B_k)\)</span>.</p>
+<p>Then, we can evaluate the probability of <span class="math inline">\(A\)</span> as
+<span class="math display">\[\begin{align*}
+Pr(A) &amp; = Pr(A|B_1)Pr(B_1) +
+Pr(A|B_2)Pr(B_2) + \cdots + Pr(A|B_k)Pr(B_k)\\
+&amp; = \sum _{j=1}^k Pr(A|B_j)Pr(B_j).
+\end{align*}\]</span></p>
+<p>For <span class="math inline">\(B_1, \ldots, B_k\)</span> to be a partition of <span class="math inline">\(\Omega\)</span>, these events must be:
+(i) mutually exclusive (disjoint sets), that is
+<span class="math inline">\(B_i\cap B_j=\emptyset (i\ne j)\)</span> and
+(ii) exhaustive for <span class="math inline">\(\Omega\)</span>, that is
+<span class="math inline">\(B_1\cup B_2\cup\cdots\cup B_k=\Omega\)</span>.</p>
+<p><img src="math1710_files/figure-html/total-prob-1.png" width="350" style="float:right; padding:10px" style="display: block; margin: auto 0 auto auto;" /></p>
+
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> We know that <span class="math inline">\(A=A\cap \Omega\)</span> and that <span class="math inline">\(B_1\cup \cdots\cup B_k=\Omega\)</span> hence
+<span class="math display">\[\begin{align*}
+A &amp; =A\cap(B_1\cup B_2\cup\cdots\cup B_k)\\
+&amp; =(A\cap B_1)\cup\cdots\cup (A\cap B_k). \\
+\end{align*}\]</span>
+Then
+<span class="math display">\[\begin{align*}
+Pr(A) &amp;= Pr\left((A\cap B_1)\cup\cdots\cup (A\cap B_k)\right) \\
+&amp;= Pr(A\cap B_1) +\cdots +Pr(A\cap B_k)\\
+&amp;= Pr(A|B_1)Pr(B_1)  +\cdots +Pr(A|B_k)Pr(B_k) \\
+&amp; = \sum_{j=1}^k Pr(A|B_j)Pr(B_j).
+\end{align*}\]</span>
+as required.
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-4" class="example"><strong>Example 3.3  </strong></span>Suppose a bag contains 3 red balls and 5 green balls.
+We remove two balls, what is the probability that the second ball is red?</p>
+<p>Let <span class="math inline">\(A=\{\mbox{Second ball is red}\}\)</span> and
+<span class="math inline">\(B_1=\{\mbox{First ball is red}\}\)</span>,
+<span class="math inline">\(B_2=\{\mbox{First ball is green}\}\)</span>.
+Now, <span class="math inline">\(Pr(B_1)= 3/8\)</span> and <span class="math inline">\(Pr(B_2)=5/8\)</span>, but also
+<span class="math inline">\(Pr(A|B_1)=2/7\)</span> and <span class="math inline">\(Pr(A|B_2)=3/7\)</span>.</p>
+<p>Hence
+<span class="math display">\[
+Pr(A)  = Pr(A|B_1)Pr(B_1) +Pr(A|B_2)Pr(B_2)
+= \frac27\times \frac38  + \frac37 \times \frac58 = \frac38.
+\]</span>
+Note that<br />
+<span class="math inline">\(Pr(\mbox{First ball is red}) = Pr(\mbox{Second ball is red})\)</span>.</p>
+If we want the probability that both balls are red, then we evaluate <span class="math inline">\(Pr(A\cap B_1) = Pr(A|B_1)Pr(B_1) = (2/7)\times(3/8) = 3/28\)</span>.
+</div>
+
+</div>
+<div id="bayes-rule" class="section level3 unnumbered">
+<h3>Bayes’ rule</h3>
+<p>Suppose we have a conditional probability, such as
+<span class="math inline">\(Pr(A|B)\)</span>, but we are interested in the probability of the events conditioned the other way, that is
+<span class="math inline">\(Pr(B|A)\)</span>, then
+<span class="math display">\[
+Pr(B|A) = \frac{Pr(A|B)Pr(B)}{Pr(A)} \qquad \mbox{when } Pr(A)&gt;0.
+\]</span></p>
+
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> By the definition of conditional probability
+<span class="math display">\[ Pr(B|A) = 
+\frac{Pr(B\cap A)}{Pr(A)}
+= \frac{Pr(A\cap B)}{Pr(A)} \qquad \mbox{ by symmetry} \]</span>
+then using the multiplication rule
+<span class="math display">\[ Pr(B|A) = \frac{Pr(A|B)Pr(B)}{Pr(A)} . \]</span>
+as required.
+</div>
+
+<p>In general, let <span class="math inline">\(B_1, B_2, \ldots, B_k\)</span> be a partition of <span class="math inline">\(\Omega\)</span> (as before), then
+<span class="math display">\[
+Pr(B_i|A) = \frac{Pr(A|B_i)Pr(B_i)}{Pr(A)}, \qquad i=1,2,\ldots, k.
+\]</span>
+Notice that <span class="math inline">\(Pr(A)\)</span> can be evaluated using the previous total probability formula, so that
+<span class="math display">\[
+Pr(B_i|A) = \frac{Pr(A|B_i)Pr(B_i)}{\sum_{j=1}^k Pr(A|B_j)Pr(B_j)}, \qquad i=1,2,\ldots, k.
+\]</span></p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-6" class="example"><strong>Example 3.4  </strong></span>Suppose that a computer spam filter is 90% effective at flagging spam emails, but will also incorrectly flag 5% of safe emails.
+Suppose that
+1 in 100 emails are spam.</p>
+<p>Let <span class="math inline">\(S=\{\mbox{Email is spam}\}\)</span> and <span class="math inline">\(F=\{\mbox{Flagged as spam}\}\)</span>, then
+<span class="math inline">\(Pr(F|S)=0.90\)</span>, <span class="math inline">\(Pr(F|S^c)=0.05\)</span> and <span class="math inline">\(Pr(S)=0.01\)</span>.</p>
+What is the probability that a new email is flagged as spam?
+<span class="math display">\[
+Pr(F) \hspace{-1mm} =Pr(F | S)Pr(S)+Pr(F|S^c)Pr(S^c) 
+= 0.90\times 0.01 + 0.05\times 0.99 = 0.0584.
+\]</span>
+Further, suppose that an email is flagged, then what is the probability that it is a spam email?
+<span class="math display">\[
+Pr(S|F) = \frac{Pr(F|S)Pr(S)}{Pr(F)} = \frac{0.90\times 0.01}{0.0584} = 0.1538.
+\]</span>
+Note that the probability of an unflagged email being spam is
+<span class="math display">\[Pr(S|F^c) = \frac{Pr(F^c|S)Pr(S)}{Pr(F^c)}
+= \frac{(1-Pr(F|S))Pr(S)}{1-Pr(F)}
+= \frac{0.1\times 0.01}{0.9406}
+= 0.0011.
+\]</span>
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-7" class="example"><strong>Example 3.5  </strong></span>Suppose a fair die is rolled twice.</p>
+<ol style="list-style-type: lower-roman">
+<li>Let <span class="math inline">\(A\)</span> denote the event that the sum is 9, and <span class="math inline">\(B\)</span> denote the event that the second toss is an even value.</li>
+</ol>
+<p>Now <span class="math inline">\(A=\{(3,6, (4,5), (5,4), (6,3)\}\)</span> and hence <span class="math inline">\(Pr(A)=4/36\)</span>, <span class="math inline">\(Pr(B)=1/2\)</span>, and <span class="math inline">\(Pr(A\cap B)=2/36\)</span> since <span class="math inline">\(A\cap B = \{(3,6), (5,4)\}\)</span>.</p>
+<p>Then here <span class="math inline">\(Pr(A)Pr(B) = (4/36)\times (1/2) = 2/36 = Pr(A\cap B)\)</span> hence <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are statistically independent.</p>
+<ol start="2" style="list-style-type: lower-roman">
+<li>Let <span class="math inline">\(C\)</span> denote the event that both are odd, and <span class="math inline">\(D\)</span> that their sum is 8.</li>
+</ol>
+<p>We have <span class="math inline">\(Pr(C) = 9/36\)</span>, <span class="math inline">\(Pr(D)=5/36\)</span> and <span class="math inline">\(Pr(C\cap D)=2/36\)</span>.</p>
+So, since <span class="math inline">\(Pr(C)Pr(D) = (9/36)\times (5/36) = 5/144 \ne 2/36= Pr(C\cap D)\)</span> then <span class="math inline">\(C\)</span> and <span class="math inline">\(D\)</span> are not independent.
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-8" class="example"><strong>Example 3.6  </strong></span>Consider the occurrence of colour blindness (CB) which is carried by the X-chromosome.</p>
+<p>About 10% of X chromosomes are faulty and so males (who have one X chromosome) have a probability of <span class="math inline">\(0.1\)</span> of being colour blind.
+Whereas females (with two X chromosomes) need two faulty chromosomes and so have a <span class="math inline">\((0.1)^2\)</span> chance of being colour blind.
+In the UK population about 52% are male and 48% female.</p>
+<p>So the overall probability of selecting a colour blind person is\[-8mm]
+<span class="math display">\[\begin{align*}
+Pr(CB) &amp; = Pr(CB|Male)Pr(Male) +Pr(CB|Female)Pr(Female) \\
+&amp; = 0.1 \times 0.52 +(0.1)^2 \times 0.48 = 0.0568.
+\end{align*}\]</span></p>
+<p>Note that <span class="math inline">\(\{Male\}\)</span> and <span class="math inline">\(\{Female\}\)</span> are events which partition the sample space, and that <span class="math inline">\(\{colour-blind\}\)</span> is some other event.</p>
+<p>Now suppose we have selected a person at random who is definitely colour blind.
+What can we say about the chances that they are Male or Female?</p>
+<p><span class="math display">\[\begin{align*}
+Pr(Male|CB) \frac{Pr(CB|Male)Pr(Male)}{Pr(CB)}
+= \frac{0.1\times 0.52}{0.0568} = 0.915
+\end{align*}\]</span>
+and
+<span class="math display">\[\begin{align*}
+Pr(Female|CB) \frac{Pr(CB|Female)Pr(Female)}{Pr(CB)}
+= \frac{(0.1)^2\times 0.48}{0.0568} = 0.085.
+\end{align*}\]</span></p>
+<p>So the colour blind person is 10 times more likely to be Male than Female.</p>
+Note that, of course <span class="math inline">\(Pr(Male|CB)+Pr(Female|CB)=1\)</span> as the events <span class="math inline">\(\{Male\}\)</span> and <span class="math inline">\(\{Female\}\)</span> are complementary.
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-9" class="example"><strong>Example 3.7  </strong></span>Suppose that two cards are chosen at random from a standard pack of 52 playing cards.</p>
+<p>Let <span class="math inline">\(H_1\)</span> and <span class="math inline">\(H_2\)</span> denote the events that a heart is selected on the first and second choice respectively.</p>
+<p>Now clearly, for the first selection we have,
+<span class="math display">\[ Pr(H_1) = 13/52 \qquad\text{and}\qquad Pr(H_1^c) = 39/52 \]</span>
+and for the second selection (given the first) \
+<span class="math display">\[ Pr(H_2|H_1) = 12/51 \qquad\text{and}\qquad Pr(H_2|H_1^c) = 13/51 \]</span>
+<span class="math display">\[ Pr(H_2^c|H_1) = 39/51 \qquad\text{and}\qquad Pr(H_2^c|H_1^c) = 38/51.\]</span></p>
+<p>Suppose we require <span class="math inline">\(Pr(\mbox{both are hearts})\)</span> that is
+<span class="math inline">\(Pr(H_2 \cap H_1)\)</span>, then
+<span class="math display">\[
+Pr(H_2 \cap H_1) = Pr(H_2|H_1)Pr(H_1) = \frac{12}{51}\times \frac{13}{52} = \frac{1}{17}.
+\]</span></p>
+<p>This type of approach can be illustrated using a tree diagram.</p>
+</div>
+
+<p><img src="tree.png" width="600" /></p>
+<p>It is useful to check that these probabilities sum to 1.
+```</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="basic-probability.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="random-variables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

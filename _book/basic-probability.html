@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Basic Probability | MATH1710 Probability and Statistics 1</title>
+  <meta name="description" content="Lecture notes for MATH1710 Probability and Statistics 1 at the University of Leeds." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Basic Probability | MATH1710 Probability and Statistics 1" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lecture notes for MATH1710 Probability and Statistics 1 at the University of Leeds." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Basic Probability | MATH1710 Probability and Statistics 1" />
+  
+  <meta name="twitter:description" content="Lecture notes for MATH1710 Probability and Statistics 1 at the University of Leeds." />
+  
+
+<meta name="author" content="Robert G Aykroyd" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="eda.html"/>
+<link rel="next" href="conditional-probability-and-independence.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>MATH1710</b></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Module Overview</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contact-information"><i class="fa fa-check"></i>Contact Information</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#syllabus-details"><i class="fa fa-check"></i>Syllabus Details</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#methods-of-teaching"><i class="fa fa-check"></i>Methods of Teaching</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#booklist"><i class="fa fa-check"></i>Booklist</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>1</b> Exploratory Data Analysis in R</a><ul>
+<li class="chapter" data-level="1.1" data-path="eda.html"><a href="eda.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="eda.html"><a href="eda.html#frequency-and-relative-frequency"><i class="fa fa-check"></i><b>1.2</b> Frequency and relative frequency</a></li>
+<li class="chapter" data-level="1.3" data-path="eda.html"><a href="eda.html#histograms-time-series-plots-and-scatterplots"><i class="fa fa-check"></i><b>1.3</b> Histograms, time series plots and scatterplots</a></li>
+<li class="chapter" data-level="1.4" data-path="eda.html"><a href="eda.html#numerical-summary-statistics"><i class="fa fa-check"></i><b>1.4</b> Numerical summary statistics</a></li>
+<li class="chapter" data-level="1.5" data-path="eda.html"><a href="eda.html#the-5-figure-summary-and-boxplots"><i class="fa fa-check"></i><b>1.5</b> The 5-figure summary and boxplots</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-probability.html"><a href="basic-probability.html"><i class="fa fa-check"></i><b>2</b> Basic Probability</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="2.1" data-path="basic-probability.html"><a href="basic-probability.html#sample-space-and-events"><i class="fa fa-check"></i><b>2.1</b> Sample space and events</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#the-venn-diagram"><i class="fa fa-check"></i>The Venn diagram</a></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#operations-with-events"><i class="fa fa-check"></i>Operations with events</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-probability.html"><a href="basic-probability.html#the-axioms-and-basic-rules-of-probability"><i class="fa fa-check"></i><b>2.2</b> The axioms and basic rules of probability</a></li>
+<li class="chapter" data-level="2.3" data-path="basic-probability.html"><a href="basic-probability.html#assignment-of-probability"><i class="fa fa-check"></i><b>2.3</b> Assignment of probability</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#classical-probability-for-equally-likely-events"><i class="fa fa-check"></i>Classical probability for equally-likely events</a></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#probability-as-relative-frequency-and-the-law-of-large-numbers"><i class="fa fa-check"></i>Probability as relative frequency and the Law of Large Numbers</a></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#subjective-assignment-of-probability"><i class="fa fa-check"></i>Subjective assignment of probability</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#combinatorics"><i class="fa fa-check"></i>Combinatorics</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#basic-definitions"><i class="fa fa-check"></i>Basic definitions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html"><i class="fa fa-check"></i><b>3</b> Conditional Probability and Independence</a><ul>
+<li class="chapter" data-level="3.1" data-path="eda.html"><a href="eda.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#definitions"><i class="fa fa-check"></i><b>3.2</b> Definitions</a></li>
+<li class="chapter" data-level="3.3" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#independent-events"><i class="fa fa-check"></i><b>3.3</b> Independent events</a></li>
+<li class="chapter" data-level="3.4" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#total-probability-and-bayes-rule"><i class="fa fa-check"></i><b>3.4</b> Total probability and Bayes’ rule</a><ul>
+<li class="chapter" data-level="" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#total-probability-formula"><i class="fa fa-check"></i>Total probability formula</a></li>
+<li class="chapter" data-level="" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#bayes-rule"><i class="fa fa-check"></i>Bayes’ rule</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>4</b> Random Variables</a></li>
+<li class="chapter" data-level="5" data-path="models-for-count-data.html"><a href="models-for-count-data.html"><i class="fa fa-check"></i><b>5</b> Models for Count Data</a></li>
+<li class="chapter" data-level="6" data-path="models-for-measurement-data.html"><a href="models-for-measurement-data.html"><i class="fa fa-check"></i><b>6</b> Models for Measurement Data</a></li>
+<li class="chapter" data-level="7" data-path="bayesian-methods.html"><a href="bayesian-methods.html"><i class="fa fa-check"></i><b>7</b> Bayesian Methods</a></li>
+<li class="divider"></li>
+<li><a href="https://www.leeds.ac.uk/">University of Leeds</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH1710 Probability and Statistics 1</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="basic-probability" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Basic Probability</h1>
+<div id="background" class="section level3 unnumbered">
+<h3>Background</h3>
+<p>Probability (or probability theory) is a branch of mathematics which rigorously describes uncertain (or random) systems and processes.
+It has its roots in the 16th/17th century with the work of Cardano, Fermat &amp; Pascal.</p>
+<p>The French mathematician and astronomer, Pierre Simon, Marquis de Laplace said,</p>
+<blockquote>
+<p>“We see that the theory of probability is basically only common sense reduced to calculation; it makes us appreciate with exactitude what reasonable minds feel by a sort of instinct, often without being able to account for it….”</p>
+</blockquote>
+<p>Perhaps this is too extreme, but it is also an area of modern development and application such as:
+modelling heredity disease in genetics,
+pension calculations in actuarial science,
+stock pricing in finance,
+epidemic modelling in public health.</p>
+<p>Put simply, probability measures the chance of some event occurring:</p>
+<ul>
+<li><span style="color: red;">probability 0 means the event is impossible,</span></li>
+<li><span style="color: green;">probability 1 means the event is certain.</span></li>
+</ul>
+<p>The larger the probability, the more likely the event.
+The details, however, are much more complex as we will see.</p>
+<p><img src="math1710_files/figure-html/prob-scale-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="sample-space-and-events" class="section level2">
+<h2><span class="header-section-number">2.1</span> Sample space and events</h2>
+<p>Let the <strong>sample space</strong>, <span class="math inline">\(\Omega\)</span> (the Greek letter capital “omega”), be the set of all possible outcomes of an experiment, and let <span class="math inline">\(\omega\)</span> (small “omega”) be a single outcome, that is <span class="math inline">\(\omega \in \Omega\)</span>.
+Then, let <span class="math inline">\(|\Omega|\)</span> (or <span class="math inline">\(\# \Omega\)</span>) denote the number of possible outcomes.</p>
+<p>An event, often denoted <span class="math inline">\(A, B, C,\ldots\)</span>, is a set of outcomes of an experiment.
+The set can be empty, <span class="math inline">\(A=\emptyset\)</span>, giving an impossible event, <span class="math inline">\(Pr(\emptyset)=0\)</span>, or can equal the sample space, <span class="math inline">\(A=\Omega\)</span>, giving a certain event, <span class="math inline">\(Pr(\Omega)=1\)</span>.
+These extremes are not every interesting and so the event will usually be a non-empty, proper subset of the sample space.</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-1" class="example"><strong>Example 2.1  </strong></span>Experiment: Toss three standard coins.</p>
+<ul>
+<li><span class="math inline">\(\Omega = \{ (H,H,H),\)</span>
+<span class="math inline">\((H,H,T),\)</span> <span class="math inline">\((H,T,H),\)</span> <span class="math inline">\((T,H,H),\)</span>
+<span class="math inline">\((H,T,T),\)</span> <span class="math inline">\((T,H,T),\)</span> <span class="math inline">\((T,T,H),\)</span>
+<span class="math inline">\((T,T,T) \}\)</span>
+with <span class="math inline">\(|\Omega|=8\)</span>.</li>
+<li>Let <span class="math inline">\(A=\{\mbox{There are at least two heads}\}\)</span>
+<span class="math inline">\({}=\{ (H,H,H), (H,H,T),(H,T,H),(T,H,H)\}\)</span> with
+<span class="math inline">\(|A|=4\)</span> and so <span class="math inline">\(Pr(A) = |A|/|\Omega| = 4/8=1/2\)</span>.
+</div></li>
+</ul>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-2" class="example"><strong>Example 2.2  </strong></span>Experiment: Roll two eight-sided dice.</p>
+<ul>
+<li><span class="math inline">\(\Omega = \{ (1,1), (1,2),\ldots, (8,8) \}\)</span> with
+<span class="math inline">\(|\Omega|=64\)</span>.</li>
+<li>Let <span class="math inline">\(A=\{\mbox{The sum equals 4}\}\)</span>
+<span class="math inline">\({}=\{ (1,3), (2,2), (3,1)\}\)</span> with
+<span class="math inline">\(|A|=3\)</span> and so <span class="math inline">\(Pr(A) = |A|/|\Omega| = 3/64\)</span>.
+</div></li>
+</ul>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-3" class="example"><strong>Example 2.3  </strong></span>Experiment: Measure the height of a randomly selected student.</p>
+<ul>
+<li><span class="math inline">\(\Omega = \mathbb{R^+}\)</span>
+with <span class="math inline">\(|\Omega|= \text{“infinity&#39;&#39;}\)</span></li>
+<li>Let <span class="math inline">\(A=\{\mbox{Height more than 1.6m}\}\)</span> with
+<span class="math inline">\(|A|=\text{“infinity&#39;&#39;}\)</span></li>
+<li>Clearly the situation is different here, in that there are infinity many values to consider –
+more on this type of situation later in the module. To assign a probability we might take a large number of students and consider the proportion with height greater than <span class="math inline">\(1.6m\)</span>.
+</div></li>
+</ul>
+<p>There are several ways to assign probability:</p>
+<ol style="list-style-type: lower-roman">
+<li>counting — as in the first two examples above.</li>
+<li>relative frequency, that is repeatedly performing an experiment under constant conditions — as in the third example.</li>
+<li>subjectively — for when there is no argument of symmetry and where the experiment cannot be repeated.
+For example, England winning the next football world cup.</li>
+</ol>
+<p>We will look more at these ideas later in the module.</p>
+<div id="the-venn-diagram" class="section level3 unnumbered">
+<h3>The Venn diagram</h3>
+<p>It is useful to show the relationships between events using Venn diagrams, such as the following.</p>
+<div style="display: flex;">
+<div>
+<p><img src="math1710_files/figure-html/venn1-1.png" width="250" style="display: block; margin: auto;" /></p>
+</div>
+<div>
+<ul>
+<li>Points represent outcomes, with</li>
+<li>the box representing the sample space, and</li>
+<li>the shaded region represents the outcomes in an event.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="operations-with-events" class="section level3 unnumbered">
+<h3>Operations with events</h3>
+<div style="display: flex;">
+<div>
+<p>The <strong>union</strong> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, written <span class="math inline">\(\color{red}{A\cup B}\)</span>
+(say “A or B”), is the set of all outcomes belonging to at least one of the events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p>
+</div>
+<div>
+<p><img src="math1710_files/figure-html/venn2-1.png" width="550pt" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div style="display: flex;">
+<div>
+<p>The <strong>intersection</strong> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, written <span class="math inline">\(\color{green}{A\cap B}\)</span>
+(say “A and B”), is the set of all outcomes belonging to both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p>
+</div>
+<div>
+<p><img src="math1710_files/figure-html/venn3-1.png" width="500pt" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div style="display: flex;">
+<div>
+<p>Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are said to be <strong>mutually exclusive</strong> if they have no outcomes in common, then we write <span class="math inline">\(\color{green}{A\cap B=\emptyset}\)</span>, that is <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> cannot occur at the same time – we say that sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint.</p>
+</div>
+<div>
+<p><img src="math1710_files/figure-html/venn4-1.png" width="880pt" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div style="display: flex;">
+<div>
+<p>The <strong>complement</strong> of event <span class="math inline">\(A\)</span>, written <span class="math inline">\(A^c\)</span> (say “A complement”) is the set of all outcomes which are not in <span class="math inline">\(A\)</span>.</p>
+<p>Note that <span class="math inline">\(\Omega^c=\emptyset\)</span> and <span class="math inline">\(\emptyset^c=\Omega\)</span>,
+also <span class="math inline">\(A\cup A^c=\Omega\)</span> and <span class="math inline">\(A\cap A^c=\emptyset\)</span>.</p>
+</div>
+<div>
+<p><img src="math1710_files/figure-html/venn5-1.png" width="460pt" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<p>The operations of union and intersection can be further
+combined to give various set identities, for example:
+<span class="math display">\[
+\left.
+\begin{array}{c}
+A\cup B = B\cup A  \\
+A\cap B = B\cap A  
+\end{array}
+\right\} \mbox{Commutative laws}
+\]</span></p>
+<p><span class="math display">\[
+\left.
+\begin{array}{c}
+A\cup(B\cup C) = (A\cup B)\cup C  \\
+A\cap(B\cap C) = (A\cap B)\cap C
+\end{array}
+\right\} \mbox{Associative laws}
+% where the order of operation does not matter}
+\]</span></p>
+<p><span class="math display">\[
+\left.
+\begin{array}{c}
+(A\cup B)\cap C = (A \cap C)\cup (B\cap C) \\
+(A\cap B)\cup C = (A \cup C)\cap (B\cup C)
+\end{array}
+\right\} \mbox{Distributive laws}
+\]</span></p>
+<p>We can show, intuitively, that these laws are true by carefully constructing a set of Venn diagrams (but formal proof is more rigorous and powerful).
+As an example, consider the second distributive law.
+Drawing Venn diagrams of both left-hand side and right-hand side shows that the
+law is true.
+Starting with the left-hand side, we have</p>
+<div style="display: flex;">
+<div>
+<p><img src="math1710_files/figure-html/dist1-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div>
+<p><img src="math1710_files/figure-html/dist2-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div>
+<p><img src="math1710_files/figure-html/dist3-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<p>The left-hand figure is <span class="math inline">\(\color{purple}{A\cap B}\)</span>, the middle figure is <span class="math inline">\(\color{orange}{C}\)</span>, and the right-hand figure is <span class="math inline">\((\color{blue}{A}\cap \color{red}{B})\cup \color{orange}{C}\)</span>.</p>
+<p>Then the right-hand side:</p>
+<div style="display: flex;">
+<div>
+<p><img src="math1710_files/figure-html/dist4-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div>
+<p><img src="math1710_files/figure-html/dist5-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div>
+<p><img src="math1710_files/figure-html/dist6-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<p>The left-hand figure is <span class="math inline">\(\color{blue}{A}\cup \color{orange}{C}\)</span>, the middle figure is <span class="math inline">\(\color{red}{B}\cup \color{orange}{C}\)</span>, and the right-hand figure is <span class="math inline">\((\color{blue}{A}\cup \color{orange}{C})\cap (\color{red}{B}\cup \color{orange}{C})\)</span>.</p>
+<p>We see that the areas shaded in two right-hand figures are the same, and so we can claim that
+<span class="math inline">\((A\cap B)\cup C = (A\cup C)\cap (B\cup C)\)</span> is a true statement.</p>
+<hr />
+<p><em>Now complete Worksheet 1 on Venn diagrams to check your understanding.</em></p>
+<hr />
+</div>
+</div>
+<div id="the-axioms-and-basic-rules-of-probability" class="section level2">
+<h2><span class="header-section-number">2.2</span> The axioms and basic rules of probability</h2>
+<p>The (Kolmogorov) <strong>axioms of probability</strong> are:</p>
+<ul>
+<li><span class="math inline">\(Pr(A)\ge 0\)</span> for any event <span class="math inline">\(A\)</span>,</li>
+<li><span class="math inline">\(Pr(\Omega)=1\)</span> for any sample space <span class="math inline">\(\Omega\)</span>, and</li>
+<li><span class="math inline">\(Pr(A\cup B) = Pr(A)+Pr(B)\)</span> for mutually exclusive events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>
+(that is where <span class="math inline">\(A\cap B)=\emptyset\)</span>).</li>
+</ul>
+<p>Clearly, these are very basic statements, but they are sufficient to allow many complex rules to be derived.</p>
+<p>Consider the proof of following (basic) rules:</p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(Pr(A^c) = 1-Pr(A)\)</span>.</li>
+</ol>
+<p><img src="math1710_files/figure-html/not-A-1.png" width="250" style="float:right; padding:10px" style="display: block; margin: auto 0 auto auto;" /></p>
+<blockquote>
+<p>Starting with the set relation
+<span class="math display">\[  A\cup A^c = \Omega \]</span>
+then considering the probability of left and right
+<span class="math display">\[ Pr(A\cup A^c) = Pr(\Omega) \]</span>
+and using K3 and K2
+<span class="math display">\[ Pr(A) + Pr(A^c) = 1 \]</span>
+leads to the required result
+<span class="math display">\[ Pr(A^c) = 1-Pr(A). \]</span></p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><span class="math inline">\(Pr(\emptyset)=0\)</span>.</li>
+</ol>
+<blockquote>
+<p>Start by noting that <span class="math inline">\(\emptyset = \Omega ^c\)</span>, then by result
+(a) above with <span class="math inline">\(A=\Omega\)</span> we have
+<span class="math display">\[ Pr(\emptyset) =1-Pr(\Omega) \overset{\small \text{K2}}{=} 1-1 =0, \quad \mbox{as required}. \]</span></p>
+</blockquote>
+<blockquote>
+<p>Note that in the final step, K2 has been written over the equals sign to show that axiom K2 is needed.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>If <span class="math inline">\(A \subseteq B\)</span>, then <span class="math inline">\(Pr(A) \le Pr(B)\)</span>.</li>
+</ol>
+<p><img src="math1710_files/figure-html/subset-1.png" width="250" style="float:right; padding:10px" style="display: block; margin: auto 0 auto auto;" /></p>
+<blockquote>
+<p>Again, start with a set relation,
+<span class="math display">\[ B = A\cup (B\cap A^c) \]</span>
+then using K3, since <span class="math inline">\(A\cap(B\cap A^c)=\emptyset\)</span>, gives
+<span class="math display">\[ Pr(B) = Pr(A) +Pr(B\cap A^c) \]</span>
+and since <span class="math inline">\(Pr(B\cap A^c) \ge 0\)</span> by K1 we get
+<span class="math display">\[ Pr(B) \ge Pr(A), \quad \mbox{as required.} \]</span></p>
+</blockquote>
+<p>A more important rule which can be derived from the axioms of probability is known as the
+<strong>addition rule for general events</strong>,
+<span class="math display">\[
+Pr(A\cup B) = Pr(A)+Pr(B) - Pr(A\cap B).
+\]</span></p>
+<p>The key step is to realize that we can subdivide the events in the following two ways.</p>
+<p><img src="math1710_files/figure-html/add1-1.png" width="250" style="float:right; padding:10px" /></p>
+<p>Starting with
+<span class="math display">\[ A \cup B  = B\cup (A\cap B^c) \]</span>
+then using K3, since <span class="math inline">\(B\cap(A\cap B^c)=\emptyset\)</span>, gives
+<span class="math display">\[Pr(A \cup B)  = Pr(B) + Pr(A\cap B^c). \qquad (1) \]</span></p>
+<p>Also using the set relation,</p>
+<p><img src="math1710_files/figure-html/add2-1.png" width="250" style="float:right; padding:10px" /></p>
+<p><span class="math display">\[ A = (A\cap B)\cup (A\cap B^c) \]</span>
+so, using K3 with <span class="math inline">\((A\cap B)\cap(A\cap B^c)=\emptyset\)</span>, we get
+<span class="math display">\[ Pr(A) = Pr(A\cap B) +Pr(A\cap B^c). \qquad (2) \]</span></p>
+<p>Re-arranging (2) as <span class="math inline">\(Pr(A\cap B^c) = Pr(A) - Pr(A\cap B)\)</span>
+and substituting into (1) gives
+<span class="math display">\[
+Pr(A\cup B) = Pr(A)+Pr(B) - Pr(A\cap B), \quad \mbox{as required.}
+\]</span></p>
+<p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are mutually exclusive,
+then <span class="math inline">\(Pr(A\cap B)=0\)</span> and hence this result reduces to K3 – no contradiction.
+Hence K3 is refereed to as the <strong>addition rule for mutually exclusive events</strong>.</p>
+<p>This result generalises to more that two events. For example consider three events, <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span>, which gives the following result
+<span class="math display">\[\begin{align*}
+Pr(A\cup B\cup C) &amp;= Pr(A)+Pr(B)+Pr(C) \\
+&amp; \quad {}-Pr(A\cap B)-Pr(B\cap C)-Pr(A\cap C) \\
+&amp; \quad {}+Pr(A\cap B\cap C).
+\end{align*}\]</span></p>
+</div>
+<div id="assignment-of-probability" class="section level2">
+<h2><span class="header-section-number">2.3</span> Assignment of probability</h2>
+<div id="classical-probability-for-equally-likely-events" class="section level3 unnumbered">
+<h3>Classical probability for equally-likely events</h3>
+<p>The classical approach to assigning probability is to consider each member of the (finite) sample space
+<span class="math inline">\(\Omega = \{\omega_1, \omega_2,\ldots, \omega_N\}\)</span> to have equal probability.
+Then
+<span class="math display">\[
+Pr(\omega_i) = {1}\big/ {N} 
+\quad \mbox{for } i=1, 2, \ldots, N=|\Omega|.
+\]</span>
+Note that axioms K1 and K2 are clearly true.
+Now consider an event <span class="math inline">\(A\)</span>, then using K3,
+<span class="math display">\[ Pr(A) = \sum _{\omega_i \in A} Pr(\omega_i)\]</span>
+that is, the sum over all outcomes belonging to event <span class="math inline">\(A\)</span>,
+which can be written
+<span class="math display">\[ Pr(A) = {|A|}\big/ {|\Omega |} \]</span>
+that is the number of outcomes in the event of interest divided by the number of events in the sample space –
+we saw examples of this earlier.
+So, in the classical approach, it is vital to be able to count the number of outcomes in events and in the sample space – often this involves permutations and combinations, a topic called combinatorics.</p>
+</div>
+<div id="probability-as-relative-frequency-and-the-law-of-large-numbers" class="section level3 unnumbered">
+<h3>Probability as relative frequency and the Law of Large Numbers</h3>
+<p>Examples of truly equally-probable events are rare — the best examples are rolling dice and tossing coins.
+There is, however, a 1 in 6000 chance of a standard coin landing on its edge — this is less than 0.0002 and so perhaps can be ignored.
+More surprisingly, the expected 50-50, moves to 51-49 in favour of landing the same side up as started up.
+Is this enough to make an equal-probable assumption a bad approximation?</p>
+<p>What about other events commonly thought of as being equally probable, such as birthdays
+or births of boy/girl babies?
+We will explore these situations later in the module.</p>
+<p>Suppose that we have a simple situation but where an argument of symmetry, and hence equal probability, is not valid, such as a bent coin.
+If the coin were “fair” then <span class="math inline">\(p\)</span>, the probability of `Heads, is a half, <span class="math inline">\(p=1/2\)</span>,
+whereas if the coin is “biased”, then <span class="math inline">\(p\ne 1/2\)</span>.</p>
+<p>Suppose we toss the coin <span class="math inline">\(n\)</span> times and let
+<span class="math inline">\(S_n\)</span> be the total number of <code>Heads</code>.
+So for the sequence: <code>Tails</code>, <code>Heads</code>, <code>Heads</code>, <code>Tails</code>, <code>Heads</code>, if we evaluated <span class="math inline">\(S_n\)</span> after each toss, we would have <span class="math inline">\(S_1=0\)</span>, <span class="math inline">\(S_2=1\)</span>, <span class="math inline">\(S_3=2\)</span>, <span class="math inline">\(S_4=2\)</span>, <span class="math inline">\(S_5=3\)</span>.</p>
+<p>To estimate of the probability of <code>Heads</code> we can use the relative frequency of <code>Heads</code>,
+<span class="math inline">\(\hat{p}_n = S_n/n\)</span> and see this as depending on the number of tosses so far.
+Which, for the above sequence gives:
+<span class="math inline">\(\hat{p}_1=0/1=0\)</span>, <span class="math inline">\(\hat{p}_2=1/2\)</span>, <span class="math inline">\(\hat{p}_3=2/3\)</span>, <span class="math inline">\(\hat{p}_4=2/4=1/2\)</span>, <span class="math inline">\(\hat{p}_5=3/5\)</span>.</p>
+<p>The <em>Law of Large Numbers</em> says that
+<span class="math display">\[
+\hat{p}_n = \frac{S_n}{n} \quad \mbox{tends to} \quad p\qquad \mbox{ as } n \ \mbox{tends to} \ \infty.
+\]</span>
+That is to say, as the number of tosses grows the random <em>relative frequency</em> of
+<code>Heads</code> tends to a non-random value <span class="math inline">\(p\)</span>,
+i.e. the <em>probability</em> of <code>Heads</code>.</p>
+<p>A more technical explanation goes as follows.
+The convergence is understood in the sense that it becomes
+increasingly unlikely to observe even small deviations of the
+random quantity <span class="math inline">\(\hat{p}_n\)</span> from the value <span class="math inline">\(p\)</span>, that is, for
+arbitrary small <span class="math inline">\(a&gt;0\)</span>
+<span class="math display">\[
+Pr\left(\left|\hat{p}_n -p\right|&gt;a\right) \to 0 \qquad  \mbox{ as } n\to\infty.
+\]</span></p>
+<p>The Law of Large Numbers is also true in a stronger form, in that
+the convergence holds {with probability <span class="math inline">\(1\)</span>}.
+In other words, while successively calculating the frequencies <span class="math inline">\(S_n/n\)</span> for a {particular realisation} of events, you may be sure
+that in the long run this random quantity will converge to <span class="math inline">\(p\)</span>.</p>
+</div>
+<div id="subjective-assignment-of-probability" class="section level3 unnumbered">
+<h3>Subjective assignment of probability</h3>
+<p>The classical approach to assigning probability works well when we can exploit symmetry, but such cases are rare. Whereas the <em>frequentist</em>, also called
+<em>objectivist</em>, notion of
+probability is more general but relies on being able to endlessly repeat the experiment, and hence is idealistic and elusive.
+In particular, we may only have resources to repeat the experiment a few hundred times, or even only a few times, and it may not be possible to keep the conditions constant.
+Further, what can be said about similar, but no-identical, events or more importantly about events that are intrinsically unrepeatable, e.g. that England will win the Rugby World Cup in 2019?</p>
+<p>An alternative view of probability is the <em>subjectivist</em>.
+For the subjectivist, probabilities only exist in the mind.
+Should I take the bus to work, or will I get there more quickly if I cycle? I can make a decision if I have some
+idea of the probability that I get to work more quickly when I cycle.
+If I randomly choose to cycle or go by bus
+to work every day, I will build up a fund of experience upon which to make the probabilistic assessment,
+which might depend on the weather, time of year, how I’m feeling today, etc.
+But even if this is my first day at this workplace, I can still make some kind of probabilistic assessment based on my general experience.
+A subjectivist can assign probabilities to events even though the experiment might never have been
+performed.
+What probability would you assign to
+England winning the Rugby World Cup in 2019?</p>
+<hr />
+<p><em>Once you have completed the Essential directed reading on Combinatorics, then complete Worksheet 2 on Probability Notation and Worksheet 3 on More Probability
+to check your understanding.</em></p>
+<hr />
+</div>
+</div>
+<div id="combinatorics" class="section level2 unnumbered">
+<h2>Combinatorics</h2>
+
+<div id="basic-definitions" class="section level3 unnumbered">
+<h3>Basic definitions</h3>
+<p>The multiplication principle says that if an experiment has <span class="math inline">\(k\)</span> stages with <span class="math inline">\(n_1\)</span> possible outcomes at the first stage, <span class="math inline">\(n_2\)</span> at the second, <span class="math inline">\(\cdots\)</span>, and <span class="math inline">\(n_k\)</span> at the
+<span class="math inline">\(k\)</span>-th stage, then the total number of possible outcomes of the experiment is
+<span class="math display">\[
+|\Omega | = n_1\times n_2 \times \cdots \times n_k.
+\]</span>
+This principle also allows us to breakdown events into stages and to count the number of outcomes in the event as a product of the outcomes of the stages.</p>
+<p>Suppose we have <span class="math inline">\(n\)</span> distinct objects, then the total number of ordered arrangements, or permutations, is
+<span class="math display">\[
+P_n = n\times (n-1)\times (n-2) \times \cdots \times 2\times 1
+= n !
+\]</span>
+and we say “n factorial”.</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-4" class="example"><strong>Example 2.4  </strong></span>How many different arrangements of the letter a, b and c are possible?
+Here <span class="math inline">\(n=3\)</span> and so there are
+<span class="math inline">\(P_3 = 3! = 3\times 2\times 1 =6\)</span> permutations.
+</div>
+
+<p>Suppose now that we only select <span class="math inline">\(r\)</span> of the <span class="math inline">\(n\)</span> objects and permute these.
+Then the number of permutations of <span class="math inline">\(r\)</span> objects selected
+from <span class="math inline">\(n\)</span> objects is
+<span class="math display">\[
+~ ^{n}P_{r} = n\times (n-1)\times \cdots (n-r+1)
+= \frac{n!}{(n-r)!}
+\]</span>
+and we say “n perm r” or “n-p-r”.</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-5" class="example"><strong>Example 2.5  </strong></span>Suppose 20 people enter a 100m race.
+How many ways are there of distributing a
+Gold, Silver and Bronze?
+Here <span class="math inline">\(n=20\)</span> and <span class="math inline">\(r=3\)</span>, and so we have
+<span class="math inline">\(~ ^{20}P_{3} = 20!/(20-3)! = 20\times 19\times 18 = 6840\)</span>.
+</div>
+
+<p>Suppose now that the ordering of the <span class="math inline">\(r\)</span> selected objects is not important (only that we have selected them), then the total number of combinations of <span class="math inline">\(r\)</span> objects selected from <span class="math inline">\(n\)</span> objects is
+<span class="math display">\[
+~ ^{n}C_{r} = \frac{n!}{r!(n-r)!}
+\]</span>
+and we say “n choose r” or “n-c-r”.</p>
+<p>We can see that this is correct by imagining a two-stage procedure in
+which we first select the <span class="math inline">\(r\)</span> objects from the <span class="math inline">\(n\)</span> objects and then we permute these selected objects.</p>
+<p>Let the number of ways of completing the first stage be given the symbol <span class="math inline">\(~ ^{n}C_{r}\)</span>, and we know that once selected there are <span class="math inline">\(r!\)</span> ways of permuting the <span class="math inline">\(r\)</span> objects.
+This gives a total number of ways of
+$
+ , r!
+$
+This two-stage process is equivalent to, in one stage, permuting <span class="math inline">\(r\)</span> objects selected from <span class="math inline">\(n\)</span>, and hence the number of ways must be equal.
+The number of ways of permuting <span class="math inline">\(r\)</span> objects selected from <span class="math inline">\(n\)</span> is
+<span class="math inline">\(~ ^{n}P_{r} = {n!}/{(n-r)!}\)</span>.
+Since these number must be equal
+<span class="math display">\[
+~ ^{n}P_{r} = \frac{n!}{(n-r)!}
+=
+~ ^{n}C_{r} \, r!
+\]</span>
+which can be re-arranged to give
+<span class="math display">\[
+~ ^{n}C_{r} = \frac{n!}{r!(n-r)!}
+\]</span>
+as required.</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-6" class="example"><strong>Example 2.6  </strong></span>A football captain has to choose four other players to complete his team from a squad of 20.
+How many possible combinations are possible?
+With <span class="math inline">\(n=20\)</span> and <span class="math inline">\(r=4\)</span> we have
+<span class="math display">\[
+\frac{20!}{4!(20-4)!} 
+= \frac{20\times 19\times 18 \times 17}{4\times 3\times 2\times 1} = 4845.
+\]</span>
+</div>
+
+<p>Suppose now that we are again interested in permutations of <span class="math inline">\(n\)</span> objects, but that there are <span class="math inline">\(r\)</span> of one type and <span class="math inline">\((n-r)\)</span> of a second type. Then, the number of such permutations is
+<span class="math display">\[
+{n \choose r} = \frac{n!}{r!(n-r)!}.
+\]</span>
+Notice that this is the same as
+<span class="math inline">\(~ ^{n}C_{r}\)</span> above, even though it is describing a different situation, and we still say “n choose r”.
+We shall see later in the module, that these also arise when dealing with the binomial distribution, and hence are sometimes called <strong>binomial coefficients</strong>.</p>
+<p>We can show that this expression is correct by again considering the procedure divided into stages.
+In the first stage we permute the objects and let the number of distinguishable
+orderings be given the symbol <span class="math inline">\(n \choose r\)</span>.
+If we now suppose that the objects are distinguishable, then there are <span class="math inline">\(r!\)</span> ways to rearrange the <span class="math inline">\(r\)</span> objects and <span class="math inline">\((n-r)!\)</span> ways of rearranging the <span class="math inline">\((n-r)\)</span> objects.
+Hence the total number of rearrangements is <span class="math inline">\(\binom{n}{r}\, r! \, (n-r)!\)</span>.
+This procedure is equivalent to the single-stage process of permuting all objects, assuming they are distinguishable, which can be done in <span class="math inline">\(n!\)</span> ways.
+Hence
+<span class="math display">\[
+{n \choose r}\, r! \, (n-r)! = n!
+\]</span>
+which can be rearranged to give
+<span class="math display">\[
+{n \choose r} = \frac{n!}{r!(n-r)!}
+\]</span>
+as required.</p>
+<hr />
+<p><em>If any of these ideas are new, or you would like further information, then take a look at the pages on “Counting Methods” in the recommended textbook:
+Clarke GM and Cooke D, A Basic Course in Statistics.</em></p>
+<hr />
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="eda.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conditional-probability-and-independence.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

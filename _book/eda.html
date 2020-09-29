@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Exploratory Data Analysis in R | MATH1710 Probability and Statistics 1</title>
+  <meta name="description" content="Lecture notes for MATH1710 Probability and Statistics 1 at the University of Leeds." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Exploratory Data Analysis in R | MATH1710 Probability and Statistics 1" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lecture notes for MATH1710 Probability and Statistics 1 at the University of Leeds." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Exploratory Data Analysis in R | MATH1710 Probability and Statistics 1" />
+  
+  <meta name="twitter:description" content="Lecture notes for MATH1710 Probability and Statistics 1 at the University of Leeds." />
+  
+
+<meta name="author" content="Robert G Aykroyd" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="basic-probability.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>MATH1710</b></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Module Overview</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contact-information"><i class="fa fa-check"></i>Contact Information</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#syllabus-details"><i class="fa fa-check"></i>Syllabus Details</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#methods-of-teaching"><i class="fa fa-check"></i>Methods of Teaching</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#booklist"><i class="fa fa-check"></i>Booklist</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>1</b> Exploratory Data Analysis in R</a><ul>
+<li class="chapter" data-level="1.1" data-path="eda.html"><a href="eda.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="eda.html"><a href="eda.html#frequency-and-relative-frequency"><i class="fa fa-check"></i><b>1.2</b> Frequency and relative frequency</a></li>
+<li class="chapter" data-level="1.3" data-path="eda.html"><a href="eda.html#histograms-time-series-plots-and-scatterplots"><i class="fa fa-check"></i><b>1.3</b> Histograms, time series plots and scatterplots</a></li>
+<li class="chapter" data-level="1.4" data-path="eda.html"><a href="eda.html#numerical-summary-statistics"><i class="fa fa-check"></i><b>1.4</b> Numerical summary statistics</a></li>
+<li class="chapter" data-level="1.5" data-path="eda.html"><a href="eda.html#the-5-figure-summary-and-boxplots"><i class="fa fa-check"></i><b>1.5</b> The 5-figure summary and boxplots</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-probability.html"><a href="basic-probability.html"><i class="fa fa-check"></i><b>2</b> Basic Probability</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="2.1" data-path="basic-probability.html"><a href="basic-probability.html#sample-space-and-events"><i class="fa fa-check"></i><b>2.1</b> Sample space and events</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#the-venn-diagram"><i class="fa fa-check"></i>The Venn diagram</a></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#operations-with-events"><i class="fa fa-check"></i>Operations with events</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-probability.html"><a href="basic-probability.html#the-axioms-and-basic-rules-of-probability"><i class="fa fa-check"></i><b>2.2</b> The axioms and basic rules of probability</a></li>
+<li class="chapter" data-level="2.3" data-path="basic-probability.html"><a href="basic-probability.html#assignment-of-probability"><i class="fa fa-check"></i><b>2.3</b> Assignment of probability</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#classical-probability-for-equally-likely-events"><i class="fa fa-check"></i>Classical probability for equally-likely events</a></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#probability-as-relative-frequency-and-the-law-of-large-numbers"><i class="fa fa-check"></i>Probability as relative frequency and the Law of Large Numbers</a></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#subjective-assignment-of-probability"><i class="fa fa-check"></i>Subjective assignment of probability</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#combinatorics"><i class="fa fa-check"></i>Combinatorics</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#basic-definitions"><i class="fa fa-check"></i>Basic definitions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html"><i class="fa fa-check"></i><b>3</b> Conditional Probability and Independence</a><ul>
+<li class="chapter" data-level="3.1" data-path="eda.html"><a href="eda.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#definitions"><i class="fa fa-check"></i><b>3.2</b> Definitions</a></li>
+<li class="chapter" data-level="3.3" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#independent-events"><i class="fa fa-check"></i><b>3.3</b> Independent events</a></li>
+<li class="chapter" data-level="3.4" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#theorem-of-total-probability-and-bayes-theorem"><i class="fa fa-check"></i><b>3.4</b> Theorem of total probability and Bayes’ theorem</a><ul>
+<li class="chapter" data-level="" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#total-probability-formula"><i class="fa fa-check"></i>Total probability formula</a></li>
+<li class="chapter" data-level="" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#bayes-rule"><i class="fa fa-check"></i>Bayes’ rule</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>4</b> Random Variables</a></li>
+<li class="chapter" data-level="5" data-path="models-for-count-data.html"><a href="models-for-count-data.html"><i class="fa fa-check"></i><b>5</b> Models for Count Data</a></li>
+<li class="chapter" data-level="6" data-path="models-for-measurement-data.html"><a href="models-for-measurement-data.html"><i class="fa fa-check"></i><b>6</b> Models for Measurement Data</a></li>
+<li class="chapter" data-level="7" data-path="bayesian-methods.html"><a href="bayesian-methods.html"><i class="fa fa-check"></i><b>7</b> Bayesian Methods</a></li>
+<li class="divider"></li>
+<li><a href="https://www.leeds.ac.uk/">University of Leeds</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH1710 Probability and Statistics 1</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="eda" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Exploratory Data Analysis in R</h1>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">1.1</span> Introduction</h2>
+<p>Suppose we have performed a random experiment or applied some sampling technique to a population, then the collection of observations is called a <em>random sample</em> or <em>dataset</em> which we will write as a vector, for example <span class="math inline">\(\mathbf{x} = (x_1, x_2,\ldots, x_n)\)</span> for a sample of <span class="math inline">\(n\)</span> measurements.</p>
+<p>In R we can easily define vectors and see their contents:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="eda.html#cb1-1"></a>x =<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.5</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb1-2"><a href="eda.html#cb1-2"></a>x</span></code></pre></div>
+<pre><code>## [1] 2.5 5.0 3.0</code></pre>
+<p>Also, we can check the length of the vector:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="eda.html#cb3-1"></a><span class="kw">length</span>(x)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>In these notes, R commands in one block are followed by the corresponding output in the next block on lines starting <code>##</code>.</p>
+<p>To check details of an R command then you can use, for example, <code>help(length)</code>.</p>
+<p>If a dataset contains only a few values then we might see any interesting features by looking at the numbers themselves. Once we are faced with more than a handful of values, however, it is rare that any useful information can be gained by simply examining the individual values. Instead, we can look at a suitably chosen picture of the data and get a feel for the general structure. Here we shall look at a few simple graphical representations, but please note that these are only examples of what is available.</p>
+</div>
+<div id="frequency-and-relative-frequency" class="section level2">
+<h2><span class="header-section-number">1.2</span> Frequency and relative frequency</h2>
+<p>For a dataset representing measurements, a simple approach is to divide the range of values into non-overlapping intervals, called classes, and to count how many values are in each class. Note that these classes are usually, but are not required to be, of equal width. (For discrete data, each distinct value might define a class.)</p>
+<p>Consider the percentage return on Lloyds Banking Group shares for 24 consecutive months (Jan 2015-Dec 2016, source: shareprices.com):</p>
+<pre><code>-2.7   7.1  -0.9  -1.1  13.4  -2.9  -2.4  -7.0  -2.9  -1.9  -1.0   0.2  
+-10.4 10.6  -6.0  -1.4   7.4 -24.9  -1.7  11.7  -8.1   5.0   1.1   8.0</code></pre>
+<p>In R, this can be done as follows:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="eda.html#cb6-1"></a>data =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www1.maths.leeds.ac.uk/~robert/MATH1710/MonthlyShareReturns.csv&quot;</span>)</span>
+<span id="cb6-2"><a href="eda.html#cb6-2"></a><span class="kw">names</span>(data)</span></code></pre></div>
+<pre><code>## [1] &quot;returns&quot;</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="eda.html#cb8-1"></a>data<span class="op">$</span>returns</span></code></pre></div>
+<pre><code>##  [1]  -2.7   7.1  -0.9  -1.1  13.4  -2.9  -2.4  -7.0  -2.9  -1.9  -1.0   0.2
+## [13] -10.4  10.6  -6.0  -1.4   7.4 -24.9  -1.7  11.7  -8.1   5.0   1.1   8.0</code></pre>
+<p>To see details of the components of a variable use, for example, <code>names(data)</code>, then use the <code>$</code> symbol to access components.</p>
+<p>The value -24.9 is extreme — corresponding to June 2016 and the Brexit vote.
+Suppose we ignore this value as being unrepresentative – never to be repeated – and then choose to have 6 classes of equal width, fixing the boundaries at:
+<span class="math inline">\(-15\)</span>, <span class="math inline">\(-10\)</span>, <span class="math inline">\(-5\)</span>, <span class="math inline">\(0\)</span>, <span class="math inline">\(5\)</span>, <span class="math inline">\(10\)</span>, <span class="math inline">\(15\)</span>.
+Loosely speaking, the first interval will contain all data values up to -10, the second the data values from <span class="math inline">\(-10\)</span> to <span class="math inline">\(–5\)</span>, and so on.
+But in which interval would we place <span class="math inline">\(5.0\)</span>?
+We must be careful not to be ambiguous and so let us say that the first interval is up to and including <span class="math inline">\(-10\)</span>, then
+from <span class="math inline">\(-10\)</span> up to and including <span class="math inline">\(-5\)</span> etc.
+In standard mathematical notation these can be written
+<span class="math inline">\((-15, -10]\)</span>, <span class="math inline">\((-10, -5]\)</span> etc – where the shape of the bracket carries extra meaning – square brackets,
+<span class="math inline">\([\)</span> <span class="math inline">\(]\)</span>, mean including the endpoint value whereas parentheses, also known as round brackets, <span class="math inline">\((\)</span> <span class="math inline">\()\)</span>, mean excluding the endpoint value.</p>
+<p>It is now possible to consider each data value in turn and increment the count in the appropriate class leading to the following table:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Interval</th>
+<th align="right">Frequency</th>
+<th align="right">Rel. Freq.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">(-15, -10]</td>
+<td align="right">1</td>
+<td align="right">0.04</td>
+</tr>
+<tr class="even">
+<td align="right">(-10, -5]</td>
+<td align="right">3</td>
+<td align="right">0.13</td>
+</tr>
+<tr class="odd">
+<td align="right">(-5, -0]</td>
+<td align="right">10</td>
+<td align="right">0.43</td>
+</tr>
+<tr class="even">
+<td align="right">(0, 5]</td>
+<td align="right">3</td>
+<td align="right">0.13</td>
+</tr>
+<tr class="odd">
+<td align="right">(5, 10]</td>
+<td align="right">3</td>
+<td align="right">0.13</td>
+</tr>
+<tr class="even">
+<td align="right">(10, 15]</td>
+<td align="right">3</td>
+<td align="right">0.13</td>
+</tr>
+</tbody>
+</table>
+<p>Do you think this gives a good summary of the data? Why?</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="eda.html#cb10-1"></a><span class="kw">which</span>(data<span class="op">$</span>returns <span class="op">==</span><span class="st"> </span><span class="fl">-24.9</span>)</span></code></pre></div>
+<pre><code>## [1] 18</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="eda.html#cb12-1"></a>returns.new =<span class="st"> </span>data<span class="op">$</span>returns[<span class="op">-</span><span class="dv">18</span>]</span>
+<span id="cb12-2"><a href="eda.html#cb12-2"></a>brks =<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">15</span>, <span class="dv">-10</span>, <span class="dv">-5</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>)</span>
+<span id="cb12-3"><a href="eda.html#cb12-3"></a>tmp =<span class="st"> </span><span class="kw">hist</span>(returns.new, <span class="dt">breaks =</span> brks, <span class="dt">plot =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb12-4"><a href="eda.html#cb12-4"></a>tmp<span class="op">$</span>counts</span></code></pre></div>
+<pre><code>## [1]  1  3 10  3  3  3</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="eda.html#cb14-1"></a><span class="kw">round</span>(tmp<span class="op">$</span>counts <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(tmp<span class="op">$</span>counts), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.04 0.13 0.43 0.13 0.13 0.13</code></pre>
+<p>In general, suppose that we choose <span class="math inline">\(m\)</span> classes.
+Then, the class midpoints can be written as a vector,
+for example <span class="math inline">\((x_1, x_2,\ldots, x_m)\)</span>, with corresponding class frequencies
+<span class="math inline">\((f_1, f_2,\ldots, f_m)\)</span> — note that <span class="math inline">\(n= f_1+f_2+\cdots +f_m\)</span> or
+written as <span class="math inline">\(n= \sum_{i=1}^m f_i\)</span>,
+that is <span class="math inline">\(n\)</span> is the sum of the class frequencies.</p>
+<p>Rather than the frequencies, it is sometimes more useful to see what proportion of the values fall into each of the classes, for example to compare datasets of different sizes.
+The relative frequency is simply the class frequency divided by the sample size.</p>
+</div>
+<div id="histograms-time-series-plots-and-scatterplots" class="section level2">
+<h2><span class="header-section-number">1.3</span> Histograms, time series plots and scatterplots</h2>
+<p></p>
+<p>Although the frequency, or relative frequency, table helps to summarise a large dataset, it is even more useful to have a picture.
+The appropriate choice for continuous measurement data is the histogram (or the bar chart for discrete/categorical data).</p>
+<p>Let us start by considering a bigger dataset using the <strong>daily</strong> percentage return for
+Lloyds Banking Group shares (Jan 2015-Dec 2016, source: shareprices.com).
+Figure 1 shows corresponding histograms using equal width intervals and unequal width intervals.
+Also, both horizontal and vertical scales are equal to allow direct comparison.
+Note that in each, the vertical scale is marked as <strong>Density</strong> which is the relative frequency within the interval divided by the interval width.
+This is called a density-scaled histogram and has the property that the total area of the bars equals one — more on this in a future week.
+Both show that most values are between <span class="math inline">\(-5\)</span> and <span class="math inline">\(+5\)</span>, and that there is a big peak at zero.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="eda.html#cb16-1"></a>data =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www1.maths.leeds.ac.uk/~robert/MATH1710/DailyShareData.csv&quot;</span>)</span>
+<span id="cb16-2"><a href="eda.html#cb16-2"></a></span>
+<span id="cb16-3"><a href="eda.html#cb16-3"></a><span class="kw">hist</span>(data<span class="op">$</span>daily.return, <span class="dt">breaks =</span> <span class="dv">13</span>, <span class="dt">probability =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb16-4"><a href="eda.html#cb16-4"></a>     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">8</span>, <span class="dv">8</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.35</span>),</span>
+<span id="cb16-5"><a href="eda.html#cb16-5"></a>     <span class="dt">main =</span> <span class="st">&quot;Equal intervals widths&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Density&quot;</span>)</span>
+<span id="cb16-6"><a href="eda.html#cb16-6"></a></span>
+<span id="cb16-7"><a href="eda.html#cb16-7"></a>brks =<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">25</span>, <span class="dv">-20</span>,<span class="op">-</span><span class="dv">5</span>, <span class="dv">-3</span>, <span class="dv">-2</span>, <span class="dv">-1</span>, <span class="fl">-0.25</span>, <span class="fl">0.25</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">20</span>)</span>
+<span id="cb16-8"><a href="eda.html#cb16-8"></a><span class="kw">hist</span>(data<span class="op">$</span>daily.return, <span class="dt">breaks =</span> brks, <span class="dt">probability =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb16-9"><a href="eda.html#cb16-9"></a>     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">8</span>, <span class="dv">8</span>),</span>
+<span id="cb16-10"><a href="eda.html#cb16-10"></a>     <span class="dt">main =</span> <span class="st">&quot;Unequal interval widths&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Density&quot;</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:histograms"></span>
+<img src="math1710_files/figure-html/histograms-1.png" alt="Density-scaled histograms of Lloyds Bank daily percentage returns." width="50%" /><img src="math1710_files/figure-html/histograms-2.png" alt="Density-scaled histograms of Lloyds Bank daily percentage returns." width="50%" />
+<p class="caption">
+Figure 1.1: Density-scaled histograms of Lloyds Bank daily percentage returns.
+</p>
+</div>
+<p>Which of these histograms do you think gives the most accurate summary? Why?</p>
+<p>Note that with equal interval widths, the frequency histogram, relative frequency histogram and the density-scaled histogram would have exactly the same appearance –– only the vertical scale would be changed.
+However, choosing the relative frequency or density-scaled histograms allows us to easily compare the shape of more than one sample – even when the number of data points is different.
+Also, if we use unequal interval widths, then we must account for this by using the density-scaled histogram.</p>
+<p>The appearance of the histogram depends on the number, and hence the width of the classes. As a general rule between <span class="math inline">\(5\)</span> and <span class="math inline">\(20\)</span> classes is reasonable —
+with the greater number of classes being used with larger datasets.
+A common starting point is to use the number of bars equal to the square-root of the size of the dataset, so <span class="math inline">\(16\)</span> points leads to <span class="math inline">\(4\)</span> bars; <span class="math inline">\(25\)</span> data points to <span class="math inline">\(5\)</span> bars, <span class="math inline">\(100\)</span> data points to 10 bars, and so on.</p>
+<p>In many situations we collect data sequentially through time, or simultaneously in pairs, and hence pictures that reflect this structure are more appropriate.
+Figure 1.2(left) shows a time series plot of the closing price divided into quarter-year periods — note that in such plots, the time variable is always on the horizontal axis.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="eda.html#cb17-1"></a><span class="kw">plot</span>(data<span class="op">$</span>closing.price, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,</span>
+<span id="cb17-2"><a href="eda.html#cb17-2"></a>     <span class="dt">main =</span> <span class="st">&quot;Time series plot of closing price&quot;</span>,</span>
+<span id="cb17-3"><a href="eda.html#cb17-3"></a>     <span class="dt">xlab =</span> <span class="st">&quot;Business days since 1 Jan 2015&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Closing price&quot;</span>)</span>
+<span id="cb17-4"><a href="eda.html#cb17-4"></a></span>
+<span id="cb17-5"><a href="eda.html#cb17-5"></a><span class="kw">plot</span>(data<span class="op">$</span>daily.return, data<span class="op">$</span>daily.volume, <span class="dt">pch =</span> <span class="dv">20</span>,</span>
+<span id="cb17-6"><a href="eda.html#cb17-6"></a>     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="fl">1e6</span>, <span class="fl">6e8</span>),</span>
+<span id="cb17-7"><a href="eda.html#cb17-7"></a>     <span class="dt">main =</span> <span class="st">&quot;Scatterplot of return and volume&quot;</span>,</span>
+<span id="cb17-8"><a href="eda.html#cb17-8"></a>     <span class="dt">xlab =</span> <span class="st">&quot;Percentage return&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Traded volume&quot;</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:lloyds-plots"></span>
+<img src="math1710_files/figure-html/lloyds-plots-1.png" alt="Lloyds Bank daily closing price, and return against traded volume" width="50%" /><img src="math1710_files/figure-html/lloyds-plots-2.png" alt="Lloyds Bank daily closing price, and return against traded volume" width="50%" />
+<p class="caption">
+Figure 1.2: Lloyds Bank daily closing price, and return against traded volume
+</p>
+</div>
+<p>For this dataset, we might imagine some relationship between the daily return and the traded volume.
+Figure 1.2(right) shows a scatterplot of the percentage return against the traded volume for each day.
+It is clear that low-volume days have returns close to zero, but there is great variability in return on moderate and high volume days.</p>
+</div>
+<div id="numerical-summary-statistics" class="section level2">
+<h2><span class="header-section-number">1.4</span> Numerical summary statistics</h2>
+<p>It is usual to process a dataset to obtain a few important numerical
+features of the sample — as well as examining graphical summaries.
+The most often calculated are the sample mean and the sample variance (or equivalently mean and standard deviation).
+Here we consider two situations:</p>
+<ol style="list-style-type: lower-roman">
+<li>where we use the actual data values <span class="math inline">\(\mathbf{x} = (x_1, x_2,\ldots, x_n)\)</span>,
+as in the <span class="math inline">\(24\)</span> consecutive monthly percentage returns, and</li>
+<li>with grouped data, as in the earlier frequency table, with class midpoints
+<span class="math inline">\((x_1, x_2,\ldots, x_m)\)</span> and corresponding class frequencies <span class="math inline">\((f_1, f_2,\ldots, f_m)\)</span>
+with <span class="math inline">\(n=\sum_{i=1}^m f_i\)</span>.</li>
+</ol>
+<p>The <strong>sample mean</strong> is denoted <span class="math inline">\(\overline{x}\)</span> and defined as:
+<span class="math display">\[
+(\mbox{i}) \quad \overline{x} = {{ 1 \over n } \sum_{i=1}^n x_i }
+\qquad \mbox{ or } \qquad (\mbox{ii}) \quad
+\overline{x} = {{ 1 \over n } \sum_{i=1}^m f_i x_i }
+\]</span>
+and the <strong>sample variance</strong> is written <span class="math inline">\(s^2_x\)</span> and defined as:
+<span class="math display">\[
+(\mbox{i}) \quad s^2_x = \frac{ 1}{n-1} \sum_{i=1}^n  (x_i - \overline{x} )^2
+\qquad \mbox{ or } \qquad
+(\mbox{ii}) \quad s^2_x = \frac{ 1}{n-1} \sum_{i=1}^m  f_i(x_i - \overline{x} )^2.
+\]</span>
+For computational purposes, it is more convenient to use alternative forms of the above variance definitions:
+<span class="math display">\[ (\mbox{i}) \quad  s^2_x = { 1 \over {n-1} } \left( \sum_{i=1}^n x_i^2 - n \overline{x} ^2\right)\qquad \mbox{ or } \qquad (\mbox{ii}) \quad
+s^2_x = { 1 \over {n-1} } \left( \sum_{i=1}^m f_i x_i^2 - n \overline{x} ^2\right). \]</span></p>
+<p>The <strong>sample standard deviation</strong> of a random sample is written
+<span class="math inline">\(s_x\)</span> and is defined as the (positive) square root of the sample variance.
+Note that it is usually more appropriate to quote mean and standard deviation of a sample as both statistics are then in the same units as the original measurements.</p>
+<p>For the Lloyds Bank returns (with the outlier removed) we have:
+<span class="math inline">\(\mathbf{x} = {}\)</span>(-2.7, 7.1, -0.9, -1.1, 13.4, -2.9, -2.4, -7.0, -2.9, -1.9, -1.0, 0.2, -10.4, 10.6, -6.0, -1.4, 7.4, *, -1.7, 11.7, $ $-8.1, 5.0, 1.1, 8.0)
+giving <span class="math inline">\(\overline{x} = -14.1/23 = -0.61\)</span> percent/day
+and <span class="math inline">\(s_x^2 = (924.35 - 23 \times (-0.61)^2)/(23-1)=41.63\)</span> percent<span class="math inline">\(^2\)</span>/day<span class="math inline">\(^2\)</span> and
+<span class="math inline">\(s_x = \sqrt{41.63}= 6.45\)</span> percent/day.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="eda.html#cb18-1"></a>X =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www1.maths.leeds.ac.uk/~robert/MATH1710/MonthlyShareReturns.csv&quot;</span>)</span>
+<span id="cb18-2"><a href="eda.html#cb18-2"></a>returns.new =<span class="st"> </span>X<span class="op">$</span>returns[<span class="op">-</span><span class="dv">18</span>]</span>
+<span id="cb18-3"><a href="eda.html#cb18-3"></a><span class="kw">mean</span>(returns.new)</span></code></pre></div>
+<pre><code>## [1] 0.6130435</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="eda.html#cb20-1"></a><span class="kw">var</span>(returns.new)</span></code></pre></div>
+<pre><code>## [1] 41.623</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="eda.html#cb22-1"></a><span class="kw">sd</span>(returns.new)</span></code></pre></div>
+<pre><code>## [1] 6.451589</code></pre>
+<p>As an exercise, supposing that we only had access to the frequency table data, then the class midpoints are <span class="math inline">\((-12.5, -7.5, -2.5, 2.5, 7.5, 12.5)\)</span> with frequencies
+<span class="math inline">\((1, 3, 10, 3, 3, 3)\)</span>, giving a sample mean of <span class="math inline">\(0.30\)</span> percent/day and standard deviation of <span class="math inline">\(6.59\)</span> percent/day.</p>
+<p>Whenever we measure more than one variable at the same time, such as with the price and traded volume in the Lloyds Bank dataset, we will be interested in quantifying any relationship —
+the most common measure is the correlation.
+Suppose we have <span class="math inline">\(n\)</span> pairs of measurements
+<span class="math inline">\(((x_1, y_1,),(x_2, y_2,),\ldots, (x_n, y_n))\)</span>, then the <em>sample correlation coefficient</em> is written <span class="math inline">\(r_{xy}\)</span> and is defined as
+<span class="math display">\[
+r_{xy} =  \frac{s_{xy}}{s_{x}s_{y}}
+\]</span>
+where <span class="math inline">\(s_{x}\)</span> and <span class="math inline">\(s_{y}\)</span> are the sample standard deviations of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> respectively, as above,
+and the sample covariance, <span class="math inline">\(s_{xy}\)</span>, is defined as
+<span class="math display">\[
+s_{xy}  = \frac{1}{n-1} \sum_{i=1}^n  (x_i - \overline{x} )(y_i - \overline{y} ).
+\]</span>
+Similarly to above, for computational purposes, it is more convenient to use the alternative form:
+<span class="math inline">\(s_{xy} = { 1 \over {n-1} } \left( \sum_{i=1}^n x_iy_i - n \overline{x}\, \overline{y} \right)\)</span>.</p>
+<p>Note that if small values in one variable are associated with small values in the second variable, and large values with large values, then there is a positive correlation.
+In contrast if small values of one variable are associated with large values of the other variable, then there is a negative correlation — this is less common.</p>
+<p>In R, this can be done using:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="eda.html#cb24-1"></a>Y =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www1.maths.leeds.ac.uk/~robert/MATH1710/DailyShareData.csv&quot;</span>)</span>
+<span id="cb24-2"><a href="eda.html#cb24-2"></a><span class="kw">cor</span>(Y<span class="op">$</span>daily.return, Y<span class="op">$</span>daily.volume)</span></code></pre></div>
+<pre><code>## [1] -0.2646797</code></pre>
+</div>
+<div id="the-5-figure-summary-and-boxplots" class="section level2">
+<h2><span class="header-section-number">1.5</span> The 5-figure summary and boxplots</h2>
+<p>The 5-figure summary describes a dataset using five numerical summaries:
+the minimum, the lower (or first) quartile, the median, the upper (or third) quartile, and the maximum.</p>
+<p>In R, with the full Lloyds Bank monthly percentage returns stored in vector x,
+the command summary(x) gives the output:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="eda.html#cb26-1"></a>x =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www1.maths.leeds.ac.uk/~robert/MATH1710/MonthlyShareReturns.csv&quot;</span>)</span>
+<span id="cb26-2"><a href="eda.html#cb26-2"></a><span class="kw">summary</span>(x<span class="op">$</span>returns)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## -24.900  -2.900  -1.250  -0.450   5.525  13.400</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="eda.html#cb28-1"></a><span class="kw">summary</span>(x<span class="op">$</span>returns[<span class="op">-</span><span class="dv">18</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## -10.400  -2.800  -1.100   0.613   6.050  13.400</code></pre>
+<p>Which of these do you think gives the best summary? Why?</p>
+<p>The lower quartile, median and upper quartile are examples of
+<em>order statistics</em>.
+The lower quartile is the point in the data with 25% of values below and 75% above,
+the median has 50% below and 50% above, and the
+upper quartile has 75% below and 25% above.
+Hence these values divide the data into four, equal-sized, parts.
+It is important to note that there is no unique definition for all cases – you will see a discussion of this in Semester 2.</p>
+<p>As before, a graph often conveys a clearer picture.
+Here the appropriate graphical summary is the boxplot.
+This gives a visual representation of the 5-figure summary and is
+very useful for checking symmetry and for comparing multiple datasets.
+Again, there are different definitions, although all give similar general information, and hence we must make sure we understand exactly the definitions used in any particular case.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="eda.html#cb30-1"></a>x =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www1.maths.leeds.ac.uk/~robert/MATH1710/MonthlyShareReturns.csv&quot;</span>)</span>
+<span id="cb30-2"><a href="eda.html#cb30-2"></a>returns =<span class="st"> </span>x<span class="op">$</span>returns</span>
+<span id="cb30-3"><a href="eda.html#cb30-3"></a></span>
+<span id="cb30-4"><a href="eda.html#cb30-4"></a><span class="kw">boxplot</span>(returns, returns[<span class="op">-</span><span class="dv">18</span>],</span>
+<span id="cb30-5"><a href="eda.html#cb30-5"></a>        <span class="dt">main =</span> <span class="st">&quot;Monthly data&quot;</span>, <span class="dt">names =</span> <span class="kw">c</span>(<span class="st">&quot;Full&quot;</span>, <span class="st">&quot;Reduced&quot;</span>))</span>
+<span id="cb30-6"><a href="eda.html#cb30-6"></a></span>
+<span id="cb30-7"><a href="eda.html#cb30-7"></a>x =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www1.maths.leeds.ac.uk/~robert/MATH1710/DailyShareData.csv&quot;</span>)</span>
+<span id="cb30-8"><a href="eda.html#cb30-8"></a><span class="kw">boxplot</span>(x<span class="op">$</span>daily.return, <span class="dt">main =</span> <span class="st">&quot;Daily data&quot;</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:boxplots"></span>
+<img src="math1710_files/figure-html/boxplots-1.png" alt="Boxplots of Lloyds Bank percentage return" width="50%" /><img src="math1710_files/figure-html/boxplots-2.png" alt="Boxplots of Lloyds Bank percentage return" width="50%" />
+<p class="caption">
+Figure 1.3: Boxplots of Lloyds Bank percentage return
+</p>
+</div>
+<p>In these, the box joins the lower quartile, <span class="math inline">\(Q1\)</span>, and the upper quartile, <span class="math inline">\(Q3\)</span>, and hence gives an interval containing 50% of the data – defining the interquartile range (<span class="math inline">\(IQR=Q3-Q1\)</span>).
+The thicker horizontal line, within the box, indicates the median.
+Here, the whiskers are also shown which extend out to
+the most extreme values within an interval from
+<span class="math inline">\(Q1-1.5\hspace{-0.5mm}\times\hspace{-0.5mm}IQR\)</span> to <span class="math inline">\(Q3+1.5\hspace{-0.5mm}\times\hspace{-0.5mm}IQR\)</span> – with any other data values shown individually.</p>
+<p>We have now seen many R commands, you are not yet expected to understand them but you should try them out over the next few weeks.</p>
+<hr />
+<p><em>If any of the statistical ideas in this Chapter are new, or you do not remember
+the details, then you will find good explanations in, for example, the first few
+chapters of the recommended textbook:
+Clarke GM and Cooke D, A Basic Course in Statistics. There are, of course, many
+good online resources which can also be useful to fill-in any gaps.</em></p>
+<hr />
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="basic-probability.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
