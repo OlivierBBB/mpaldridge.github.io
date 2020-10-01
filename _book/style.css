@@ -12,3 +12,9 @@ pre {
 pre code {
   white-space: inherit;
 }
+
+.math.display {
+  display: block;
+  overflow-x: scroll;
+}
+
