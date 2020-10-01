@@ -115,13 +115,13 @@
 <li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#variance-of-a-random-variable"><i class="fa fa-check"></i>Variance of a random variable</a></li>
 <li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#properties-of-variance"><i class="fa fa-check"></i>Properties of variance</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#functions-of-random-variables"><i class="fa fa-check"></i>Functions of random variables</a></li>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#the-law-of-the-unconscious-statistician"><i class="fa fa-check"></i>The law of the unconscious statistician</a></li>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#probability-generating-functions"><i class="fa fa-check"></i>Probability generating functions</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="models-for-count-data.html"><a href="models-for-count-data.html"><i class="fa fa-check"></i><b>5</b> Models for Count Data</a></li>
 <li class="chapter" data-level="6" data-path="models-for-measurement-data.html"><a href="models-for-measurement-data.html"><i class="fa fa-check"></i><b>6</b> Models for Measurement Data</a></li>
 <li class="chapter" data-level="7" data-path="bayesian-methods.html"><a href="bayesian-methods.html"><i class="fa fa-check"></i><b>7</b> Bayesian Methods</a></li>
-<li class="divider"></li>
-<li><a href="https://www.leeds.ac.uk/">University of Leeds</a></li>
-
 </ul>
 
       </nav>
@@ -157,7 +157,7 @@ Then, taken together, our model and estimated parameter value give us an approxi
 <p>Formally, a random variable is
 “a function which maps elements of the sample space onto the set of real numbers”.
 Informally, it is a numerical value which summarizes a random experiment by measuring some property of interest.</p>
-<p><img src="math1710_files/figure-html/rv-1.png" width="450" /></p>
+<p><img src="math1710_files/figure-html/rv-1.png" width="450" style="display: block; margin: auto;" /></p>
 <p>It is common to use the letters <span class="math inline">\(X, Y, Z\)</span> to denote random variables.
 The set of all possible values which can be taken by the random variable is called the <strong>range space</strong>.</p>
 <p>A discrete random variable <span class="math inline">\(X\)</span>, say, has a finite, or countably infinite, range space which is denoted
@@ -375,476 +375,242 @@ Two (or more) random variable are said to be independent if the value of one tel
 If the random variables relate to physically separate experiments then we can assume independence, but otherwise we cannot.</li>
 </ul>
 <p>\end{itemize}</p>
-<!--
-
-\addtocounter{exn}{-1}
-\begin{example}(cont.)
-For the eight-sided dice example earlier we saw that 
-$E[X]=14/3$ and $Var[X]=47/9$.
-
-\medskip
-
-Consider $Z=6-3X$ then
-\[ 
+<p><strong>Example ??? cont.</strong>
+For the eight-sided dice example earlier we saw that
+<span class="math inline">\(E[X]=14/3\)</span> and <span class="math inline">\(Var[X]=47/9\)</span>.</p>
+<p>Consider <span class="math inline">\(Z=6-3X\)</span> then
+<span class="math display">\[ 
 E[Z] =E[6-3X] = 6-3E[X] = 6-3\times \frac{14}{3} = -8
-\]
+\]</span>
 and
-\[ 
+<span class="math display">\[ 
 Var[Z] =Var[6-3X] = (-3)^2Var[X] = 9\times  \frac{47}{9}= 47.
-\]
-
-Now suppose that we also have a standard six-sided die which has
-\( E[Y]=7/2\) and \(Var[Y]= 35/12\)
+\]</span></p>
+<p>Now suppose that we also have a standard six-sided die which has
+<span class="math inline">\(E[Y]=7/2\)</span> and <span class="math inline">\(Var[Y]= 35/12\)</span>
 Then, the variance of the sum of the two dice is
-\[Var[X+Y] = Var[X]+Var[Y]
+<span class="math display">\[Var[X+Y] = Var[X]+Var[Y]
 = \frac{47}{9}+\frac{35}{12} = \frac{879}{108} = 8.14.
-\]
-Note that here, $X$ and $Y$ are physically independent and so using this result for independent random variables is valid.
-\end{example}
-
-%
-%\begin{boxit}
-%Now complete Worksheet 5 on basics of discrete random variables 
-%to check your understanding.
-%\end{boxit}
-%
-%\begin{boxit}
-%Now complete Worksheet 6 on properties of expectation and variance 
-%to check your understanding.
-%\end{boxit}
-
-\newpage
-
-\index{Expectation}\index{Functions of random variables}
-%\index{Essential directed reading}
-
-%\rhead{Additional reading}
-
-
-\renewcommand{\baselinestretch}{1.3}
-
-\newpage
-%\index{Essential directed reading}
-\rhead{Essential directed reading}
-
-\subsection*{Functions of random variables}
-
-We have seen how to find the expectation and variance of  linear functions, e.g.\ $E[aX+b]=aE[X]+b$.
-Now we shall see what to do for other general functions, $Y=g(X)$, such as $s^X$ or $e^{tX}$ (for constants \(s\) and \(t\)).
-
-The function $y=g(x)$ maps points in the range space of $X$, $\Omega_X$, to points in the range space of $Y$, $\Omega_Y$.
-Hence, if $\Omega_X = \{x_1, x_2,\ldots\}$, then we can determine the range space of $Y$ as
-the distinct elements of $\{g(x_1), g(x_2),\ldots\}$.
-
-Note that as more than one element of $\Omega_X$ might map to the same point in $\Omega_Y$, then $\Omega_Y$ cannot contain more elements than $\Omega_X$. 
-Hence if  $\Omega_X$ is finite or countable infinite then so is $\Omega_Y$ which also means that if $X$ is discrete then so is $Y$.
-%
-If \(X\) is a continuous random variable, then usually \(Y\) will also be continuous but there is no guarantee, for example
-if \(Y={\rm integer}(X)\). Hence, we should consider each case carefully.
-
-\bigskip
-
-\begin{center}
-\begin{tikzpicture}[line width=0.25pt, scale=0.6]
-
-\draw[thick, ->] (0,1) -- (6,1);
-\draw[thick] (0.5,0.8) -- (0.5,1.2);
-\draw (-0.5,2) node {$\Omega_X$};
-
-\draw[thick, ->] (8,1) -- (12,1);
-\draw[thick] (8.5,0.8) -- (8.5,1.2);
-\draw (12,2) node {$\Omega_Y$};
-
-\draw [thick, ->] (5,1) .. controls (5,3) and (9,3) .. (9,1);
-\draw [thick, ->] (3,1) .. controls (3,4) and (9,4) .. (9,1);
-
-\draw (3,0.5) node {$x_1$};
-\draw (5,0.5) node {$x_2$};
-
-\draw (9,0.5) node {$y$};
-
-\end{tikzpicture}
-\end{center}
-
-\bigskip
-
-We can then evaluate the probability mass function of $Y$ by transferring probabilities using the idea of {\it equivalent events}.
-
-Consider each of the elements of the range space of $Y$ in turn;
-for element $y$ from $\Omega_Y$:
-
-\hspace*{10mm} $\bullet$ if  $\{Y=y\}$ implies that $\{X=x\}$, then 
-\\[-4mm]
-\[
-p_Y(y)=p_X(x) \hspace*{58mm} \
-\]
-
-\hspace*{10mm} $\bullet$ if $\{Y=y\}$ implies that $\{X\in(x_1, x_2,\ldots)\}$, then \\[-4mm]
-\[
-p_Y(y)=p_X(x_1)+ p_X(x_2)+\cdots = \sum_{x:g(x)=y} p_X(x).
-\]
-
-%%
-Let us now check that the axioms are still valid:
-
-Since $Pr(Y=y)=p_Y(y)$ is the sum of at least one $p_X(x)$ then since 
-$p_X(x)> 0 $ for all $x\in \Omega_X$, then 
-$p_Y(y)>0$ for all $y\in \Omega_Y$. Hence axiom (K1) is valid.
-
-Also, starting with 
-$Pr(\Omega_X)=\sum _x p_X(x)=1$, then consider
-$Pr(\Omega_Y)=\sum _y p_Y(y) 
-= \sum _y \sum_{x:g(x)=y} p_X(x) = \sum _x p_X(x)=1$.
-Hence axiom (K2) is valid.
-%
-
-This can be illustrated as follows.
-Suppose that $n_1$ of the elements of $\Omega_X$ map to the first
-element of $\Omega_Y$, 
-$n_2$ map to the second, etc.\ until $n_m$ map to the final element of $\Omega_Y$.
-Then after possible reordering and relabelling we have
-%
-
-\hspace*{5mm}
-\begin{minipage}{\linewidth}
-$x_{1}, \ldots, x_{n_1}$ map to $y_1$, and hence
-$g(x_{1})=\cdots = g(x_{n_1})=y_1$ \\
-%
-$x_{n_1+1}, \ldots, x_{n_1+n_2}$ map to $y_2$, and hence
-$g(x_{n_1+1})=\cdots = g(x_{n_1+n_2})=y_2$ \\
-%
-$\vdots$ \\
-%
-$x_{n_1+\cdots +n_{m-1}}, \ldots, x_{n_1+\cdots +n_m}$ map to $y_m$, and so
-$g(x_{n_1+\cdots +n_{m-1}1})=\cdots = g(x_{n_1+\cdots +n_m})=y_m$ 
-\end{minipage}
-
-If we now want $p_Y(y)$ then this can be obtained by adding all the probabilities of the corresponding $x$ values, that is all
-$x$ such that $g(x)=y$ giving $p_Y(y) = \sum _{x:g(x)=y)} p_X(x)$,
-for example $p_Y(y_1) =  \sum _{x:g(x)=y_1)} p_X(x) 
-= p_X(x_1)+\cdots+p_X(x_{n_1})$.
-%
-
-%\newpage
-
-Further, \\[-8mm]
-\begin{align*}
-\sum_y p_Y(y) &= p_Y(y1)+p_Y(y_2)+\cdots + p_Y(y_m)\\[-4mm]
-& =
+\]</span>
+Note that here, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are physically independent and so using this result for independent random variables is valid.</p>
+</div>
+</div>
+<div id="functions-of-random-variables" class="section level2 unnumbered">
+<h2>Functions of random variables</h2>
+<p>We have seen how to find the expectation and variance of linear functions, e.g. <span class="math inline">\(E[aX+b]=aE[X]+b\)</span>.
+Now we shall see what to do for other general functions, <span class="math inline">\(Y=g(X)\)</span>, such as <span class="math inline">\(s^X\)</span> or <span class="math inline">\(e^{tX}\)</span> (for constants <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span>).</p>
+<p>The function <span class="math inline">\(y=g(x)\)</span> maps points in the range space of <span class="math inline">\(X\)</span>, <span class="math inline">\(\Omega_X\)</span>, to points in the range space of <span class="math inline">\(Y\)</span>, <span class="math inline">\(\Omega_Y\)</span>.
+Hence, if <span class="math inline">\(\Omega_X = \{x_1, x_2,\ldots\}\)</span>, then we can determine the range space of <span class="math inline">\(Y\)</span> as
+the distinct elements of <span class="math inline">\(\{g(x_1), g(x_2),\ldots\}\)</span>.</p>
+<p>Note that as more than one element of <span class="math inline">\(\Omega_X\)</span> might map to the same point in <span class="math inline">\(\Omega_Y\)</span>, then <span class="math inline">\(\Omega_Y\)</span> cannot contain more elements than <span class="math inline">\(\Omega_X\)</span>.
+Hence if <span class="math inline">\(\Omega_X\)</span> is finite or countable infinite then so is <span class="math inline">\(\Omega_Y\)</span> which also means that if <span class="math inline">\(X\)</span> is discrete then so is <span class="math inline">\(Y\)</span>.
+If <span class="math inline">\(X\)</span> is a continuous random variable, then usually <span class="math inline">\(Y\)</span> will also be continuous but there is no guarantee, for example
+if <span class="math inline">\(Y={\rm integer}(X)\)</span>. Hence, we should consider each case carefully.</p>
+<p><img src="math1710_files/figure-html/funrv-1.png" width="450" style="display: block; margin: auto;" /></p>
+<p>We can then evaluate the probability mass function of <span class="math inline">\(Y\)</span> by transferring probabilities using the idea of <em>equivalent events</em>.</p>
+<p>Consider each of the elements of the range space of <span class="math inline">\(Y\)</span> in turn;
+for element <span class="math inline">\(y\)</span> from <span class="math inline">\(\Omega_Y\)</span>:</p>
+<ul>
+<li>if <span class="math inline">\(\{Y=y\}\)</span> implies that <span class="math inline">\(\{X=x\}\)</span>, then
+<span class="math display">\[ p_Y(y)=p_X(x) \]</span></li>
+<li>if <span class="math inline">\(\{Y=y\}\)</span> implies that <span class="math inline">\(\{X\in(x_1, x_2,\ldots)\}\)</span>, then
+<span class="math display">\[ p_Y(y)=p_X(x_1)+ p_X(x_2)+\cdots = \sum_{x:g(x)=y} p_X(x). \]</span></li>
+</ul>
+<p>Let us now check that the axioms are still valid:</p>
+<p>Since <span class="math inline">\(Pr(Y=y)=p_Y(y)\)</span> is the sum of at least one <span class="math inline">\(p_X(x)\)</span> then since
+$p_X(x)&gt; 0 $ for all <span class="math inline">\(x\in \Omega_X\)</span>, then
+<span class="math inline">\(p_Y(y)&gt;0\)</span> for all <span class="math inline">\(y\in \Omega_Y\)</span>. Hence axiom (K1) is valid.</p>
+<p>Also, starting with
+<span class="math inline">\(Pr(\Omega_X)=\sum _x p_X(x)=1\)</span>, then consider
+<span class="math inline">\(Pr(\Omega_Y)=\sum _y p_Y(y) = \sum _y \sum_{x:g(x)=y} p_X(x) = \sum _x p_X(x)=1\)</span>.
+Hence axiom (K2) is valid.</p>
+<p>This can be illustrated as follows.
+Suppose that <span class="math inline">\(n_1\)</span> of the elements of <span class="math inline">\(\Omega_X\)</span> map to the first
+element of <span class="math inline">\(\Omega_Y\)</span>,
+<span class="math inline">\(n_2\)</span> map to the second, etc. until <span class="math inline">\(n_m\)</span> map to the final element of <span class="math inline">\(\Omega_Y\)</span>.
+Then after possible reordering and relabelling we have</p>
+<ul>
+<li><span class="math inline">\(x_{1}, \ldots, x_{n_1}\)</span> map to <span class="math inline">\(y_1\)</span>, and hence
+<span class="math inline">\(g(x_{1})=\cdots = g(x_{n_1})=y_1\)</span></li>
+<li><span class="math inline">\(x_{n_1+1}, \ldots, x_{n_1+n_2}\)</span> map to <span class="math inline">\(y_2\)</span>, and hence
+<span class="math inline">\(g(x_{n_1+1})=\cdots = g(x_{n_1+n_2})=y_2\)</span></li>
+<li><span class="math inline">\(\vdots\)</span></li>
+<li><span class="math inline">\(x_{n_1+\cdots +n_{m-1}}, \ldots, x_{n_1+\cdots +n_m}\)</span> map to <span class="math inline">\(y_m\)</span>, and so</li>
+<li><span class="math inline">\(g(x_{n_1+\cdots +n_{m-1}1})=\cdots = g(x_{n_1+\cdots +n_m})=y_m\)</span></li>
+</ul>
+<p>If we now want <span class="math inline">\(p_Y(y)\)</span> then this can be obtained by adding all the probabilities of the corresponding <span class="math inline">\(x\)</span> values, that is all
+<span class="math inline">\(x\)</span> such that <span class="math inline">\(g(x)=y\)</span> giving <span class="math inline">\(p_Y(y) = \sum _{x:g(x)=y)} p_X(x)\)</span>,
+for example <span class="math inline">\(p_Y(y_1) = \sum _{x:g(x)=y_1)} p_X(x) = p_X(x_1)+\cdots+p_X(x_{n_1})\)</span>.</p>
+<p>Further,
+<span class="math display">\[\begin{align*}
+\sum_y p_Y(y) &amp;= p_Y(y_1)+p_Y(y_2)+\cdots + p_Y(y_m)\\[-4mm]
+&amp; =
 p_X(x_{1})+ \cdots + p_X(x_{n_1})+
 p_X(x_{n_1+1})+ \cdots + p_X(x_{n_1+n_2}) \\
-& \hspace*{30mm} +
+&amp; \qquad {}+
 p_X(x_{n_1+\cdots +n_{m-1}})+ \cdots + p_X(x_{n_1+\cdots +n_m})
-\end{align*}
+\end{align*}\]</span></p>
 
-\vspace{-8mm}
+<div class="example">
+<span id="exm:unnamed-chunk-4" class="example"><strong>Example 4.4  </strong></span>If <span class="math inline">\(X\)</span> has probability mass function:
+</div>
 
-%
-\begin{example}
-If $X$ has probability mass function: \index{Probability mass function}
-\begin{center}
-\begin{tabular}{c|ccc}
-$X$ & $-1$&$0$&$1$ \\
-\hline
-$p_X(x)$ & $0.2$&$0.7$&$0.1$
-\end{tabular}
-\end{center}
-
-Suppose we are interested in $Y=X^2$, then clearly 
-$\Omega_Y=\{0, 1\}$ and
-as $\{Y=0\}=\{X=0\}$ then $p_Y(0)=p_X(0)=0.7$, but
-as $\{Y=1\}=\{X=-1\}\cup\{X=1\}$ hence 
-$p_Y(1)=p_X(-1)+ p_X(1)=0.3$.
-%
-Notice that 
-$E[Y]= \sum_y y p_(y) = 0\times 0.7 + 1\times 0.3 = 0.3$.
-\end{example}
-
-
-\vspace{-8mm}
-
-
-\subsection*{The law of the unconscious statistician}
-\index{Expectation}\index{Functions of random variables}
-
-A simple and automatic approach uses the following theorem:
-if $Y=g(X)$, then 
-\[
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(x\)</span></th>
+<th align="center"><span class="math inline">\(-1\)</span></th>
+<th align="center"><span class="math inline">\(0\)</span></th>
+<th align="center"><span class="math inline">\(1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(p_X(x)\)</span></td>
+<td align="center"><span class="math inline">\(0.2\)</span></td>
+<td align="center"><span class="math inline">\(0.7\)</span></td>
+<td align="center"><span class="math inline">\(0.1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Suppose we are interested in <span class="math inline">\(Y=X^2\)</span>, then clearly
+<span class="math inline">\(\Omega_Y=\{0, 1\}\)</span> and
+as <span class="math inline">\(\{Y=0\}=\{X=0\}\)</span> then <span class="math inline">\(p_Y(0)=p_X(0)=0.7\)</span>, but
+as <span class="math inline">\(\{Y=1\}=\{X=-1\}\cup\{X=1\}\)</span> hence
+<span class="math inline">\(p_Y(1)=p_X(-1)+ p_X(1)=0.3\)</span>.
+Notice that
+<span class="math inline">\(E[Y]= \sum_y y p_Y(y) = 0\times 0.7 + 1\times 0.3 = 0.3\)</span>.</p>
+</div>
+<div id="the-law-of-the-unconscious-statistician" class="section level2 unnumbered">
+<h2>The law of the unconscious statistician</h2>
+<p>A simple and automatic approach uses the following theorem:
+if <span class="math inline">\(Y=g(X)\)</span>, then
+<span class="math display">\[
 E[g(X)] = 
 \left\{
 \begin{array}{ll}
-\sum g(x) p_X(x) & \mbox{if \(X\) is discrete},\\[5mm]
-\int g(x) f_X(x) &\mbox{if \(X\) is continuous.}
+\sum g(x) p_X(x) &amp; \mbox{if \(X\) is discrete},\\[5mm]
+\int g(x) f_X(x) &amp;\mbox{if \(X\) is continuous.}
 \end{array}
 \right.
-\]
-We have already seen examples of this with \(E[X^2]\) and
-\(E[X(X-1)]\), but there are many others.
-For example, \(E[s^X]\) is known as the probability generating function and is particularly useful for deriving many theoretical results regarding discrete random variables.
-\index{Probability density function}\index{Expectation}
-
-
-\vspace{-8mm}
-
-
-\subsection*{Proof:}
-
-\noindent
-\begin{minipage}{\textwidth}
-\renewcommand{\baselinestretch}{0.9}
-
-Starting with the definition of expectation of $Y$,
-\begin{align*}
-E[g(X)] = E[Y] &= \sum _y y p_Y(y) =  \sum _y y \sum _{x:g(x)=y} p_x(x) 
-= \sum _y \sum _{x:g(x)=y} y p_x(x) 
-\intertext{using $p_Y(y) = \sum _{x:g(x)=y} p_x(x)$
-and replacing $y$ by the equivalent numerical value $g(x)$}
-&= \sum _y \sum _{x:g(x)=y} g(x)p_x(x) 
-\intertext{and noting that the double sum can be replaced by a single sum}
-&=\sum _x g(x) p_x(x).
-\end{align*}
-
-\end{minipage}
-
-
-
-%\addtocounter{exn}{-1}
-%\begin{example}(cont.)
-%
-%\begin{center}
-%\begin{tabular}{c|ccc}
-%$x$ & $-1$ &$0$& $1$\\
-%\hline
-%$p_X(x)$ & $0.2$ & $0.7$ & $0.1$
-%\end{tabular}
-%\end{center}
-%
-%\bigskip
-%\bigskip
-%
-%\[
-%E[X^2] = \sum x^2 p_X(x)
-%= (-1)^2\times 0.2  + (0)^2\times 0.7 +1^2 \times 0.1 =0.3
-%\]
-%as before.
-%
-%
-%\end{example}
-
-
-
-\newpage
-\rhead{Additional reading}
-
-\subsection*{Probability generating functions}
-%\index{Probability density function}\index{Expectation}
-
-We have already seen several discrete random variables (including Bernoulli, binomial, geometric, Poisson)
+\]</span>
+We have already seen examples of this with <span class="math inline">\(E[X^2]\)</span> and
+<span class="math inline">\(E[X(X-1)]\)</span>, but there are many others.
+For example, <span class="math inline">\(E[s^X]\)</span> is known as the probability generating function and is particularly useful for deriving many theoretical results regarding discrete random variables.</p>
+<p><strong>Proof:</strong></p>
+<p>Starting with the definition of expectation of <span class="math inline">\(Y\)</span>,
+<span class="math display">\[
+E[g(X)] = E[Y] = \sum _y y p_Y(y) =  \sum _y y \sum _{x:g(x)=y} p_x(x) 
+= \sum _y \sum _{x:g(x)=y} y p_x(x) \]</span>
+using <span class="math inline">\(p_Y(y) = \sum _{x:g(x)=y} p_x(x)\)</span>
+and replacing <span class="math inline">\(y\)</span> by the equivalent numerical value <span class="math inline">\(g(x)\)</span>
+<span class="math display">\[ E[g(X)] = \sum _y \sum _{x:g(x)=y} g(x)p_x(x) \]</span>
+and noting that the double sum can be replaced by a single sum
+<span class="math display">\[ E[g(X)] =\sum _x g(x) p_x(x).\]</span></p>
+</div>
+<div id="probability-generating-functions" class="section level2 unnumbered">
+<h2>Probability generating functions</h2>
+<p>We have already seen several discrete random variables (including Bernoulli, binomial, geometric, Poisson)
 and their corresponding probability mass functions.
-%
-To help with the derivation of theoretical results, the same information can also, and sometimes more conveniently, be summarized by the \ul{probability generating functions} (pgf).
-%
-The pgf also has many special properties which make it more useful than the probability mass function.
+To help with the derivation of theoretical results, the same information can also, and sometimes more conveniently, be summarized by the <strong>probability generating functions</strong> (pgf).
+The pgf also has many special properties which make it more useful than the probability mass function.</p>
+<p>For a discrete random variable, <span class="math inline">\(X\)</span>, (taking only integer values) the probability generating function is defined as
+<span class="math display">\[
+G_X(s) = p_X(0) s^0 + p_X(1) s^1 +  p_X(2) s^2 + \cdots
+  = \sum_{x=0}^\infty s^x p_X(x) \]</span>
+that is
+<span class="math display">\[ G_X(s)  = E\left[s^X\right] \]</span>
+where <span class="math inline">\(s\)</span> is an arbitrary variable.
+It is useful to note that each probability multiplies the corresponding power of <span class="math inline">\(s\)</span>.</p>
 
-
-For a discrete random variable, $X$, (taking only integer values) the probability generating function is defined as
-\begin{align*}
-G_X(s) & = p_X(0) s^0 + p_X(1) s^1 +  p_X(2) s^2 + \cdots
-  = \sum_{x=0}^\infty s^x p_X(x) 
-  \shortintertext{that is}
-G_X(s)  & = E\left[s^X\right]
-\end{align*}
-where $s$ is an arbitrary variable.
-%
-It is useful to note that each probability multiplies the corresponding power of $s$.
-
-\begin{example}
-Suppose that $X$ described the outcome of the roll of a fair die, so
-$\Omega_X=\{1,2,3,4,5,6\}$ and $p_X(x) = 1/6$ for
-$x=1,2,3,4,5,6$.
-
-\medskip
-
-So for the probability generating function we have,\\[-5mm]
-\begin{align*}
+<div class="example">
+<p><span id="exm:unnamed-chunk-5" class="example"><strong>Example 4.5  </strong></span>Suppose that <span class="math inline">\(X\)</span> described the outcome of the roll of a fair die, so
+<span class="math inline">\(\Omega_X=\{1,2,3,4,5,6\}\)</span> and <span class="math inline">\(p_X(x) = 1/6\)</span> for
+<span class="math inline">\(x=1,2,3,4,5,6\)</span>.</p>
+So for the probability generating function we have,
+<span class="math display">\[
 G_X(s)  =  \frac16 s^1 + \frac16 s^2 +\cdots + \frac16 s^6 
  = \frac16 \left( s+s^2+\cdots + s^6\right).
-\end{align*}
+\]</span>
+</div>
 
-\end{example}
-
-
-\medskip
-
-If we want to find the expectation consider the following
-\[
-G'_X(s) = \frac{dG_X(s)}{ds} = \frac{d}{ds} \sum _x p_X(x) s^x = \sum _x x p_X(x) s^{x-1}
-\]
+<p>If we want to find the expectation consider the following
+<span class="math display">\[
+G&#39;_X(s) = \frac{dG_X(s)}{ds} = \frac{d}{ds} \sum _x p_X(x) s^x = \sum _x x p_X(x) s^{x-1}
+\]</span>
 and so,
-\[
-G'_X(1) = \left. \frac{dG_X(s)}{ds}\right|_{s=1}
+<span class="math display">\[
+G&#39;_X(1) = \left. \frac{dG_X(s)}{ds}\right|_{s=1}
 = \sum_x x p_X(x) = E[X].
-\]
-
-
-\addtocounter{exn}{-1}
-\begin{example}(cont.)
+\]</span></p>
+<p><strong>Example 4.5 cont.</strong>
 In this example we have
-\[
+<span class="math display">\[
 \frac{dG_X(s)}{ds} = \frac16 \left( 1+2s+\cdots + 6s^5\right)
-\]
-and with $s=1$ we get
-\[
-G'_X(1) = \frac16 \left( 1+2+\cdots + 6\right)
+\]</span>
+and with <span class="math inline">\(s=1\)</span> we get
+<span class="math display">\[
+G&#39;_X(1) = \frac16 \left( 1+2+\cdots + 6\right)
 =\frac72
-\]
-and so $E[X] =7/2$.
-\end{example}
-
-\medskip
-
-Also,
-\[
-G''_X(s) = \frac{dG_X^2(s)}{ds^2} = 
+\]</span>
+and so <span class="math inline">\(E[X] =7/2\)</span>.</p>
+<p>Also,
+<span class="math display">\[
+G&#39;&#39;_X(s) = \frac{d^2G_X(s)}{ds^2} = 
 \frac{d^2}{ds^2} \sum _x p_X(x) s^x 
 = \sum _x x(x-1) p_X(x) s^{x-2}
-\]
+\]</span>
 and so,
-\[
-G''_X(1) = \left. \frac{d^2G_X(s)}{ds^2}\right|_{s=1}
+<span class="math display">\[
+G&#39;&#39;_X(1) = \left. \frac{d^2G_X(s)}{ds^2}\right|_{s=1}
 = \sum_x x(x-1) p_X(x) = E[X(X-1)].
-\]
-
-Hence we can find the variance as
-\[
+\]</span></p>
+<p>Hence we can find the variance as
+<span class="math display">\[
 Var(X) = E[X^2] -\left\{ E[X] \right\}^2
 = E[X(X-1)]+E[X] - \left\{ E[X] \right\}^2
-= G''_X(1) +G'(1) -\left\{G'_X(1)\right\}^2
-\]
-
-\medskip
-
-\addtocounter{exn}{-1}
-\begin{example}(cont.)
+= G&#39;&#39;_X(1) +G&#39;(1) -\left\{G&#39;_X(1)\right\}^2
+\]</span></p>
+<p><strong>Example 4.5 cont.</strong>
 In this example we have
-\[
-G''_X(1) = \frac16 \left( 2\times 1+3\times 2 s\cdots + 6\times s^4\right)
-\]
-and with $s=1$ we get
-\[
-G''_X(1) = \frac16 \left( 2 + 6 + 12 +20 +30 \right)
+<span class="math display">\[
+G&#39;&#39;_X(1) = \frac16 \left( 2\times 1+3\times 2 s\cdots + 6\times s^4\right)
+\]</span>
+and with <span class="math inline">\(s=1\)</span> we get
+<span class="math display">\[
+G&#39;&#39;_X(1) = \frac16 \left( 2 + 6 + 12 +20 +30 \right)
 =\frac{70}{6}.
-\]
+\]</span>
 Hence we have
-\[
+<span class="math display">\[
 Var(X) = \frac{70}{6} +\frac72 -\left\{\frac72\right\}^2 = \frac{35}{12}.
-\]
-\end{example}
+\]</span></p>
 
-
-\begin{example}
-Suppose $X$ follows a Bernoulli distribution, that is
-with $Pr(X=1)=p$ and $Pr(X=0)=1-p$.
-\index{Bernoulli}
-
-\medskip
-
+<div class="example">
+<p><span id="exm:unnamed-chunk-6" class="example"><strong>Example 4.6  </strong></span>Suppose <span class="math inline">\(X\)</span> follows a Bernoulli distribution, that is
+with <span class="math inline">\(Pr(X=1)=p\)</span> and <span class="math inline">\(Pr(X=0)=1-p\)</span>.</p>
 Then
-\[
+<span class="math display">\[
 G_X(s) = (1-p)s^0 +p s^1 = 1-p+ps
-\]
+\]</span>
 so
-\[
-G'_X(s) = p \quad \mbox{ hence } \quad G'_X(1) = p
-\]
+<span class="math display">\[ G&#39;_X(s) = p \quad \mbox{ hence } \quad G&#39;_X(1) = p \]</span>
 and
-\[
-G''_X(s) = 0 \quad \mbox{ hence } \quad G''_X(1) = 0.
-\]
+<span class="math display">\[
+G&#39;&#39;_X(s) = 0 \quad \mbox{ hence } \quad G&#39;&#39;_X(1) = 0.
+\]</span>
 Hence we have
-\[
+<span class="math display">\[
 E[X] = p
-\]
+\]</span>
 and
-\[
-Var(X) = G''_X(1) +G'_X(1) -\left\{G'_X(1)\right\}^2
+<span class="math display">\[
+Var(X) = G&#39;&#39;_X(1) +G&#39;_X(1) -\left\{G&#39;_X(1)\right\}^2
 = 0 + p - p^2 = p(1-p).
-\]
-\end{example}
-
-%
-%\newpage
-%\rhead{Additional material}
-%\subsection*{Estimation of parameters}
-%\index{Estimating parameters}
-%
-%
-%Statistical inference is the process where we attempt to say something
-%about an unknown probability model based on a set of data which were
-%generated by the model.
-%This inference does not have the status of absolute truth, since there will 
-%be (infinitely) many probability models which are consistent
-%with a given set of data.
-%All we can do is to establish that some of these models are plausible, while
-%others are implausible.
-%
-%A common approach is to use a probability model for the data which is completely
-%specified except for the  numerical values of a finite number of quantities
-%called parameters.
-%In this chapter we will introduce methods for making inferences about
-%parameters assuming that the given model is correct.
-%The idea is to use the data, $\underline{x} =(x_1, x_2,..., x_n)$, to 
-%make a ``good guess" at the numerical value of a parameter, $\theta$.
-%
-%An \textsc{estimate}, $\hat \theta= \hat \theta (\underline{x})$ is a numeric
-%value which is a function of the data.
-%An \textsc{estimator} is a random variables, $\hat \theta (\underline{X})$,
-%which is a function of a random sample $\underline{X} =(X_1, X_2,..., X_n)$.
-%
-%
-%Assume that the $X_i$ are mutually independent with common p.d.f.\
-%\index{Independence}
-%$f(x; \theta_1, \theta_2,..., \theta_p)$.
-%Then the $r$th population moment (about zero) is
-%$$ E[X^r] = \mu _r (\theta_1, \theta_2,..., \theta_p)$$
-%and the $r$th sample moment
-%\vspace{-5mm}
-%$$m_r = \frac{1}{n} \sum _{i=1} ^n x_i^r .$$
-%
-%The method of moments estimates $\theta_1, \theta_2,..., \theta_p$ is the solution of the $p$ simultaneous (non-linear) equations
-%
-%\vspace{-10mm}
-%
-%$$ \mu _r (\theta_1, \theta_2,..., \theta_p) = m_r, \hspace{10mm} 
-%r=1, 2,..., p.$$
-%
-%This method of estimation has no general optimality properties and 
-%sometimes does very badly, but usually provides sensible initial guesses
-%for numerical search procedures.
-%
-%\subsubsection*{Example}
-%\index{Exponential}
-%
-%\vspace{-3mm}
-%
-%Let $X$ be an exponential random variable with unknown parameter $\lambda$.
-%Now let $x_i: i=1,.., n$ be a set of independent observations of this variable.
-%%
-%The first sample moment is the sample mean $\bar x$, and
-%the first population moment is the expectation of $X$, i.e. $1/\lambda$.
-%Hence, we find the method of moments estimate of $\lambda$ by solving
-%$1/\hat \lambda = \bar x$, that is $\hat \lambda = 1/\bar x$.
-%\index{Moments}
-%
-%\vfill
-%\noindent
-%\makebox[\textwidth]{\hrulefill}
-%{\textsc{Further reading}: 
-%Sections 8.1 to 8.5 of Rice, and Chapter 10 of Clarke and Cooke.}
-
--->
-
+\]</span>
 </div>
+
+
 </div>
 </div>
             </section>
