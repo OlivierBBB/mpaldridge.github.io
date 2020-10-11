@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>MATH1710 Probability and Statistics 1</title>
+  <meta name="description" content="Lecture notes for MATH1710 Probability and Statistics 1 at the University of Leeds." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="MATH1710 Probability and Statistics 1" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lecture notes for MATH1710 Probability and Statistics 1 at the University of Leeds." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="MATH1710 Probability and Statistics 1" />
+  
+  <meta name="twitter:description" content="Lecture notes for MATH1710 Probability and Statistics 1 at the University of Leeds." />
+  
+
+<meta name="author" content="Robert G Aykroyd" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="eda.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>MATH1710</b></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Module Overview</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contact-information"><i class="fa fa-check"></i>Contact Information</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#syllabus-details"><i class="fa fa-check"></i>Syllabus Details</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#methods-of-teaching"><i class="fa fa-check"></i>Methods of Teaching</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#booklist"><i class="fa fa-check"></i>Booklist</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>1</b> Exploratory Data Analysis in R</a><ul>
+<li class="chapter" data-level="1.1" data-path="eda.html"><a href="eda.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="eda.html"><a href="eda.html#frequency-and-relative-frequency"><i class="fa fa-check"></i><b>1.2</b> Frequency and relative frequency</a></li>
+<li class="chapter" data-level="1.3" data-path="eda.html"><a href="eda.html#histograms-time-series-plots-and-scatterplots"><i class="fa fa-check"></i><b>1.3</b> Histograms, time series plots and scatterplots</a></li>
+<li class="chapter" data-level="1.4" data-path="eda.html"><a href="eda.html#numerical-summary-statistics"><i class="fa fa-check"></i><b>1.4</b> Numerical summary statistics</a></li>
+<li class="chapter" data-level="1.5" data-path="eda.html"><a href="eda.html#the-5-figure-summary-and-boxplots"><i class="fa fa-check"></i><b>1.5</b> The 5-figure summary and boxplots</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-probability.html"><a href="basic-probability.html"><i class="fa fa-check"></i><b>2</b> Basic Probability</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="2.1" data-path="basic-probability.html"><a href="basic-probability.html#sample-space-and-events"><i class="fa fa-check"></i><b>2.1</b> Sample space and events</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#the-venn-diagram"><i class="fa fa-check"></i>The Venn diagram</a></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#operations-with-events"><i class="fa fa-check"></i>Operations with events</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-probability.html"><a href="basic-probability.html#the-axioms-and-basic-rules-of-probability"><i class="fa fa-check"></i><b>2.2</b> The axioms and basic rules of probability</a></li>
+<li class="chapter" data-level="2.3" data-path="basic-probability.html"><a href="basic-probability.html#assignment-of-probability"><i class="fa fa-check"></i><b>2.3</b> Assignment of probability</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#classical-probability-for-equally-likely-events"><i class="fa fa-check"></i>Classical probability for equally-likely events</a></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#probability-as-relative-frequency-and-the-law-of-large-numbers"><i class="fa fa-check"></i>Probability as relative frequency and the Law of Large Numbers</a></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#subjective-assignment-of-probability"><i class="fa fa-check"></i>Subjective assignment of probability</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#combinatorics"><i class="fa fa-check"></i>Combinatorics</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#basic-definitions"><i class="fa fa-check"></i>Basic definitions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html"><i class="fa fa-check"></i><b>3</b> Conditional Probability and Independence</a><ul>
+<li class="chapter" data-level="3.1" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#indep-intro"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#definitions"><i class="fa fa-check"></i><b>3.2</b> Definitions</a></li>
+<li class="chapter" data-level="3.3" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#independent-events"><i class="fa fa-check"></i><b>3.3</b> Independent events</a></li>
+<li class="chapter" data-level="3.4" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#theorem-of-total-probability-and-bayes-theorem"><i class="fa fa-check"></i><b>3.4</b> Theorem of total probability and Bayes' theorem</a><ul>
+<li class="chapter" data-level="" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#total-probability-formula"><i class="fa fa-check"></i>Total probability formula</a></li>
+<li class="chapter" data-level="" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#bayes-rule"><i class="fa fa-check"></i>Bayes' rule</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>4</b> Random Variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="random-variables.html"><a href="random-variables.html#basic-rv-definitions"><i class="fa fa-check"></i><b>4.1</b> Basic definitions</a></li>
+<li class="chapter" data-level="4.2" data-path="random-variables.html"><a href="random-variables.html#expected-value-and-variance"><i class="fa fa-check"></i><b>4.2</b> Expected value and variance</a><ul>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#properties-of-expectation"><i class="fa fa-check"></i>Properties of expectation</a></li>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#estimation-of-parameters-using-the-expectation"><i class="fa fa-check"></i>Estimation of parameters using the expectation</a></li>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#variance-of-a-random-variable"><i class="fa fa-check"></i>Variance of a random variable</a></li>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#properties-of-variance"><i class="fa fa-check"></i>Properties of variance</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#functions-of-random-variables"><i class="fa fa-check"></i>Functions of random variables</a></li>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#the-law-of-the-unconscious-statistician"><i class="fa fa-check"></i>The law of the unconscious statistician</a></li>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#probability-generating-functions"><i class="fa fa-check"></i>Probability generating functions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="models-for-count-data.html"><a href="models-for-count-data.html"><i class="fa fa-check"></i><b>5</b> Models for Count Data</a><ul>
+<li class="chapter" data-level="" data-path="eda.html"><a href="eda.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="5.1" data-path="models-for-count-data.html"><a href="models-for-count-data.html#bernoulli-trials-and-related-distributions"><i class="fa fa-check"></i><b>5.1</b> Bernoulli trials and related distributions</a><ul>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#the-binomial-distribution"><i class="fa fa-check"></i>The binomial distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#geometric-distribution"><i class="fa fa-check"></i>Geometric distribution</a></li>
+<li class="chapter" data-level="5.2" data-path="models-for-count-data.html"><a href="models-for-count-data.html#poisson-distribution-the-law-of-rare-events"><i class="fa fa-check"></i><b>5.2</b> Poisson distribution (the law of rare events)</a><ul>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#poisson-approximation-to-the-binomial"><i class="fa fa-check"></i>Poisson approximation to the binomial</a></li>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#poisson-processes"><i class="fa fa-check"></i>Poisson processes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#sampling-from-a-finite-population"><i class="fa fa-check"></i>Sampling from a finite population</a></li>
+<li class="chapter" data-level="5.3" data-path="models-for-count-data.html"><a href="models-for-count-data.html#additional-examples"><i class="fa fa-check"></i><b>5.3</b> Additional Examples</a></li>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#important-properties-for-sums-of-random-variables"><i class="fa fa-check"></i>Important properties for sums of random variables</a></li>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#pgfs-of-standard-distributions"><i class="fa fa-check"></i>Pgfs of standard distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="models-for-measurement-data.html"><a href="models-for-measurement-data.html"><i class="fa fa-check"></i><b>6</b> Models for Measurement Data</a></li>
+<li class="chapter" data-level="7" data-path="bayesian-methods.html"><a href="bayesian-methods.html"><i class="fa fa-check"></i><b>7</b> Bayesian Methods</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH1710 Probability and Statistics 1</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">MATH1710 Probability and Statistics 1</h1>
+<p class="author"><em>Robert G Aykroyd</em></p>
+<p class="date"><em>University of Leeds, Semester 2, 2020--21</em></p>
+</div>
+<div id="module-overview" class="section level1 unnumbered">
+<h1>Module Overview</h1>
+<p>This module will introduce you to the basics of probability and statistics, which are essential for later modules. Although many of you will already have taken one or two courses which include similar topics, that is not true of the whole class. Even where there is overlap, we will cover the algebraic derivations and consider assumptions -- there will be something new for everyone. Also, we will perform calculations and graphical tasks using the R coding language -- a free software application -- which is used throughout the undergraduate statistics teaching in Leeds and in the professional data science world.</p>
+<p>The origins of probability and statistics are very different, and so perhaps it is a surprise that they are in fact so closely related. The study of probability first occurred in the 17th century, motivated by gambling, whereas statistics has its origins 5000 years earlier as a means of recording people and their possessions for tax purposes. Probability and statistics have, however, come a long way and are a critical aspect of the modern world.</p>
+<p>The Chief Economist at Google, Hal Varian, said about statistics:</p>
+<blockquote>
+<p>The ability to take data – to be able to understand it, to process it, to extract value from it, to visualize it, to communicate it, is going to be a hugely important skill in the next decades because now we really do have essentially free and ubiquitous data. So the complimentary scarce factor is the ability to understand that data and extract value from it.</p>
+</blockquote>
+<p>Probability and statistics are branches of mathematics which rigorously measure and describes uncertain (or random) systems and processes. Modern applications include: modelling hereditary disease in genetics, pension predictions in actuarial science, stock price movements in finance, epidemic modelling in public health.</p>
+<p>The twin topics of probability and statistics can be artificially separated and taught in isolation -- mirroring their origins -- but by bringing them together the links between application and theory can be more clearly seen. This means that we will frequently switch from numerics and computing, to algebra and calculus.</p>
+<div id="contact-information" class="section level2 unnumbered">
+<h2>Contact Information</h2>
+<ul>
+<li>Lecturer: Dr Robert G. Aykroyd</li>
+<li>Office: Room 10.18 (School of Mathematics Satellite)</li>
+<li>E-mail: <a href="mailto:r.g.aykroyd@leeds.ac.uk">r.g.aykroyd@leeds.ac.uk</a></li>
+<li>Webpages: Note that all course material will be made available on Minerva.</li>
+</ul>
+</div>
+<div id="syllabus-details" class="section level2 unnumbered">
+<h2>Syllabus Details</h2>
+<p><strong>Chapter 1: EDA in R</strong> Introduction to EDA. R and RStudio. Histogram and scatterplots. Mean, variance, correlation and five-number summary. Boxplots.</p>
+<p><strong>Chapter 2: Basic probability:</strong> Events. Probability as relative frequency. Law of Large Numbers. Subjective probability. Probability axioms. General addition rule.</p>
+<p><strong>Chapter 3: Conditional probability:</strong> Conditional probability and the multiplication rule. Independence. Total probability and Bayes' rule.</p>
+<p><strong>Chapter 4: Random variables:</strong> Expectations and variances. Functions of random variables. Probability generating functions. Joint, conditional and marginal distributions. Conditional expectation and conditional variance. Independence and correlation.</p>
+<p>**Chapter 5: Models for count <a href="data:**" class="uri">data:**</a> Bernoulli trials. Binomial. Geometric. Poisson. Hypergeometric. Estimation of parameters. Sums of independent random variables.</p>
+<p>**Chapter 6: Models for measurement <a href="data:**" class="uri">data:**</a> Uniform. Beta. Exponential. Normal. Estimation of parameters. Functions of random variables. Central limit theorem.</p>
+<p><strong>Chapter 7: Bayesian methods:</strong> Likelihood, prior and posterior distributions. Posterior mean and posterior variance.</p>
+</div>
+<div id="methods-of-teaching" class="section level2 unnumbered">
+<h2>Methods of Teaching</h2>
+<p><strong>Pre-recorded videos</strong> and <strong>Lecture notes</strong> will cover most of the required material and key admin. A regular <strong>Monday video</strong> will describe the ``work for the week''.</p>
+<p><strong>Live Lectures</strong> (11 hours) will be held on Thursdays at 2--3 and at 4--5 --- you must attend the time as on your timetable. These will be &quot;workshop style&quot; to answer questions.</p>
+<p><strong>Tutorials</strong> (5 hours) will be held in Weeks <strong>2</strong>, <strong>4</strong>, <strong>6</strong>, <strong>8</strong> and <strong>10</strong>. You are required to attend one tutorial in each of these weeks where you can get help from your Statistics Tutor to complete coursework and discuss the material covered in Lectures.</p>
+<p><strong>Computer Practicals</strong> will be held in Weeks <strong>3</strong> and <strong>8</strong>, as on-line &quot;drop-in sessions&quot; to help build-up skill in statistical computing in R.</p>
+<p><strong>Assessment:</strong> 70% two-hour examination at end of semester and 30% coursework (Tutorial and Computing Exercises).</p>
+<p>Tutorial Exercises will be given out every two weeks. You should start these before your Statistics Tutorial and upload your solutions a few days after your tutorial. Short Computing Exercises will be set every week with some requiring short answers to be upload. This means that there will be some marked coursework every week.</p>
+</div>
+<div id="booklist" class="section level2 unnumbered">
+<h2>Booklist</h2>
+<p>Use of any of the following book is optional. All books are available from the University Library:</p>
+<ol style="list-style-type: decimal">
+<li>Scheaffer RL and Young LJ, Introduction to Probability and its Applications, 3rd Ed, Brooks/Cole Cengage Learning, 2010.</li>
+<li>Stone JV, Bayes' Rule: A Tutorial Introduction, Sebtel Press, 2013.</li>
+<li>Clarke GM and Cooke D, A Basic Course in Statistics, 5th Ed, Arnold, 2004.</li>
+<li>Rice JA, Mathematical Statistics and Data Analysis, 3rd Ed, Thomson Press, 2007.</li>
+<li>Stirzaker DR, Elementary Probability, 2nd Ed, CUP, 2003.</li>
+</ol>
+<p><strong>Note</strong> that Stirzaker is available online via the Library website.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="eda.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
