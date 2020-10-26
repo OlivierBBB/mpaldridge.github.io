@@ -18,3 +18,54 @@ pre code {
   display: block;
   overflow-x: scroll;
 }
+
+.book .book-body .page-wrapper .page-inner section.normal pre {
+    border: 1px solid #ccc;
+    border-radius:4px;
+    background-color: inherit;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal pre.sourceCode {
+    background-color: #f7f7f7;
+}
+
+.book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre
+ {
+  background: inherit;
+}
+
+.book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre > code
+ {
+  background: inherit;
+}
+
+.book.color-theme-1 .book-body .page-wrapper .page-inner section.normal pre.sourceCode
+ {
+  background-color: #fdf6e3;
+}
+
+.book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre
+ {
+  background: inherit;
+}
+
+.book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre > code
+ {
+  background: inherit;
+}
+
+.book.color-theme-2 .book-body .page-wrapper .page-inner section.normal pre.sourceCode
+ {
+  background-color: #2d3143;
+}
+
+.book.color-theme-2 .book-summary ul.summary li a,
+.book.color-theme-2 .book-summary ul.summary li span {
+  font-weight: normal;
+}
+.book.color-theme-2 .book-summary ul.summary li.active > a,
+.book.color-theme-2 .book-summary ul.summary li a:hover {
+  font-weight: normal;
+}
+
+

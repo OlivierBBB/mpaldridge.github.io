@@ -119,21 +119,7 @@
 <li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#the-law-of-the-unconscious-statistician"><i class="fa fa-check"></i>The law of the unconscious statistician</a></li>
 <li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#probability-generating-functions"><i class="fa fa-check"></i>Probability generating functions</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="models-for-count-data.html"><a href="models-for-count-data.html"><i class="fa fa-check"></i><b>5</b> Models for Count Data</a><ul>
-<li class="chapter" data-level="" data-path="eda.html"><a href="eda.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="5.1" data-path="models-for-count-data.html"><a href="models-for-count-data.html#bernoulli-trials-and-related-distributions"><i class="fa fa-check"></i><b>5.1</b> Bernoulli trials and related distributions</a><ul>
-<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#the-binomial-distribution"><i class="fa fa-check"></i>The binomial distribution</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#geometric-distribution"><i class="fa fa-check"></i>Geometric distribution</a></li>
-<li class="chapter" data-level="5.2" data-path="models-for-count-data.html"><a href="models-for-count-data.html#poisson-distribution-the-law-of-rare-events"><i class="fa fa-check"></i><b>5.2</b> Poisson distribution (the law of rare events)</a><ul>
-<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#poisson-approximation-to-the-binomial"><i class="fa fa-check"></i>Poisson approximation to the binomial</a></li>
-<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#poisson-processes"><i class="fa fa-check"></i>Poisson processes</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#sampling-from-a-finite-population"><i class="fa fa-check"></i>Sampling from a finite population</a></li>
-<li class="chapter" data-level="5.3" data-path="models-for-count-data.html"><a href="models-for-count-data.html#additional-examples"><i class="fa fa-check"></i><b>5.3</b> Additional Examples</a></li>
-<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#important-properties-for-sums-of-random-variables"><i class="fa fa-check"></i>Important properties for sums of random variables</a></li>
-<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#pgfs-of-standard-distributions"><i class="fa fa-check"></i>Pgfs of standard distributions</a></li>
-</ul></li>
+<li class="chapter" data-level="5" data-path="models-for-count-data.html"><a href="models-for-count-data.html"><i class="fa fa-check"></i><b>5</b> Models for Count Data</a></li>
 <li class="chapter" data-level="6" data-path="models-for-measurement-data.html"><a href="models-for-measurement-data.html"><i class="fa fa-check"></i><b>6</b> Models for Measurement Data</a></li>
 <li class="chapter" data-level="7" data-path="bayesian-methods.html"><a href="bayesian-methods.html"><i class="fa fa-check"></i><b>7</b> Bayesian Methods</a></li>
 </ul>
@@ -155,417 +141,452 @@
             <section class="normal" id="section-">
 <div id="models-for-count-data" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Models for Count Data</h1>
+<p><em>To follow.</em></p>
+<!--
 
-<div id="introduction" class="section level2 unnumbered">
-<h2>Introduction</h2>
-<p>The world is now awash with data. Commercial and public-sector
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\EE}{\mathbb{E}}
+\renewcommand{\comb}[2]{\binom{#1}{#2}}
+
+## Introduction {-}
+
+
+The world is now awash with data. Commercial and public-sector
 organisations increasingly depend on
 massive databases
 to refine their business operations. You may have thought, before starting this module,
 that statistics is all about calculating summary statistics such as means, standard deviations and
 correlations, and perhaps plotting pie charts and histograms of variables in a dataset.
-To be sure, these things are statistics, but they are not the subject of Statistics.
+To be sure, these things are statistics, but they are not the subject of Statistics. 
 Statistics is the art and science of learning about the
-real world through data and probability models.</p>
-<p>Models can take many forms, but a key property is that
+real world through data and probability models.
+
+Models can take many forms, but a key property is that
 they are approximations of reality.
-The famous statistician George Box said: “Essentially, all models are wrong, but some are useful” — though later this was re-expressed elsewhere as “all models are approximations”.</p>
-</div>
-<div id="bernoulli-trials-and-related-distributions" class="section level2">
-<h2><span class="header-section-number">5.1</span> Bernoulli trials and related distributions</h2>
-<p>We have discussed how random variables can be used to summarize the outcome of random experiments.
-We shall continue this by looking at distributions which arise from repeated experiments.</p>
-<p>Suppose a single <strong>trial</strong> is performed which has just two possible outcomes, for example</p>
-<ul>
-<li>a tossed coin is <code>Heads</code> or <code>Tails</code>,</li>
-<li>a child is a boy or a girl,</li>
-<li>a learner passes their driving test or not.</li>
-</ul>
-<p>Let random variable <span class="math inline">\(X\)</span> describe this situation, taking value <span class="math inline">\(1\)</span> if the event of interest occurs and value <span class="math inline">\(0\)</span> if it does not occur, with
-<span class="math display">\[ Pr(X=1)=p \text{ and } Pr(X=0)=1-p . \]</span></p>
-<p>Note that, alternatively, we can write these in a single expression
-<span class="math display">\[ Pr(X=x) = p_X(x) = p^x(1-p)^{1-x}, \qquad x=0,1. \]</span></p>
-<p>Here, <span class="math inline">\(X\)</span> is called a <strong>Bernoulli random variable</strong> and such a random experiment is called a <strong>Bernoulli trial</strong>.
+The famous statistician George Box said: "Essentially, all models are wrong, but some are useful" --- though later this was re-expressed elsewhere as "all models are approximations".
+
+
+## Bernoulli trials and related distributions
+
+
+We have discussed how random variables can be used to summarize the outcome of random experiments.
+We shall continue this by looking at distributions which arise from repeated experiments.
+
+Suppose a single **trial** is performed which has just two possible outcomes, for example
+
+* a tossed coin is `Heads` or `Tails`,
+* a child is a boy or a girl,
+* a learner passes their driving test or not.
+
+
+Let random variable $X$ describe this situation, taking value $1$ if the event of interest occurs and value $0$ if it does not occur,  with
+\[ Pr(X=1)=p \text{ and } Pr(X=0)=1-p . \]
+
+Note that, alternatively, we can write these in a single expression
+\[ Pr(X=x) = p_X(x) = p^x(1-p)^{1-x}, \qquad x=0,1. \]
+
+Here, $X$ is called a **Bernoulli random variable** and such a random experiment is called a **Bernoulli trial**.
 Now suppose that we repeat this trial many times, but we keep all conditions constant.
-That is the trials are independent and the probability is fixed.</p>
+That is the trials are independent and the probability is fixed.
 
-<div class="example">
-<p><span id="exm:unnamed-chunk-1" class="example"><strong>Example 5.1  </strong></span>Consider a Call Centre, and suppose we call five randomly chosen phone numbers and note whether the call was answered or not.
-Let <span class="math inline">\(A_i\)</span> denote the event that the call was answered on the <span class="math inline">\(i\)</span>th call, and let <span class="math inline">\(Pr(A_i)=p\)</span> for <span class="math inline">\(i=1,\ldots, 5\)</span>.
-It is assumed that calls are answered independently.</p>
-We might observe the sequence <span class="math inline">\(A_1A^c_2A_3A_4A^c_5\)</span> (say) from the
-<span class="math inline">\(2^5=32\)</span> possible sequences.
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:unnamed-chunk-1"><strong>(\#exm:unnamed-chunk-1) </strong></span>Consider a Call Centre, and suppose we call five randomly chosen phone numbers and note whether the call was answered or not.
+Let $A_i$ denote the event that the call was answered on the $i$th call, and let $Pr(A_i)=p$ for $i=1,\ldots, 5$.
+It is assumed that calls are answered independently.
+
+We might observe the sequence $A_1A^c_2A_3A_4A^c_5$ (say) from the
+$2^5=32$ possible sequences.
 The probability of this particular sequence is
-<span class="math display">\[
+\[
 Pr(A_1A^c_2A_3A_4A^c_5) = p\times (1-p)\times p\times p\times (1-p) = p^3 (1-p)^2.
-\]</span>
-If we are only interested in the number of calls answered, then the above is only one of ten possible ways of getting three <span class="math inline">\(A\)</span>’s and
-two <span class="math inline">\(A^c\)</span>’s, and so
-<span class="math display">\[
+\]
+If we are only interested in the number of calls answered, then the above is only one of ten possible ways of getting three $A$'s and
+two $A^c$'s, and so
+\[
 Pr(3A\mbox{ and } 2 A^c) = 10 \times p^3(1-p)^2.
-\]</span>
-We can generalise this idea into the following result.
-</div>
+\]
+We can generalise this idea into the following result.</div>\EndKnitrBlock{example}
 
-<div id="the-binomial-distribution" class="section level3 unnumbered">
-<h3>The binomial distribution</h3>
-<p>Let <span class="math inline">\(X\)</span> be the number of “successes” in <span class="math inline">\(n\)</span> repeated independent Bernoulli trials.
-Possible values for <span class="math inline">\(X\)</span> are <span class="math inline">\(0, 1,\ldots ,n\)</span> giving a
-range space <span class="math inline">\(\Omega_X=\{0, 1,\ldots ,n\}\)</span>.
-The probability mass function of <span class="math inline">\(X\)</span> is
-<span class="math display">\[
+
+### The binomial distribution {-}
+
+Let $X$ be the number of "successes" in $n$ repeated independent Bernoulli trials.
+Possible values for $X$ are $0, 1,\ldots ,n$ giving a 
+range space $\Omega_X=\{0, 1,\ldots ,n\}$.
+The probability mass function of $X$ is
+\[
 p_X(x) = {n \choose x} p^x (1-p)^{n-x} \qquad x=0, 1,\ldots ,n.
-\]</span>
-Note that <span class="math inline">\(\binom{n}{x} = n!/(x!(n-x)!)\)</span> arises by considering the number of permutations of <span class="math inline">\(n\)</span> objects, of which <span class="math inline">\(x\)</span> are of one type and the remaining <span class="math inline">\((n-x)\)</span> are of another type (see Directed Reading on Combinatorics).</p>
-<p>We say that <span class="math inline">\(X\)</span> is a binomial random variable and can write
-<span class="math inline">\(X\sim B(n,p)\)</span>.</p>
-<p>The following conditions give rise to the binomial distribution.</p>
-<ul>
-<li>A sequence of <span class="math inline">\(n\)</span> independent trials (<span class="math inline">\(n\)</span> fixed).</li>
-<li>Two possible outcomes at each trial (say “success” and “failure”).</li>
-<li>Fixed probability of “success” at each trail.</li>
-<li>The random variable counts the number of “successes”.</li>
-</ul>
+\]
+Note that $\binom{n}{x} = n!/(x!(n-x)!)$ arises by considering the number of permutations of $n$ objects, of which $x$ are of one type and the remaining $(n-x)$ are of another type (see Directed Reading on Combinatorics).
 
-<div class="example">
-<p><span id="exm:unnamed-chunk-2" class="example"><strong>Example 5.2  </strong></span>A fair die is rolled ten times, what is the probability that exactly four rolls give “6”?</p>
-<p>Let <span class="math inline">\(X\)</span> be the number of times “6” appears out of the ten rolls, then
-<span class="math inline">\(X\sim B(n=10,p=1/6)\)</span> and we require the probability
-<span class="math display">\[
+We say that $X$ is a binomial random variable and can write 
+$X\sim B(n,p)$.
+
+The following conditions give rise to the binomial distribution.
+
+* A sequence of $n$ independent trials ($n$ fixed).
+* Two possible outcomes at each trial (say "success" and "failure").
+* Fixed probability of "success" at each trail.
+* The random variable counts the number of "successes".
+
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:unnamed-chunk-2"><strong>(\#exm:unnamed-chunk-2) </strong></span>A fair die is rolled ten times, what is the probability that exactly four rolls give "6"?
+
+Let $X$ be the number of times "6" appears out of the ten rolls, then
+$X\sim B(n=10,p=1/6)$ and we require the probability
+\[
 Pr(X=4) = p_X(4) = 
 {10 \choose 4} \left(\frac16\right)^4 \left(\frac56\right)^6 = 0.0543.
-\]</span></p>
-This is easily done in <span class="math inline">\(R\)</span> using the <code>dbinom</code> command, as
-<code>dbinom(4, 10, 1/6)</code>.
-</div>
+\]
 
-<p>Unfortunately, it is not possible to produce a simple equation to give the cumulative distribution function.
-Instead, we would need to evaluate the individual probabilities, add them together and present the results as a table.</p>
-<p><strong>Example 5.2 (cont.)</strong>
-First the probability mass function:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="center"><span class="math inline">\(x\)</span></th>
-<th align="center"><span class="math inline">\(0\)</span></th>
-<th align="center"><span class="math inline">\(1\)</span></th>
-<th align="center"><span class="math inline">\(2\)</span></th>
-<th align="center"><span class="math inline">\(3\)</span></th>
-<th align="center"><span class="math inline">\(4\)</span></th>
-<th align="center"><span class="math inline">\(5\)</span></th>
-<th align="center"><span class="math inline">\(6\)</span></th>
-<th align="center"><span class="math inline">\(7\)</span></th>
-<th align="center"><span class="math inline">\(8\)</span></th>
-<th align="center"><span class="math inline">\(9\)</span></th>
-<th align="center"><span class="math inline">\(10\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><span class="math inline">\(p_X(x)\)</span></td>
-<td align="center"><span class="math inline">\(0.16\)</span></td>
-<td align="center"><span class="math inline">\(0.32\)</span></td>
-<td align="center"><span class="math inline">\(0.29\)</span></td>
-<td align="center"><span class="math inline">\(0.16\)</span></td>
-<td align="center"><span class="math inline">\(0.05\)</span></td>
-<td align="center"><span class="math inline">\(0.01\)</span></td>
-<td align="center"><span class="math inline">\(0.00\)</span></td>
-<td align="center"><span class="math inline">\(0.00\)</span></td>
-<td align="center"><span class="math inline">\(0.00\)</span></td>
-<td align="center"><span class="math inline">\(0.00\)</span></td>
-<td align="center"><span class="math inline">\(0.00\)</span></td>
-</tr>
-</tbody>
-</table>
-<p>Then, the corresponding cumulative distribution function:</p>
-<table>
-<thead>
-<tr class="header">
-<th><span class="math inline">\(F_X(x)\)</span></th>
-<th><span class="math inline">\(0\)</span></th>
-<th><span class="math inline">\(0.16\)</span></th>
-<th><span class="math inline">\(0.48\)</span></th>
-<th><span class="math inline">\(0.77\)</span></th>
-<th><span class="math inline">\(0.93\)</span></th>
-<th><span class="math inline">\(0.98\)</span></th>
-<th><span class="math inline">\(1.00\)</span></th>
-<th><span class="math inline">\(\cdots\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>for <span class="math inline">\(x \in {}\)</span></td>
-<td><span class="math inline">\((-\infty,0)\)</span></td>
-<td><span class="math inline">\([0,1)\)</span></td>
-<td><span class="math inline">\([1,2)\)</span></td>
-<td><span class="math inline">\([2,3)\)</span></td>
-<td><span class="math inline">\([3,4)\)</span></td>
-<td><span class="math inline">\([4,5)\)</span></td>
-<td><span class="math inline">\([5,6)\)</span></td>
-<td><span class="math inline">\(\cdots\)</span></td>
-</tr>
-</tbody>
-</table>
-<p>These calculations
-use the commands:
-<code>round(dbinom(0:10, 10, 1/6), 2)</code> for the pmf and
-<code>round(cumsum(dbinom(0:10, 10, 1/6)), 2)</code> for the cdf.</p>
-<p><strong>Example 5.2 (cont.)</strong>
-The probability mass function of
-<span class="math inline">\(X\sim B(n=10, p=1/6)\)</span> is shown below-left, and the corresponding cumulative distribution function on the right.</p>
-<p><img src="math1710_files/figure-html/binom-1.png" width="50%" /><img src="math1710_files/figure-html/binom-2.png" width="50%" /></p>
-<p>These graphs are produced in } using a combination of the commands
-<code>dbinom</code>, <code>cumsum</code>, <code>plot</code>, and <code>stepfun</code> – see <em>R for MATH1710</em> Lesson 6.</p>
-<p><strong>Expectation and variance of the binomial:</strong>
-If <span class="math inline">\(X\sim B(n,p)\)</span> then
-<span class="math display">\[
+This is easily done in $R$ using the `dbinom` command, as
+`dbinom(4, 10, 1/6)`.</div>\EndKnitrBlock{example}
+
+
+Unfortunately, it is not possible to produce a simple equation to give the cumulative distribution function.
+Instead, we would need to evaluate the individual probabilities, add them together and present the results as a table.
+
+
+**Example 5.2 (cont.)**
+First the probability mass function:
+
+|    $x$   | $0$ | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | $7$ | $8$ | $9$ | $10$ |
+|:--------:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:----:|
+| $p_X(x)$ | $0.16$ | $0.32$ | $0.29$ | $0.16$ | $0.05$ | $0.01$ | $0.00$ | $0.00$ | $0.00$ | $0.00$ | $0.00$ |
+
+Then, the corresponding cumulative distribution function:
+
+
+| $F_X(x)$       | $0$           | $0.16$  | $0.48$  | $0.77$  | $0.93$  | $0.98$  | $1.00$  | $\cdots$ |
+|----------------|---------------|---------|---------|---------|---------|---------|---------|----------|
+| for $x \in {}$ | $(-\infty,0)$ | $[0,1)$ | $[1,2)$ | $[2,3)$ | $[3,4)$ | $[4,5)$ | $[5,6)$ | $\cdots$ |
+
+These calculations 
+use the commands: 
+`round(dbinom(0:10, 10, 1/6), 2)` for the pmf and
+`round(cumsum(dbinom(0:10, 10, 1/6)), 2)` for the cdf.
+
+
+**Example 5.2 (cont.)**
+The probability mass function of 
+$X\sim B(n=10, p=1/6)$ is shown below-left, and the corresponding cumulative distribution function on the right.
+
+
+<img src="math1710_files/figure-html/binom-1.png" width="50%" /><img src="math1710_files/figure-html/binom-2.png" width="50%" />
+
+These graphs are produced in R using a combination of the commands 
+`dbinom`, `cumsum`, `plot`, and `stepfun` -- see *R for MATH1710* Lesson 6.
+
+
+
+
+
+**Expectation and variance of the binomial:**
+If $X\sim B(n,p)$ then
+\[
 E[X]=np, \quad \mbox{and} \quad Var[X]=np(1-p).
-\]</span></p>
-<p><strong>Example 5.2 (cont.)</strong>
+\]
+
+
+**Example 5.2 (cont.)**
 In the previous example, we had
-<span class="math inline">\(X\sim B(10, 1/6)\)</span> and so
-<span class="math inline">\(E[X]=np=10 \times \frac16 = \frac53\)</span>
+\(X\sim B(10, 1/6)\) and so
+\(E[X]=np=10 \times \frac16 = \frac53\)
 and
-<span class="math inline">\(Var[X] = np(1-p) = 10\times \frac16 \times \frac56 = \frac{50}{36}=\frac{25}{18}\)</span>.</p>
-<p><strong>Proof:</strong>
+\(Var[X] = np(1-p) = 10\times \frac16 \times \frac56 = \frac{50}{36}=\frac{25}{18}
+\).
+
+
+**Proof:**
 Starting with the definition of expectation and using the probability mass function for a binomial distribution we have
-<span class="math display">\[
+\[
 E[X] = \sum_{x\in \Omega_X} x \; p_X(x)
 =\sum_{x=0}^n x \; {n \choose x} p^x (1-p)^{n-x}.
-\]</span>
-Then, the first term in the sum (with <span class="math inline">\(x=0\)</span>) is zero, also in the general term we have
-<span class="math display">\[
+\]
+Then, the first term in the sum (with $x=0$) is zero, also in the general term we have
+\[
 x {n \choose x} = x \; \frac{n!}{x!(n-x)!}
 = x \; \frac{n(n-1)!}{x(x-1)!(n-x)!} 
 = n \; \frac{(n-1)!}{(x-1)!(n-x)!}
 = n \; {(n-1)\choose (x-1)}
-\]</span>
+\]
 and so
-<span class="math display">\[
+\[
 E[X] = np \; \sum_{x=1}^n  {(n-1) \choose (x-1)} p^{x-1} (1-p)^{n-x}.
-\]</span>
-Now, relabelling with <span class="math inline">\(r=x-1\)</span>, say, we get
-<span class="math display">\[
-E[X] = np \; \sum_{r=0}^{n-1} {(n-1) \choose r} p^r (1-p)^{(n-1)-r}, \]</span>
-which is the probability mass function of <span class="math inline">\(B(n-1, p)\)</span> so sums to <span class="math inline">\(1\)</span>, hence we get the required result
-<span class="math display">\[ E[X]  =np .\]</span>
-\end{align*}</p>
-<p>Next, let us consider the <span class="math inline">\(E[X(X-1)]\)</span> hence
-<span class="math display">\[
+\]
+Now, relabelling with \(r=x-1\), say, we get
+\[
+E[X] = np \; \sum_{r=0}^{n-1} {(n-1) \choose r} p^r (1-p)^{(n-1)-r}, \]
+which is the probability mass function of \(B(n-1, p)\) so sums to \(1\), hence we get the required result
+\[ E[X]  =np .\]
+\end{align*}
+
+
+Next, let us consider the $E[X(X-1)]$ hence
+\[
 E[X(X-1)] = \sum_{x\in \Omega_X} x(x-1) \; p_X(x)
 =\sum_{x=0}^n x(x-1) \; {n \choose x} p^x (1-p)^{n-x}.
-\]</span>
-Then, the first and second terms in the sum (with <span class="math inline">\(x=0\)</span> and <span class="math inline">\(x=1\)</span>) are zero,
+\]
+Then, the first and second terms in the sum (with $x=0$ and $x=1$) are zero, 
 also in the general term we have
-<span class="math display">\[\begin{align*}
+\begin{align*}
 x(x-1) {n \choose x} 
-&amp; = x(x-1) \; \frac{n!}{x!(n-x)!}
+& = x(x-1) \; \frac{n!}{x!(n-x)!}
 = x(x-1) \; \frac{n(n-1)!}{x(x-1)(x-2)!(n-x)!} \\
-&amp;= n(n-1) \; \frac{(n-2)!}{(x-2)!(n-x)!}
+&= n(n-1) \; \frac{(n-2)!}{(x-2)!(n-x)!}
 = n(n-1) \; {(n-2)\choose (x-2)}
-\end{align*}\]</span>
+\end{align*}
 and so
-<span class="math display">\[
+\[
 E[X(X-1)] = n(n-1)p^2 \; \sum_{x=2}^n  {(n-2) \choose (x-2)} p^{x-2} (1-p)^{n-x}.
-\]</span>
-Now, relabelling with <span class="math inline">\(r=x-2\)</span>, say, we get
-<span class="math display">\[
-E[X(X-1)] = n(n-1)p^2 \; \sum_{r=0}^{n-1} {(n-1) \choose r} p^r (1-p)^{(n-1)-r}. \]</span>
-which is the probability mass function of <span class="math inline">\(B(n-2, p)\)</span> so sums to <span class="math inline">\(1\)</span>, hence we get the result
-<span class="math display">\[ E[X(X-1)] =n(n-1)p^2. \]</span>
-To obtain the required result note that <span class="math inline">\(E[X(X-1)] = E[X^2]-E[X]\)</span> hence
-<span class="math inline">\(E[X^2]=E[X(X-1)]+E[X]\)</span>.
-Recalling that <span class="math inline">\(E[X]=np\)</span>, we then get
-<span class="math inline">\(E[X^2]=n(n-1)p^2+np\)</span> and, finally, this leads to
-<span class="math inline">\(Var[X]=E[X^2]-\{E[X\}^2 = n(n-1)p^2+np - \{np\}^2 = n^2p^2 - np^2 +np -n^2p^2 = np(1-p)\)</span>, as required.</p>
-</div>
-</div>
-<div id="geometric-distribution" class="section level2 unnumbered">
-<h2>Geometric distribution</h2>
-<p>Suppose that we repeat independent Bernoulli trials until we get a “success”.
-Let <span class="math inline">\(X\)</span> be the number of failures before the first success.
-Possible values for <span class="math inline">\(X\)</span> are <span class="math inline">\(0, 1,\ldots\)</span> (with no upper limit) giving
-<span class="math inline">\(\Omega_X = \{0, 1, \ldots\}\)</span> and its probability mass function
-<span class="math display">\[
+\]
+Now, relabelling with \(r=x-2\), say, we get
+\[
+E[X(X-1)] = n(n-1)p^2 \; \sum_{r=0}^{n-1} {(n-1) \choose r} p^r (1-p)^{(n-1)-r}. \]
+which is the probability mass function of \(B(n-2, p)\) so sums to \(1\), hence we get the  result
+\[ E[X(X-1)] =n(n-1)p^2. \]
+To obtain the required result note that \(E[X(X-1)] = E[X^2]-E[X]\) hence
+\(E[X^2]=E[X(X-1)]+E[X]\).
+Recalling that \(E[X]=np\), we then get 
+\(E[X^2]=n(n-1)p^2+np\) and, finally, this leads to 
+\(Var[X]=E[X^2]-\{E[X\}^2 
+= n(n-1)p^2+np - \{np\}^2 
+= n^2p^2 - np^2 +np -n^2p^2 =  np(1-p)\), as required.
+
+
+
+
+## Geometric distribution {-}
+
+Suppose that we repeat independent Bernoulli trials until we get a "success".
+Let $X$ be the number of failures before the first success.
+Possible values for $X$ are $0, 1,\ldots$ (with no upper limit) giving
+$\Omega_X = \{0, 1, \ldots\}$ and its probability mass function
+\[
 p_X(x) = Pr\left( x \mbox{ failures, then $1$ success}\right)
 = (1-p)^{x} p, \qquad x= 0, 1, \ldots
-\]</span>
-This is called the geometric distributions and is denoted <span class="math inline">\(X\sim Ge(p)\)</span>.
-The same conditions are valid as for the binomial, except that <span class="math inline">\(n\)</span> is no longer fixed and the definition of the random variable has changed.</p>
+\]
+This is called the geometric distributions and is denoted  $X\sim Ge(p)$.
+The same conditions are valid as for the binomial, except that $n$ is no longer fixed and the definition of the random variable has changed.
 
-<div class="example">
-<span id="exm:unnamed-chunk-3" class="example"><strong>Example 5.3  </strong></span>Now suppose that a fair die is rolled until a six is shown and let <span class="math inline">\(X\)</span> be the total number of tosses needed hence <span class="math inline">\(X\sim Ge(p=1/6)\)</span>.
+
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:unnamed-chunk-3"><strong>(\#exm:unnamed-chunk-3) </strong></span>Now suppose that a fair die is rolled until a six is shown and let $X$ be the total number of tosses needed hence $X\sim Ge(p=1/6)$. 
 The probability mass function is shown below-left, and
-the corresponding cumulative distribution function on the right.
-</div>
+the corresponding cumulative distribution function on the right.</div>\EndKnitrBlock{example}
 
-<p><img src="math1710_files/figure-html/geom-1.png" width="50%" /><img src="math1710_files/figure-html/geom-2.png" width="50%" /></p>
-<p>These graphs are produced in R using a combination of the commands
-<code>dgeom</code>, <code>cumsum</code>, <code>plot</code>, and <code>stepfun</code> – see <em>R for MATH1710</em> Lesson 6.</p>
-<hr />
-<p><em>Note that there are two versions of the geometric distribution.
-Compare to above the situation where we count the total number of trials, <span class="math inline">\(Y\)</span>, which includes the failures but also include the final success – this is sometimes referred to as the shifted geometric.</em>
-<em>Here, possible values for <span class="math inline">\(Y\)</span> are <span class="math inline">\(1, 2,\ldots\)</span> (with no upper limit) giving</em>
-<span class="math inline">\(\Omega_Y = \{1, 2, \ldots\}\)</span> <em>and its probability mass function</em>
-<span class="math display">\[
+<img src="math1710_files/figure-html/geom-1.png" width="50%" /><img src="math1710_files/figure-html/geom-2.png" width="50%" />
+
+These graphs are produced in R using a combination of the commands 
+`dgeom`, `cumsum`, `plot`, and `stepfun` -- see *R for MATH1710* Lesson 6.
+
+
+
+---
+
+*Note that there are two versions of the geometric distribution.
+Compare to above the situation where we count the total number of trials, $Y$, which includes the failures but also include the final success -- this is sometimes referred to as the shifted geometric.*
+*Here, possible values for $Y$ are $1, 2,\ldots$ (with no upper limit) giving*
+$\Omega_Y = \{1, 2, \ldots\}$ *and its probability mass function*
+\[
 p_Y(y) = Pr\left( (y-1) \mbox{ failures, then $1$ success}\right)
 = (1-p)^{y-1} p, \qquad y= 1, 2, \ldots.
-\]</span>
-<em>Note that <span class="math inline">\(Y=X+1\)</span> and that <span class="math inline">\(Pr(X=a) = Pr(Y=a+1)\)</span>.</em>
-<em>Although here is no contradiction, we must be careful to ensure which version of the geometric is being used.</em></p>
-<hr />
-<p>When evaluating cumulative probabilities, it is useful to recall the formula for the sum of a geometric series
-<span class="math display">\[
+\]
+*Note that $Y=X+1$ and that $Pr(X=a) = Pr(Y=a+1)$.*
+*Although here is no contradiction, we must be careful to ensure which version of the geometric is being used.*
+
+---
+
+
+
+When evaluating cumulative probabilities, it is useful to recall the formula for the sum of a geometric series
+\[
 S_n = 1+r+\cdots + r^n 
 = \sum_{k=0}^n r^k 
 = \frac{1-r^{n+1}}{1-r}
-\]</span>
-and when <span class="math inline">\(n\)</span> is infinite,
-<span class="math inline">\(S_\infty = 1/(1-r)\)</span> (for <span class="math inline">\(|r|&lt;1\)</span>).
-Further, when deriving the expectation and variance, we consider
-derivatives of this expression with respect to <span class="math inline">\(r\)</span>
+\]
+and when $n$ is infinite,
+$S_\infty = 1/(1-r)$ (for $|r|<1$).
+Further, when deriving the expectation and variance, we consider 
+derivatives of this expression with respect to $r$
 giving
-<span class="math display">\[
+\[
 \sum_{k=1}^\infty k \; r^{k-1} = \frac{1}{(1-r)^2}, \quad \mbox{and} \quad
-\sum_{k=2}^\infty k(k-1) \; r^{k-2} = \frac{2}{(1-r)^3}, \qquad \mbox{for $|r|&lt;1$}.
-\]</span>
-Note that in these expressions the lower limit of summation has been adjusted to include only non-zero terms – but it would have been equally correct to leave <span class="math inline">\(k=0\)</span>.</p>
-<p><strong>Expectation and variance of the geometric:</strong>
-If <span class="math inline">\(X\sim Ge(p)\)</span> then
-<span class="math display">\[
-E[X] = (1-p)/p, \quad \mbox{and} \quad Var[X]=(1-p)/p^2.
-\]</span></p>
-<p><strong>Proof:</strong>
-Starting with the definition of expectation and using the probability mass function for a geometric distribution we have
-<span class="math display">\[
-E[X] = \sum_{x\in \Omega_X} x \; p_X(x)
- =\sum_{x=0}^\infty x \; (1-p)^{x}p  = p \sum_{x=1}^\infty x \; (1-p)^{x} \]</span>
-then, replacing <span class="math inline">\(x\)</span> by <span class="math inline">\(k\)</span> and <span class="math inline">\(1-p\)</span> by <span class="math inline">\(r\)</span> and using one of the above results, we get
-&amp; =p (1-p)_{k=1}^k ; r^{k-1} = p (1-p)  = .
-\end{align*}</p>
-<p>Next, let us consider the <span class="math inline">\(E[X(X-1)]\)</span> hence
-<span class="math display">\[\begin{align*}
-E[X(X-1)] = \sum_{x\in \Omega_X} x(x-1) \; p_X(x)
-&amp; =\sum_{x=0}^\infty x(x-1) \; (1-p)^{x}p  \\
-&amp; = p(1-p)^2 \sum_{x=2}^\infty x(x-1) \; (1-p)^{x-2} \end{align*}\]</span>
-then, replacing <span class="math inline">\(x\)</span> by <span class="math inline">\(k\)</span> and <span class="math inline">\(1-p\)</span> by <span class="math inline">\(r\)</span> and using one of the above results, we get
-<span class="math display">\[ E[X(X-1)] =p (1-p)^2\sum_{k=2}^\infty k (k-1)\; r^{k-2} = p(1-p)^2 \times \frac{2}{p^3} = \frac{2(1-p)^2}{p^2}.\]</span></p>
-<p>To obtain the required result note that <span class="math inline">\(E[X(X-1)] = E[X^2]-E[X]\)</span> hence
-<span class="math inline">\(E[X^2]=E[X(X-1)]+E[X]\)</span>.
-Recalling that
-<span class="math inline">\(E[X]=(1-p)/p\)</span>, we then get
-<span class="math inline">\(E[X^2]={2(1-p)^2}/{p^2} +(1-p)/p\)</span>
-and, finally, this leads to <span class="math inline">\(Var[X]=(1-p)/p^2\)</span>, as required.</p>
+\sum_{k=2}^\infty k(k-1) \; r^{k-2} = \frac{2}{(1-r)^3}, \qquad \mbox{for $|r|<1$}.
+\]
+Note that in these expressions the lower limit of summation has been adjusted to include only non-zero terms -- but it would have been equally correct to leave $k=0$.
 
-<div class="example">
-<p><span id="exm:unnamed-chunk-4" class="example"><strong>Example 5.4  </strong></span>A fair coin is tossed until the first head is obtained.
-What is the probability that at least 3 tosses are needed?</p>
-<p>Let <span class="math inline">\(X\)</span> be the number of failures before the success, with <span class="math inline">\(\Omega_X=\{0,1,\ldots\}\)</span>, then we require
-<span class="math inline">\(Pr(X\ge 2)\)</span> where <span class="math inline">\(X\sim Ge(1/2)\)</span>.</p>
-<p>Rather than evaluating <span class="math inline">\(Pr(X\ge 2) = Pr(X=2)+Pr(X=3)+\cdots\)</span>, instead consider the complementary event
-<span class="math display">\[\begin{align*}
-Pr(X\ge 2) &amp;= 1-Pr(X&lt;2) = 1-Pr(X=0\mbox{ or }X=1)\\
-&amp; = 1-\{Pr(X=0)+Pr(X=1)\}
+
+
+
+
+**Expectation and variance of the geometric:**
+If $X\sim Ge(p)$ then
+\[
+E[X] = (1-p)/p, \quad \mbox{and} \quad Var[X]=(1-p)/p^2.
+\]
+
+**Proof:**
+Starting with the definition of expectation and using the probability mass function for a geometric distribution we have
+\[
+E[X] = \sum_{x\in \Omega_X} x \; p_X(x)
+ =\sum_{x=0}^\infty x \; (1-p)^{x}p  = p \sum_{x=1}^\infty x \; (1-p)^{x} \]
+then, replacing $x$ by $k$ and $1-p$ by $r$ and using one of the above results, we get
+& =p (1-p)\sum_{k=1}^\infty k \; r^{k-1} = p (1-p) \times \frac{1}{p^2} = \frac{1-p}{p}.
+\end{align*}
+
+Next, let us consider the $E[X(X-1)]$ hence
+\begin{align*}
+E[X(X-1)] = \sum_{x\in \Omega_X} x(x-1) \; p_X(x)
+& =\sum_{x=0}^\infty x(x-1) \; (1-p)^{x}p  \\
+& = p(1-p)^2 \sum_{x=2}^\infty x(x-1) \; (1-p)^{x-2} \end{align*}
+then, replacing $x$ by $k$ and $1-p$ by $r$ and using one of the above results, we get
+\[ E[X(X-1)] =p (1-p)^2\sum_{k=2}^\infty k (k-1)\; r^{k-2} = p(1-p)^2 \times \frac{2}{p^3} = \frac{2(1-p)^2}{p^2}.\]
+
+
+To obtain the required result note that \(E[X(X-1)] = E[X^2]-E[X]\) hence
+\(E[X^2]=E[X(X-1)]+E[X]\).
+Recalling that 
+\(E[X]=(1-p)/p\), we then get 
+\(E[X^2]={2(1-p)^2}/{p^2} +(1-p)/p \) 
+and, finally, this leads to \(Var[X]=(1-p)/p^2\), as required.
+
+
+
+
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:unnamed-chunk-4"><strong>(\#exm:unnamed-chunk-4) </strong></span>A fair coin is tossed until the first head is obtained.
+What is the probability that at least 3 tosses are needed?
+
+Let $X$ be the number of failures before the success, with $\Omega_X=\{0,1,\ldots\}$, then we require 
+$Pr(X\ge 2)$ where $X\sim Ge(1/2)$.
+
+Rather than evaluating $Pr(X\ge 2) = Pr(X=2)+Pr(X=3)+\cdots$, instead consider the complementary event
+\begin{align*}
+Pr(X\ge 2) &= 1-Pr(X<2) = 1-Pr(X=0\mbox{ or }X=1)\\
+& = 1-\{Pr(X=0)+Pr(X=1)\}
 =1-\left\{ \left(\frac12\right)^0\left(\frac12\right)
 + \left(\frac12\right)^1\left(\frac12\right)\right\}\\
-&amp;= 1-\frac12 - \frac14 =  \frac14.
-\end{align*}\]</span></p>
-<p>Further, the expectation and variance are:
-<span class="math display">\[
+&= 1-\frac12 - \frac14 =  \frac14.
+\end{align*}
+
+Further, the expectation and variance are:
+\[
 E[X]=\frac{1-1/2}{1/2} = 1 \qquad \mbox{and} \qquad
 Var[X] = \frac{(1-1/2)}{(1/2)^2}  = 2.
-\]</span></p>
-If, instead, we defined <span class="math inline">\(Y\)</span> as the total number of tosses, with <span class="math inline">\(\Omega_Y=\{1,2\ldots\}\)</span>, then we require <span class="math inline">\(\Pr(Y\ge 3)\)</span> which would give the same numerical value as above.
-In this situation, <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[Y]=2\)</span> but the variance remains unchanged as <span class="math inline">\(\mathop{\mathrm{Var}}[Y]=2\)</span>.
-These can be verified from first principles, similar to the proof above, or by noting that
-<span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[Y]=\mathop{\mathrm{\mathbb{E}}}[X+1] = \mathop{\mathrm{\mathbb{E}}}[X]+1\)</span> and <span class="math inline">\(\mathop{\mathrm{Var}}[Y]=\mathop{\mathrm{Var}}[X+1] = \mathop{\mathrm{Var}}[X]\)</span>.
-</div>
+\]
 
-</div>
-<div id="poisson-distribution-the-law-of-rare-events" class="section level2">
-<h2><span class="header-section-number">5.2</span> Poisson distribution (the law of rare events)</h2>
-<p>Let <span class="math inline">\(X\)</span> denote the number of events occurring (in some time interval or region in space) with known average rate, <span class="math inline">\(\lambda\)</span> (say “lambda”), with probability mass function
-<span class="math display">\[
+
+If, instead, we defined $Y$ as the total number of tosses, with $\Omega_Y=\{1,2\ldots\}$, then we require $\Pr(Y\ge 3)$ which would give the same numerical value as above.
+In this situation, $\EE[Y]=2$ but the variance remains unchanged as $\Var[Y]=2$.
+These can be verified from first principles, similar to the proof above, or by noting that 
+$\EE[Y]=\EE[X+1] = \EE[X]+1$ and $\Var[Y]=\Var[X+1] = \Var[X]$.</div>\EndKnitrBlock{example}
+
+
+
+## Poisson distribution (the law of rare events)
+
+
+Let $X$ denote the number of events occurring (in some time interval or region in space) with known average rate, $\lambda$ (say "lambda"), with probability mass function
+\[
 Pr(X=x) = p_X(x) = \frac{e^{-\lambda} \lambda^x}{x!}, \qquad x=0,1,\ldots,
-\]</span>
-then <span class="math inline">\(X\)</span> is a Poisson random variable and we write <span class="math inline">\(X\sim Po(\lambda)\)</span>.
-Note that here, the range space is (countably) infinite, <span class="math inline">\(\Omega_X=\{0,1,\ldots \}\)</span>.</p>
-<p>As before, to evaluate the expectation and variance, knowing the relevant standard
-(Maclaurin) series result can be useful:
-<span class="math inline">\(\sum _{k=0} ^\infty x^k/k! = e^x\)</span>.</p>
-<p>The distribution is named after French mathematician Siméon Poisson (1781-1840) and was made popular through application to the number of cavalrymen in the Prussian army killed by kicks from a horse – see, for example, Scheaffer and Young, 2010, pp 158-159.</p>
+\]
+then \(X\) is a Poisson random variable and we write $X\sim Po(\lambda)$.
+Note that here, the range space is (countably) infinite, \(\Omega_X=\{0,1,\ldots \}\).
 
-<div class="example">
-<p><span id="exm:unnamed-chunk-5" class="example"><strong>Example 5.5  </strong></span>Suppose that the average number of students missing lectures due to flu virus in a week is <span class="math inline">\(\lambda=5.2\)</span>.
-What is the probability that in a randomly selected week there are fewer than <span class="math inline">\(2\)</span> missing due to flu?</p>
-<p>We have <span class="math inline">\(X\sim Po(5.2)\)</span> and we require <span class="math inline">\(Pr(X&lt;2)\)</span>, so
-<span class="math display">\[\begin{align*}
-Pr(X&lt;2) &amp;= Pr(X=0) +Pr(X=1) \\
-&amp; = \frac{ e^{5.2} (5.2)^0}{0!} +  \frac{ e^{5.2} (5.2)^1}{1!}
+
+As before, to evaluate the expectation and variance, knowing the relevant standard 
+(Maclaurin) series result can be useful:
+$\sum _{k=0} ^\infty x^k/k! = e^x$.
+
+The distribution is named after French mathematician Siméon Poisson (1781-1840) and was made popular through application to the number of cavalrymen in the Prussian army killed by kicks from a horse -- see, for example, Scheaffer and Young, 2010, pp 158-159. 
+
+
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:unnamed-chunk-5"><strong>(\#exm:unnamed-chunk-5) </strong></span>Suppose that the average number of students missing lectures due to flu virus in a week is $\lambda=5.2$.
+What is the probability that in a randomly selected week there are fewer than $2$ missing due to flu?
+
+We have $X\sim Po(5.2)$ and we require $Pr(X<2)$, so
+\begin{align*}
+Pr(X<2) &= Pr(X=0) +Pr(X=1) \\
+& = \frac{ e^{5.2} (5.2)^0}{0!} +  \frac{ e^{5.2} (5.2)^1}{1!}
 =   e^{5.2} \left( 1 + 5.2\right) 
 =  0.034.
-\end{align*}\]</span></p>
-In this example you might have said that the binomial was a suitable model, with <span class="math inline">\(n\)</span> the number of students and <span class="math inline">\(p\)</span> the probability that a student gets flu. In fact, you are correct – see the next section. However, we may not know the values of <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>, but we might easily observe the average number missing.
-</div>
+\end{align*}
 
-<p><strong>Example 5.5 (cont.)</strong>
-The probability mass function of a Poisson, <span class="math inline">\(X\sim Po(\lambda=5.2)\)</span> is shown below-left, and
-the corresponding cumulative distribution function on the right.</p>
-<p><img src="math1710_files/figure-html/pois-1.png" width="50%" /><img src="math1710_files/figure-html/pois-2.png" width="50%" /></p>
-<p>These graphs are produced in } using a combination of the commands
-<code>dpois</code>, <code>cumsum</code>, <code>plot</code>, and <code>stepfun</code> – see <em>R for MATH1710</em> Lesson 6.</p>
-<p><strong>Expectation and variance of the Poisson:</strong>
-If <span class="math inline">\(X\sim Po(\lambda)\)</span> then
-<span class="math display">\[
+In this example you might have said that the binomial was a suitable model, with $n$ the number of students and $p$ the probability that a student gets flu. In fact, you are correct -- see the next section. However, we may not know the values of \(n\) and \(p\), but we might easily observe the average number missing.</div>\EndKnitrBlock{example}
+
+**Example 5.5 (cont.)**
+The probability mass function of a Poisson, $X\sim Po(\lambda=5.2)$ is shown below-left, and
+the corresponding cumulative distribution function on the right.
+
+
+<img src="math1710_files/figure-html/pois-1.png" width="50%" /><img src="math1710_files/figure-html/pois-2.png" width="50%" />
+
+
+These graphs are produced in } using a combination of the commands 
+`dpois`, `cumsum`, `plot`, and `stepfun` -- see *R for MATH1710* Lesson 6.
+
+
+**Expectation and variance of the Poisson:**
+If $X\sim Po(\lambda)$ then
+\[
 E[X] = \lambda, \quad \mbox{and} \quad Var[X]=\lambda.
-\]</span></p>
-<p><strong>Proof:</strong>
+\]
+
+**Proof:**
 Starting with the definition of expectation and using the probability mass function for a geometric distribution we have
-<span class="math display">\[
+\[
 E[X] = \sum_{x\in \Omega_X} x \; p_X(x)
  =\sum_{x=0}^\infty x \; \frac{e^{-\lambda}\lambda^x}{x!}  
 = \lambda \sum_{x=1}^\infty \frac{e^{-\lambda}\lambda^{x-1}}{(x-1)!} 
-\]</span>
-then, replacing <span class="math inline">\(x-1\)</span> by <span class="math inline">\(k\)</span>, we get
-<span class="math display">\[
+\]
+then, replacing $x-1$ by $k$, we get
+\[
 E[X] = \lambda \sum_{k=0}^\infty \frac{e^{-\lambda}\lambda^k}{k!}   = \lambda
-\]</span>
-since the sum is of a <span class="math inline">\(Po(\lambda)\)</span> over all possible values and hence equals 1.</p>
-<p>Next, let us consider the <span class="math inline">\(E[X(X-1)]\)</span> hence
-<span class="math display">\[
+\]
+since the sum is of a $Po(\lambda)$ over all possible values and hence equals 1.
+
+Next, let us consider the $E[X(X-1)]$ hence
+\[
 E[X(X-1)] = \sum_{x\in \Omega_X} x(x-1) \; p_X(x)
  =\sum_{x=0}^\infty x(x-1) \; \frac{e^{-\lambda}\lambda^x}{x!}  
 = \lambda^2 \sum_{x=2}^\infty \frac{e^{-\lambda}\lambda^{x-2}}{(x-2)!} 
-\]</span>
-then, replacing <span class="math inline">\(x-2\)</span> by <span class="math inline">\(k\)</span>, we get
-<span class="math display">\[
+\]
+then, replacing $x-2$ by $k$, we get
+\[
 E[X(X-1)] = \lambda^2 \sum_{k=0}^\infty \frac{e^{-\lambda}\lambda^k}{k!}   = \lambda^2
-\]</span>
-since the sum is of a <span class="math inline">\(Po(\lambda)\)</span> over all possible values and hence equals 1.</p>
-<p>To obtain the required result note that <span class="math inline">\(E[X(X-1)] = E[X^2]-E[X]\)</span> hence
-<span class="math inline">\(E[X^2]=E[X(X-1)]+E[X]\)</span>.
-Recalling that <span class="math inline">\(E[X]=\lambda\)</span>, we then get
-<span class="math inline">\(E[X^2]=\lambda^2+\lambda$ and hence \(Var[X]=E[X^2]-\{E[X\}^2 = \lambda^2+\lambda - \{\lambda\}^2 =\lambda\)</span>, as required.</p>
-<div id="poisson-approximation-to-the-binomial" class="section level3 unnumbered">
-<h3>Poisson approximation to the binomial</h3>
-<p>Suppose that <span class="math inline">\(X\sim Po(\lambda)\)</span> and
-<span class="math inline">\(Y\sim B(n,p)\)</span> with <span class="math inline">\(\lambda=np\)</span>, then if <span class="math inline">\(p\)</span> is small
-<span class="math display">\[
+\]
+since the sum is of a $Po(\lambda)$ over all possible values and hence equals 1.
+
+
+
+
+To obtaindorf the required result note that \(E[X(X-1)] = E[X^2]-E[X]\) hence
+\(E[X^2]=E[X(X-1)]+E[X]\).
+Recalling that \(E[X]=\lambda\), we then get 
+$E[X^2]=\lambda^2+\lambda$ and hence 
+\(Var[X]=E[X^2]-\{E[X\}^2 = \lambda^2+\lambda - \{\lambda\}^2 =\lambda\), as required.
+
+
+### Poisson approximation to the binomial {-}
+
+
+Suppose that $X\sim Po(\lambda)$ and
+$Y\sim B(n,p)$ with $\lambda=np$, then if $p$ is small
+\[
 Pr(Y=r)\rightarrow  Pr(X=r), \quad \mbox{ as } n\rightarrow \infty.
-\]</span>
-More usefully, we can say that for large <span class="math inline">\(n\)</span>, and <span class="math inline">\(p\)</span> small, that
-<span class="math inline">\(Pr(Y=r) \approx Pr(X=r)\)</span>.
-In particular, the approximation is good if <span class="math inline">\(n\ge 20\)</span> and <span class="math inline">\(p\le 0.05\)</span> and
-very good if <span class="math inline">\(n\ge 100\)</span> and <span class="math inline">\(np\le 10\)</span>.</p>
-<p><strong>Proof:</strong> See theoretical part of Example 4.10 in Stirzaker pp139-140.</p>
-<p>We have, using <span class="math inline">\(p=\lambda/n\)</span>,
-<span class="math display">\[
+\]
+More usefully, we can say that for large $n$, and $p$ small, that
+$Pr(Y=r) \approx  Pr(X=r)$.
+In particular, the approximation is good if $n\ge 20$ and $p\le 0.05$ and 
+very good if $n\ge 100$ and $np\le 10$.
+
+**Proof:** See theoretical part of Example 4.10 in Stirzaker pp139-140.
+
+We have, using $p=\lambda/n$,
+\[
 Pr(Y=r)  = {n \choose r} p^r (1-p)^{n-r}
 = \frac{n!}{r! (n-r)!} 
 \left(\frac{\lambda}{n}\right)^r
-\left(1-\frac{\lambda}{n}\right)^{n-r}\]</span>
+\left(1-\frac{\lambda}{n}\right)^{n-r}\]
 which can be re-arranged to give
-<span class="math display">\[ Pr(Y = r) = 
+\[ Pr(Y = r) = 
 \frac{n}{n}
 \times
 \frac{(n-1)}{n}
@@ -574,16 +595,17 @@ which can be re-arranged to give
  \, \,
 \frac{\lambda^r}{r!}
 \left(1-\frac{\lambda}{n}\right)^{n-r}.
-\]</span>
-Now, <span class="math inline">\(n\rightarrow \infty\)</span> all the terms like
-<span class="math inline">\((n-r+1)/n\rightarrow 1\)</span>, and<br />
-<span class="math inline">\(\left(1-\frac{\lambda}{n}\right)^{-r}\rightarrow 1\)</span>.</p>
-<p>Now, what about the term <span class="math inline">\(\left(1-\frac{\lambda}{n}\right)^{n}\)</span> as <span class="math inline">\(n\rightarrow \infty\)</span>?
+\]
+Now, $n\rightarrow \infty$ all the terms like
+$(n-r+1)/n\rightarrow 1$, and  
+$\left(1-\frac{\lambda}{n}\right)^{-r}\rightarrow 1$.
+
+Now, what about the term $\left(1-\frac{\lambda}{n}\right)^{n}$ as $n\rightarrow \infty$?
 Recall the binomial theorem:
-<span class="math display">\[
-(A+B)^n = \sum _{r=0}^n {n\choose r} A^r B^{n-r} . \]</span>
-Then with <span class="math inline">\(A=-\lambda/n\)</span> and <span class="math inline">\(A=1\)</span> we have
-<span class="math display">\[
+\[
+(A+B)^n = \sum _{r=0}^n {n\choose r} A^r B^{n-r} . \]
+Then with $B=-\lambda/n$ and $A=1$ we have
+\[
 \left(1-\frac{\lambda}{n} \right)^n 
  = 
 \sum_{r=0} ^\infty 
@@ -596,77 +618,92 @@ Then with <span class="math inline">\(A=-\lambda/n\)</span> and <span class="mat
 \frac{(n-1)}{n}
 \times \cdots \times
 \frac{(n-r+1)}{n}
-\frac{(-\lambda)^r}{r!} \]</span>
+\frac{(-\lambda)^r}{r!} \]
 then following the same approach as above
-<span class="math display">\[\left(1-\frac{\lambda}{n} \right)^n  =
+\[\left(1-\frac{\lambda}{n} \right)^n  =
 \sum_{r=0} ^\infty \frac{(-\lambda)^r}{r!}
 = e^{-\lambda}.
-\]</span>
+\]
 Putting these various parts together gives
-<span class="math display">\[
+\[
 Pr(Y=r) = \frac{\lambda^r e^{-\lambda}}{r!}
 = Pr(X=r), \qquad r=0,1,\ldots
-\]</span></p>
-</div>
-<div id="poisson-processes" class="section level3 unnumbered">
-<h3>Poisson processes</h3>
-<p>Before moving on, it is worth noting another, and very important derivation of the Poisson distribution.
-Suppose that events occur <em>at random</em> throughout some period of time, or within some region, then the number of events
+\]
+
+### Poisson processes {-}
+
+Before moving on, it is worth noting another, and very important derivation of the Poisson distribution.
+Suppose that  events occur *at random* throughout some period of time, or within some region, then the number of events
 occurring in the interval of time, or region, follows a Poisson distribution.
 As an example, suppose that on average an insurance
-company receives 120 claims per working day (12 hours), but that
+company receives 120 claims per working day (12 hours), but that 
 claims have equal chances of being made at any time through the day.
 Then, the actual number in a particular day follows a Poisson distribution with expected value 120, and that the number in a 1-hour period (say) follows a Poisson distribution with expected value 10.
-The process in time, or space, is called a Poisson process — you can see more of this in a Second Year module Markov Processes.</p>
-<hr />
-<p><em>Now complete Worksheet 7 on standard discrete distributions
-to check your understanding.</em></p>
-<hr />
-</div>
-</div>
-<div id="sampling-from-a-finite-population" class="section level2 unnumbered">
-<h2>Sampling from a finite population</h2>
-<p>Consider a bag of <span class="math inline">\(N\)</span> balls, with <span class="math inline">\(M\)</span> being black and the remaining <span class="math inline">\(N-M\)</span> being white.
-The experiment is to select a random sample of <span class="math inline">\(n\)</span> balls from the bag of <span class="math inline">\(N\)</span>.
-Let random variable <span class="math inline">\(X\)</span> be the number of black balls in the sample.
+The process in time, or space, is called a Poisson process --- you can see more of this in a Second Year module  Markov Processes.
+
+---
+
+*Now complete Worksheet 7 on standard discrete distributions 
+to check your understanding.*
+
+---
+
+## Sampling from a finite population {-}
+
+
+
+Consider a bag of $N$ balls, with $M$ being black and the remaining $N-M$ being white.
+The experiment is to select a random sample of $n$ balls from the bag of $N$.
+Let random variable $X$ be the number of black balls in the sample.
 Suppose we want the probability
-of the event, <span class="math inline">\(A\)</span>, that there are <span class="math inline">\(m\)</span> black balls in the sample, that is <span class="math inline">\(A=\{X=m\}\)</span>.</p>
-<p><img src="multinom.png" width="500" style="display: block; margin: auto;" /></p>
-<p>Before we can calculate the probability, we must know if the selected balls are returned to the population or not – this leads to:
+of the event, $A$, that there are $m$ black balls in the sample, that is $A=\{X=m\}$.
+
+
+<img src="multinom.png" width="500" style="display: block; margin: auto;" />
+
+
+Before we can calculate the probability, we must know if the selected balls are returned to the population or not -- this leads to:
 (I) sampling with replacement, and
-(II) sampling without replacement.</p>
-<p>In (I) there are always the same <span class="math inline">\(N\)</span> balls to choose from, and each is equally likely to be selected.
-So <span class="math inline">\(|\Omega| = N\cdot N\cdots N = N^n\)</span>
-and to calculate <span class="math inline">\(|A|\)</span> first consider a particular sequence of first <span class="math inline">\(m\)</span> black and then <span class="math inline">\((n-m)\)</span> white, once chosen these can be permuted to give
-<span class="math inline">\(|A|= {n \choose m} M^m (N-M)^{n-m}\)</span>, hence
-<span class="math display">\[
+(II) sampling without replacement.
+
+
+In (I) there are always the same $N$ balls to choose from, and each is equally likely to be selected.
+So $|\Omega| = N\cdot N\cdots N = N^n$
+and to calculate $|A|$ first consider a particular sequence of first $m$ black and then $(n-m)$ white, once chosen these can be permuted to give
+$|A|= {n \choose m} M^m (N-M)^{n-m}$, hence
+\[
 Pr(A) = \frac{|A|}{|\Omega|} = 
 \frac{{n \choose m} M^m (N-M)^{n-m}}{N^n}
 = {n \choose m} \left(\frac{M}{N}\right)^m 
 \left(1-\frac{M}{N}\right)^{n-m}.
-\]</span>
-We can write <span class="math inline">\(p=M/N\)</span>, which is the (unchanging) proportion of black balls in the population, and then
-<span class="math display">\[
+\]
+We can write $p=M/N$, which is the (unchanging) proportion of black balls in the population, and then
+\[
 Pr(A) = {n \choose m} p^m 
 \left(1-p\right)^{n-m}.
-\]</span>
-This is the binomial probability formula seen earlier.</p>
-<p>In (II), the selected ball is not replaced and so the number of balls changes at each stage.</p>
-<p>Now, <span class="math inline">\(|\Omega|= \binom{N}{n}\)</span>, as we are considering selecting <span class="math inline">\(n\)</span> objects from <span class="math inline">\(N\)</span>, and
-<span class="math inline">\(|A|= \binom{M}{m} \binom{N-M}{n-m}\)</span> as we require <span class="math inline">\(m\)</span> from the <span class="math inline">\(M\)</span> and <span class="math inline">\((n-m)\)</span> from the <span class="math inline">\(N-M\)</span>,
+\]
+This is the binomial probability formula seen earlier.
+
+
+
+In (II), the selected ball is not replaced and so the number of balls changes at each stage.
+
+Now, $|\Omega|= \comb{N}{n}$, as we are considering selecting $n$ objects from $N$, and
+$|A|= \comb{M}{m} \comb{N-M}{n-m}$ as we require $m$ from the $M$ and $(n-m)$ from the $N-M$,
 hence
-<span class="math display">\[
+\[
 Pr(A) = 
-\frac{\binom{M}{m} \binom{N-M}{n-m}}{\binom{N}{n}}
+\frac{\comb{M}{m} \comb{N-M}{n-m}}{\comb{N}{n}}
 =
 \frac{{
 {M\choose m}
 {{N-M}\choose{n-m}}
 }}{{{N}\choose {n}}}.
-\]</span>
-this is called the hyper-geometric probability formula.</p>
-<p>If we let <span class="math inline">\(X\)</span> be the number of black balls chosen then we can write <span class="math inline">\(X\sim Hyp(n,M,N)\)</span> and the probability mass function
-<span class="math display">\[
+\]
+this is called the hyper-geometric probability formula.
+
+If we let $X$ be the number of black balls chosen  then we can write $X\sim Hyp(n,M,N)$ and the probability mass function
+\[
 p_X(x) 
 =
 \frac{{
@@ -674,100 +711,76 @@ p_X(x)
 {{N-M}\choose{n-x}}
 }}{{{N}\choose {n}}}, \qquad
 \max(0,n+M-N),\ldots, \min(M,n)
-\]</span>
+\]
 and
-<span class="math display">\[
+\[
 E[X] = n \left(\frac{M}{N}\right) \qquad
 \mbox{and} \qquad
 Var(X) = n \left(\frac{M}{N}\right)\left(\frac{N-M}{N}\right) \left(\frac{N-n}{N-1}\right).
-\]</span>
-Notice that, initially the proportion of black balls in the population is <span class="math inline">\(p_0=M/N\)</span> and so
-<span class="math display">\[
+\]
+Notice that, initially the proportion of black balls in the population is $p_0=M/N$ and so
+\[
 E[X] = n p_0 \qquad
 \mbox{and} \qquad
 Var(X) = n p_0 (1-p_0) \left(\frac{N-n}{N-1}\right).
-\]</span>
-Comparing these to the mean and variance of the binomial we see that the expectation is equal, that is on average we obtain the same number of black balls, but that since
-<span class="math inline">\((N-n)/(N-1)&lt;1\)</span>, the variance of the hyper-geometric is smaller.</p>
-<p>The value <span class="math inline">\((N-n)/(N-1)\)</span> is called the <strong>finite population correction factor</strong>.
-Notice that for small sample sizes and large population sizes the factor is close to 1
-(for example with <span class="math inline">\(n=10\)</span> and <span class="math inline">\(N=1000\)</span> then
-<span class="math inline">\((N-n)/(N-1)=0.99\)</span>).
-In fact, when dealing with such situations we can use the binomial as a good approximation to the
-hyper-geometric – making calculations much easier.</p>
+\]
+Comparing these to the mean and variance of the binomial we see that the expectation is equal, that is on average we obtain the same number of black balls, but that since 
+$(N-n)/(N-1)<1$, the variance of the hyper-geometric is smaller.
 
-<div class="example">
-<p><span id="exm:unnamed-chunk-6" class="example"><strong>Example 5.6  </strong></span>Consider sampling <span class="math inline">\(n=5\)</span> students in a class of size <span class="math inline">\(N=50\)</span> of whom <span class="math inline">\(M=28\)</span> are male.
-What is the probability that all the sample are male?</p>
-<p>Let <span class="math inline">\(X=\{\mbox{The number of male students in the sample}\}\)</span>, then
-<span class="math inline">\(X \sim Hyp(5, 28, 50)\)</span> and we require
-<span class="math display">\[
+The value $(N-n)/(N-1)$ is called the **finite population correction factor**.
+Notice that for small sample sizes and large population sizes the factor is close to 1
+(for example with $n=10$ and $N=1000$ then 
+$(N-n)/(N-1)=0.99$).
+In fact, when dealing with such situations we can use the binomial as a good approximation to the 
+hyper-geometric -- making calculations much easier.
+
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:unnamed-chunk-6"><strong>(\#exm:unnamed-chunk-6) </strong></span>Consider sampling $n=5$ students in a class of size $N=50$ of whom $M=28$ are male.
+What is the probability that all the sample are male?
+
+\medskip
+
+Let $X=\{\mbox{The number of male students in the sample}\}$, then
+$X \sim Hyp(5, 28, 50)$ and we require
+\[
 P_X(5) = \frac{{28 \choose 5}{22 \choose 0}}{{50 \choose 5}} = 0.04638562 = 0.0464 \mbox{ (4 dp)}.
-\]</span></p>
-<p>If we had “forgotten” that we are sampling without replacement, then we would say that
-<span class="math inline">\(X\sim B(n=5, p=M/N=0.56)\)</span> and
-<span class="math display">\[
+\]
+
+If we had "forgotten" that we are sampling without replacement, then we would say that
+$X\sim B(n=5, p=M/N=0.56)$ and
+\[
 p_X(5) = {5 \choose 5} (0.56)^5 (1-0.56)^0 = 0.05507318
 = 0.0551  \mbox{ (4 dp)}
-\]</span>
-which is considerably different to the correct value.</p>
-If we repeat these calculations for all maths students, with <span class="math inline">\(N=500\)</span> and <span class="math inline">\(M=280\)</span>, then
-the exact hyper-geometric probability is
-<span class="math inline">\(p_X(5) = 0.054\)</span>, whereas the binomial probability is unchanged at <span class="math inline">\(0.055\)</span> – which is very close.
-</div>
+\]
+which is considerably different to the correct value.
 
-</div>
-<div id="additional-examples" class="section level2">
-<h2><span class="header-section-number">5.3</span> Additional Examples</h2>
 
-<div class="example">
-<p><span id="exm:unnamed-chunk-7" class="example"><strong>Example 5.7  </strong></span>Suppose we roll an eight-sided die with sides labelled 1 to 8, where the even values are twice as likely as the odd numbers.</p>
-Let <span class="math inline">\(Y\)</span> represent the outcome with probability mass function
-</div>
 
-<table style="width:100%;">
-<colgroup>
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center"><span class="math inline">\(Y\)</span></th>
-<th align="center"><span class="math inline">\(1\)</span></th>
-<th align="center"><span class="math inline">\(2\)</span></th>
-<th align="center"><span class="math inline">\(3\)</span></th>
-<th align="center"><span class="math inline">\(4\)</span></th>
-<th align="center"><span class="math inline">\(5\)</span></th>
-<th align="center"><span class="math inline">\(6\)</span></th>
-<th align="center"><span class="math inline">\(7\)</span></th>
-<th align="center"><span class="math inline">\(8\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><span class="math inline">\(p_Y(y)\)</span></td>
-<td align="center"><span class="math inline">\(\frac{1}{12}\)</span></td>
-<td align="center"><span class="math inline">\(\frac16\)</span></td>
-<td align="center"><span class="math inline">\(\frac{1}{12}\)</span></td>
-<td align="center"><span class="math inline">\(\frac16\)</span></td>
-<td align="center"><span class="math inline">\(\frac{1}{12}\)</span></td>
-<td align="center"><span class="math inline">\(\frac16\)</span></td>
-<td align="center"><span class="math inline">\(\frac{1}{12}\)</span></td>
-<td align="center"><span class="math inline">\(\frac16\)</span></td>
-</tr>
-</tbody>
-</table>
-<p>Now
-<span class="math display">\[\begin{align*}
-E[Y] &amp; = \sum y \; p_Y(y) \\
-&amp;= 1\times \frac{1}{12} +
+If we repeat these calculations for all maths students, with $N=500$ and $M=280$, then
+the exact hyper-geometric  probability is
+$p_X(5) = 0.054$, whereas the binomial probability is unchanged at $0.055$ -- which is very close.</div>\EndKnitrBlock{example}
+
+
+
+
+## Additional Examples
+
+
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:unnamed-chunk-7"><strong>(\#exm:unnamed-chunk-7) </strong></span>Suppose we roll an eight-sided die with sides labelled 1 to 8, where the even values are twice as likely as the odd numbers.
+
+
+Let $Y$ represent the outcome with probability mass function</div>\EndKnitrBlock{example}
+
+| $Y$ | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | $7$ | $8$ |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|$p_Y(y)$ | $\frac{1}{12}$ | $\frac16$ | $\frac{1}{12}$ | $\frac16$ | $\frac{1}{12}$ | $\frac16$ | $\frac{1}{12}$ | $\frac16$ |
+
+
+
+
+Now
+\begin{align*}
+E[Y] & = \sum y \; p_Y(y) \\
+&= 1\times \frac{1}{12} +
  2\times \frac{1}{6} +
   3\times \frac{1}{12} +
    4\times \frac{1}{6} +
@@ -775,11 +788,12 @@ E[Y] &amp; = \sum y \; p_Y(y) \\
      6\times \frac{1}{6} +
       7\times \frac{1}{12} +
        8\times \frac{1}{6} =\frac{14}{3}.
-\end{align*}\]</span></p>
-<p>Then, for the variance,
-<span class="math display">\[\begin{align*}
-E[Y^2] &amp; = \sum y^2 p_Y(y) \\
-&amp;= 1^2\hspace{-3pt}\times \hspace{-3pt} \frac{1}{12} +
+\end{align*}
+
+Then, for the variance,
+\begin{align*}
+E[Y^2] & = \sum y^2 p_Y(y) \\
+&= 1^2\hspace{-3pt}\times \hspace{-3pt} \frac{1}{12} +
  2^2\hspace{-3pt}\times\hspace{-3pt} \frac{1}{6} +
   3^2\hspace{-3pt}\times\hspace{-3pt} \frac{1}{12} +
    4^2\hspace{-3pt}\times\hspace{-3pt} \frac{1}{6} +
@@ -787,87 +801,73 @@ E[Y^2] &amp; = \sum y^2 p_Y(y) \\
      6^2\hspace{-3pt}\times\hspace{-3pt} \frac{1}{6} +
       7^2\hspace{-3pt}\times\hspace{-3pt} \frac{1}{12} +
        8^2\hspace{-3pt}\times\hspace{-3pt} \frac{1}{6} =27
-\end{align*}\]</span>
+\end{align*}
 giving
-<span class="math display">\[
+\[
 Var(Y) = E[Y^2]-\{E[Y]\}^2 
 = 27- \left\{\frac{14}{3}\right\}^2
 =\frac{47}{9}.
-\]</span></p>
-<p>The first step can be easily calculated in R using
-<code>sum(yvals*probs)</code>, with <code>yvals = 1:8</code> and <code>probs = c(1, 2, 1, 2, 1, 2, 1, 2) / 12</code>, and the second using
-<code>sum(yvals^2 * probs)</code>.</p>
-<p>Next consider <span class="math inline">\(Z=6-3X\)</span> then
-<span class="math display">\[ 
-E[Z] =E[6-3Y] = 6-3E[Y] = 6-3\times \frac{14}{3} = -8
-\]</span>
-and
-<span class="math display">\[ 
-Var[Y] =Var[6-3Y] = (-3)^2Var[Y] = 9\times  \frac{47}{9}= 47.
-\]</span></p>
-<p>Now suppose that we also have a standard six-sided die which has
-<span class="math inline">\(E[X]=7/2\)</span> and <span class="math inline">\(Var[X]= 35/12\)</span>
-Then the expectation of the sum of the two dice is,
-<span class="math inline">\(E[X+Y] = E[X]+E[Y] = \frac{14}{3}+\frac{7}{2} = \frac{49}{6}\)</span>
-and the variance of the sum is
-<span class="math display">\[Var[X+Y] = Var[X]+Var[Y]
-= \frac{35}{12}+ \frac{47}{9} = \frac{879}{108} = 8.14.
-\]</span>
-Note that here, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are physically independent and so using this result for independent random variables is valid.</p>
-</div>
-<div id="important-properties-for-sums-of-random-variables" class="section level2 unnumbered">
-<h2>Important properties for sums of random variables</h2>
-<p>Suppose we have two independent random variables, <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>,
-but are only interested in their sum, <span class="math inline">\(Z=X_1+X_2\)</span>, then
-<span class="math display">\[\begin{align*}
-G_Z(s) = E[s^Z] = E[s^{X_1+X_2}] \stackrel{indep}{=} E[s^{X_1}]E[s^{X_2}] = G_{X_1}(s) G_{X_2} (s)
-\end{align*}\]</span>
-and the generalisation <span class="math inline">\(Z=X_1+X_2+\cdots + X_n\)</span> then
-<span class="math display">\[
-G_Z(s) = G_{X_1}(s) G_{X_2} (s) \cdots G_{X_n}(s).
-\]</span></p>
-</div>
-<div id="pgfs-of-standard-distributions" class="section level2 unnumbered">
-<h2>Pgfs of standard distributions</h2>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Distribution</th>
-<th align="left">pgf</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Bernoulli</td>
-<td align="left"><span class="math inline">\(1-p +ps\)</span></td>
-</tr>
-<tr class="even">
-<td align="left">Binomial</td>
-<td align="left"><span class="math inline">\(\left\{ 1-p +ps\right\}^n\)</span></td>
-</tr>
-<tr class="odd">
-<td align="left">Geometric</td>
-<td align="left"><span class="math inline">\(ps/\left(1-(1-p)s \right)\)</span></td>
-</tr>
-<tr class="even">
-<td align="left">Poisson</td>
-<td align="left"><span class="math inline">\(\exp\left(\lambda (s-1)\right)\)</span></td>
-</tr>
-</tbody>
-</table>
+\]
 
-<div class="example">
-<span id="exm:unnamed-chunk-8" class="example"><strong>Example 5.8  </strong></span>Suppose we are interested in the sum of <span class="math inline">\(n\)</span> independent Bernoulli random variables, then<br />
-<span class="math display">\[
+The first step can be easily calculated in R using
+`sum(yvals*probs)`, with `yvals = 1:8` and `probs = c(1, 2, 1, 2, 1, 2, 1, 2) / 12`, and the second using
+`sum(yvals^2 * probs)`.
+
+
+Next consider $Z=6-3X$ then
+\[ 
+E[Z] =E[6-3Y] = 6-3E[Y] = 6-3\times \frac{14}{3} = -8
+\]
+and
+\[ 
+Var[Y] =Var[6-3Y] = (-3)^2Var[Y] = 9\times  \frac{47}{9}= 47.
+\]
+
+Now suppose that we also have a standard six-sided die which has
+\( E[X]=7/2\) and \(Var[X]= 35/12\)
+Then the expectation of the sum of the two dice is, 
+\(E[X+Y] = E[X]+E[Y] = \frac{14}{3}+\frac{7}{2} = \frac{49}{6}
+\)
+and the variance of the sum  is
+\[Var[X+Y] = Var[X]+Var[Y]
+= \frac{35}{12}+ \frac{47}{9} = \frac{879}{108} = 8.14.
+\]
+Note that here, $X$ and $Y$ are physically independent and so using this result for independent random variables is valid.
+
+
+
+## Important properties for sums of random variables {-}
+
+Suppose we have two independent random variables, $X_1$ and $X_2$,
+but are only interested in their sum, $Z=X_1+X_2$, then
+\begin{align*}
+G_Z(s) = E[s^Z] = E[s^{X_1+X_2}] \stackrel{indep}{=} E[s^{X_1}]E[s^{X_2}] = G_{X_1}(s) G_{X_2} (s)
+\end{align*}
+and the generalisation $Z=X_1+X_2+\cdots + X_n$ then
+\[
+G_Z(s) = G_{X_1}(s) G_{X_2} (s) \cdots G_{X_n}(s).
+\]
+
+## Pgfs of standard distributions {-}
+
+| Distribution | pgf                               |
+|:-------------|:----------------------------------|
+| Bernoulli    | $1-p +ps$                         |
+| Binomial     | $\left\{ 1-p +ps\right\}^n$       |
+| Geometric    | $ps/\left(1-(1-p)s \right)$       |
+| Poisson      | $\exp\left(\lambda (s-1)\right)$  |
+
+
+\BeginKnitrBlock{example}<div class="example"><span class="example" id="exm:unnamed-chunk-8"><strong>(\#exm:unnamed-chunk-8) </strong></span>Suppose we are interested in the sum of $n$ independent Bernoulli random variables, then\
+\[
 G_Z(s) = \left(1-p+ps\right) \cdots  \left(1-p+ps\right) 
 =  \left(1-p+ps\right) ^n.
-\]</span>
-Although not yet derived, this is the
-probability generating function of the binomial, and so the sum of Bernoulli random variables is binomial, <span class="math inline">\(X_1+X_2+\cdots + X_n\sim B(n,p)\)</span>.
-</div>
+\]
+Although not yet derived, this is the 
+probability generating function of the binomial, and so the sum of Bernoulli random variables is binomial, $X_1+X_2+\cdots + X_n\sim B(n,p)$.</div>\EndKnitrBlock{example}
 
+-->
 
-</div>
 </div>
             </section>
 
@@ -925,20 +925,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

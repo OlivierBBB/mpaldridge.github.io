@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Introduction | MATH1710 Probability and Statistics 1</title>
+  <meta name="description" content="Lecture notes for MATH1710 Probability and Statistics 1 at the University of Leeds." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Introduction | MATH1710 Probability and Statistics 1" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lecture notes for MATH1710 Probability and Statistics 1 at the University of Leeds." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Introduction | MATH1710 Probability and Statistics 1" />
+  
+  <meta name="twitter:description" content="Lecture notes for MATH1710 Probability and Statistics 1 at the University of Leeds." />
+  
+
+<meta name="author" content="Robert G Aykroyd" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="models-for-measurement-data.html"/>
+<link rel="next" href="bayesian-methods.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>MATH1710</b></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Module Overview</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contact-information"><i class="fa fa-check"></i>Contact Information</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#syllabus-details"><i class="fa fa-check"></i>Syllabus Details</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#methods-of-teaching"><i class="fa fa-check"></i>Methods of Teaching</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#booklist"><i class="fa fa-check"></i>Booklist</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>1</b> Exploratory Data Analysis in R</a><ul>
+<li class="chapter" data-level="1.1" data-path="eda.html"><a href="eda.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="eda.html"><a href="eda.html#frequency-and-relative-frequency"><i class="fa fa-check"></i><b>1.2</b> Frequency and relative frequency</a></li>
+<li class="chapter" data-level="1.3" data-path="eda.html"><a href="eda.html#histograms-time-series-plots-and-scatterplots"><i class="fa fa-check"></i><b>1.3</b> Histograms, time series plots and scatterplots</a></li>
+<li class="chapter" data-level="1.4" data-path="eda.html"><a href="eda.html#numerical-summary-statistics"><i class="fa fa-check"></i><b>1.4</b> Numerical summary statistics</a></li>
+<li class="chapter" data-level="1.5" data-path="eda.html"><a href="eda.html#the-5-figure-summary-and-boxplots"><i class="fa fa-check"></i><b>1.5</b> The 5-figure summary and boxplots</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-probability.html"><a href="basic-probability.html"><i class="fa fa-check"></i><b>2</b> Basic Probability</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="2.1" data-path="basic-probability.html"><a href="basic-probability.html#sample-space-and-events"><i class="fa fa-check"></i><b>2.1</b> Sample space and events</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#the-venn-diagram"><i class="fa fa-check"></i>The Venn diagram</a></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#operations-with-events"><i class="fa fa-check"></i>Operations with events</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-probability.html"><a href="basic-probability.html#the-axioms-and-basic-rules-of-probability"><i class="fa fa-check"></i><b>2.2</b> The axioms and basic rules of probability</a></li>
+<li class="chapter" data-level="2.3" data-path="basic-probability.html"><a href="basic-probability.html#assignment-of-probability"><i class="fa fa-check"></i><b>2.3</b> Assignment of probability</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#classical-probability-for-equally-likely-events"><i class="fa fa-check"></i>Classical probability for equally-likely events</a></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#probability-as-relative-frequency-and-the-law-of-large-numbers"><i class="fa fa-check"></i>Probability as relative frequency and the Law of Large Numbers</a></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#subjective-assignment-of-probability"><i class="fa fa-check"></i>Subjective assignment of probability</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#combinatorics"><i class="fa fa-check"></i>Combinatorics</a><ul>
+<li class="chapter" data-level="" data-path="basic-probability.html"><a href="basic-probability.html#basic-definitions"><i class="fa fa-check"></i>Basic definitions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html"><i class="fa fa-check"></i><b>3</b> Conditional Probability and Independence</a><ul>
+<li class="chapter" data-level="3.1" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#indep-intro"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#definitions"><i class="fa fa-check"></i><b>3.2</b> Definitions</a></li>
+<li class="chapter" data-level="3.3" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#independent-events"><i class="fa fa-check"></i><b>3.3</b> Independent events</a></li>
+<li class="chapter" data-level="3.4" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#theorem-of-total-probability-and-bayes-theorem"><i class="fa fa-check"></i><b>3.4</b> Theorem of total probability and Bayes' theorem</a><ul>
+<li class="chapter" data-level="" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#total-probability-formula"><i class="fa fa-check"></i>Total probability formula</a></li>
+<li class="chapter" data-level="" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#bayes-rule"><i class="fa fa-check"></i>Bayes' rule</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>4</b> Random Variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="random-variables.html"><a href="random-variables.html#basic-rv-definitions"><i class="fa fa-check"></i><b>4.1</b> Basic definitions</a></li>
+<li class="chapter" data-level="4.2" data-path="random-variables.html"><a href="random-variables.html#expected-value-and-variance"><i class="fa fa-check"></i><b>4.2</b> Expected value and variance</a><ul>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#properties-of-expectation"><i class="fa fa-check"></i>Properties of expectation</a></li>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#estimation-of-parameters-using-the-expectation"><i class="fa fa-check"></i>Estimation of parameters using the expectation</a></li>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#variance-of-a-random-variable"><i class="fa fa-check"></i>Variance of a random variable</a></li>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#properties-of-variance"><i class="fa fa-check"></i>Properties of variance</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#functions-of-random-variables"><i class="fa fa-check"></i>Functions of random variables</a></li>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#the-law-of-the-unconscious-statistician"><i class="fa fa-check"></i>The law of the unconscious statistician</a></li>
+<li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#probability-generating-functions"><i class="fa fa-check"></i>Probability generating functions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="models-for-count-data.html"><a href="models-for-count-data.html"><i class="fa fa-check"></i><b>5</b> Models for Count Data</a><ul>
+<li class="chapter" data-level="" data-path="eda.html"><a href="eda.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="5.1" data-path="models-for-count-data.html"><a href="models-for-count-data.html#bernoulli-trials-and-related-distributions"><i class="fa fa-check"></i><b>5.1</b> Bernoulli trials and related distributions</a><ul>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#the-binomial-distribution"><i class="fa fa-check"></i>The binomial distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#geometric-distribution"><i class="fa fa-check"></i>Geometric distribution</a></li>
+<li class="chapter" data-level="5.2" data-path="models-for-count-data.html"><a href="models-for-count-data.html#poisson-distribution-the-law-of-rare-events"><i class="fa fa-check"></i><b>5.2</b> Poisson distribution (the law of rare events)</a><ul>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#poisson-approximation-to-the-binomial"><i class="fa fa-check"></i>Poisson approximation to the binomial</a></li>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#poisson-processes"><i class="fa fa-check"></i>Poisson processes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#sampling-from-a-finite-population"><i class="fa fa-check"></i>Sampling from a finite population</a></li>
+<li class="chapter" data-level="5.3" data-path="models-for-count-data.html"><a href="models-for-count-data.html#additional-examples"><i class="fa fa-check"></i><b>5.3</b> Additional Examples</a></li>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#important-properties-for-sums-of-random-variables"><i class="fa fa-check"></i>Important properties for sums of random variables</a></li>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#pgfs-of-standard-distributions"><i class="fa fa-check"></i>Pgfs of standard distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="models-for-measurement-data.html"><a href="models-for-measurement-data.html"><i class="fa fa-check"></i><b>6</b> Models for Measurement Data</a></li>
+<li class="chapter" data-level="7" data-path="measure-intro.html"><a href="measure-intro.html"><i class="fa fa-check"></i><b>7</b> Introduction</a></li>
+<li class="chapter" data-level="8" data-path="bayesian-methods.html"><a href="bayesian-methods.html"><i class="fa fa-check"></i><b>8</b> Bayesian Methods</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH1710 Probability and Statistics 1</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="measure-intro" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Introduction</h1>
+<p>So far we have considered only random variables which have finite or countably infinite sample spaces, for example ( = {0,1,, n}) for the binomial distribution or ( = {0,1,}) for the Poisson distribution --- that is, <em>discrete</em> random variables.</p>
+
+%  %
+
+
+Many quantities of interest, however, can take values anywhere within some interval of the real line, for example:\[-5mm]
+
+<p>Such random quantities are called {} random variables.</p>
+<p>Consider the probability that a random variable <span class="math inline">\(X\)</span> lies within a small interval, <span class="math inline">\([a, b]\)</span>,<br />
+of width ( x) (with <span class="math inline">\(\delta x \ge 0\)</span>) centred on the value <span class="math inline">\(x\)</span>: <span class="math display">\[
+Pr(X \in [a, b] ) = 
+Pr\left(x-\frac12 \delta x \le X \le x+\frac12 \delta x \right).
+\]</span></p>
+
+
+%  %
+
+ If <span class="math inline">\(X\)</span> is discrete, then we can choose <span class="math inline">\(\delta x\)</span> to be sufficiently small that the interval contains just one element of the range space, <span class="math inline">\(x_i\)</span> say. So
+<span class="math display">\[\begin{align*}
+Pr(X \in  [a, b]) 
+%= Pr\left(x-\frac12 \delta x \le X &lt; x+\frac12 \delta x \right) 
+ = Pr(X=x_i), \quad \mbox{where $x_i \in[a,b]$}.
+\end{align*}\]</span>
+ For a continuous random variables this will never happen. Any interval, however small, contains infinitely many possible values. But choosing <span class="math inline">\(\delta x =0 \)</span> gives
+<span class="math display">\[\begin{align*}
+Pr(X \in [a,b])  
+% = Pr\left(x-\frac12 \delta x \le X &lt; x+\frac12 \delta x \right) 
+= Pr(x\le X \le x) 
+ = Pr(X=x) = 0
+\end{align*}\]</span>
+<p>as <span class="math inline">\(x\)</span> is just one value out of an infinite number of values within even the smallest interval.</p>
+
+
+<p>For a continuous random variable <span class="math inline">\(X\)</span> we define the probability density function, <span class="math inline">\(f_X(x)\)</span>, through the following statement in terms of the cumulative distribution function, <span class="math inline">\(F_X(\cdot)\)</span>: <span class="math display">\[
+F_X(b) = Pr(X \le b) =
+\int_{-\infty}^b f_X(x)dx, \quad \mbox{for for any \(b\)}.
+\]</span> %, where is the cumulative distribution function (cdf) of <span class="math inline">\(X\)</span>. Note that for a continuous random variable we have <span class="math inline">\(Pr(X = x) = 0\)</span> for any <span class="math inline">\(x\)</span>, hence\[-3mm] <span class="math display">\[Pr(X \le b) =
+Pr(X &lt; b)+Pr(X = b) = Pr(X &lt; b).\]</span></p>
+
+%  %
+
+
+<p>Alternatively, we can define the pdf through the following statement: <span class="math display">\[
+Pr(a\le X \le b) = \int_a^b f_X(x) dx = F_X(b)-F_X(a),
+\quad \mbox{for any \(a&lt;b\).}
+\]</span></p>
+<p>% Note that <span class="math display">\[
+f_X(x) = \frac{d}{dx} F_X(x),
+\]</span> so given the cdf we can find the pdf by differentiating. Equally, given the pdf we can (in principle) find the cdf by integration.</p>
+<p>Note also that, if <span class="math inline">\(F_X(x)\)</span> is continuous and <span class="math inline">\(|\delta x|\)</span> is small, we can approximate <span class="math display">\[
+Pr\left( x - \frac12 |\delta x| \le X &lt; x+\frac12 |\delta x|\right)
+\approx f(x) |\delta x|.
+\]</span></p>
+
+From the Axioms of Probability we have the following properties of the pdf:\[-8mm] 
+
+%
+
+%  %
+
+
+We also have the following properties of the cdf:\[-6mm] 
+
+
+<p> To define the mean and variance of a continuous random variable, we generalise the definitions given previously for discrete random variables.</p>
+<p>The expected value of a continuous random variable <span class="math inline">\(X\)</span> is given by: <span class="math display">\[
+E[X] =
+\int_{-\infty}^{\infty}
+x \; f_X(x)dx. 
+\]</span> Here we have simply replaced a summation by an integral. The definition of variance, in terms of expectations, is unchanged: <span class="math display">\[
+Var[X] = E[(X - \mu)^2]
+= E[X^2] - \{E[X]\}^2
+\]</span> where <span class="math inline">\(\mu = E[X]\)</span>. Then, we can evaluate <span class="math inline">\(E[X^2]\)</span> using the equation <span class="math display">\[
+E[X^2] =
+\int _{-\infty}^{\infty}
+x^2 f_X(x)dx.
+\]</span> We shall see examples of these later.</p>
+
+<p>% Temp to match handouts % %</p>
+
+
+
+
+%  %
+
+ The cdf can be derived from the definition of the cdf and using the exponential pdf,\[-5mm]
+<span class="math display">\[\begin{align*}
+F_X(b) 
+&amp; = Pr(X\le b) 
+= \int_{-\infty} ^b f_X(x) dx 
+= \int_0 ^b \lambda e^{-\lambda x} dx = \left[ \frac{\lambda e^{-\lambda x}}{-\lambda} \right]_0 ^b
+= 1-e^{-\lambda b}, \quad b\ge 0.
+\end{align*}\]</span>
+<p>Note that in the derivation, the argument of the cdf has been changed to <span class="math inline">\(b\)</span> to avoid any confusion between the variable of integration and the upper limit of the integral. % Hence, with more usual symbols, the cdf is given by <span class="math inline">\(F_X(x) = 1-e^{-\lambda x}\)</span> for <span class="math inline">\(x\ge 0$; and \(0\)</span> otherwise.</p>
+
+
+
+<p>  The mean and variance can be obtained in one of two equivalent ways: either by direct integration, where <span class="math inline">\(E[X]\)</span> requires integration by parts, and <span class="math inline">\(E[X^2]\)</span> requires integration by parts twice, or by use of the gamma function.</p>
+<p>Before looking at these results, note that the gamma function is defined as <span class="math display">\[
+\Gamma(\alpha) = \int_0 ^{\infty} x^{\alpha-1} e^{-x} dx,
+\]</span> with the properties that <span class="math inline">\(\Gamma(\alpha)=(\alpha-1)\Gamma(\alpha-1)\)</span> and hence, for integer <span class="math inline">\(n\)</span>, <span class="math inline">\(\Gamma(n)=(n-1)!\)</span> Special cases are <span class="math inline">\(\Gamma(1)=1\)</span> and <span class="math inline">\(\Gamma(1/2)=\sqrt{\pi}\)</span> --- see Essential Directed Reading for details.</p>
+
+<p></p>
+
+<p>From the definition of expectation we have\[-2mm] <span class="math display">\[
+E[X]  = \int _0 ^\infty x \; \lambda e^{-\lambda x} dx
+ = \frac{1}{\lambda} \int _0 ^\infty y e^{-y} dy 
+ = \frac{1}{\lambda}
+\]</span> where the first step uses the transformation <span class="math inline">\(y=\lambda x\)</span>, hence <span class="math inline">\(dy/dx=\lambda\)</span>, and the final step uses the fact that the integral gives <span class="math inline">\(\Gamma(2) = 1!=1\)</span>.</p>
+<p>For the variance we need the following,\[-2mm] <span class="math display">\[
+E[X^2]  = \int _0 ^\infty x^2 \; \lambda e^{-\lambda x} dx
+ = \frac{1}{\lambda^2} \int _0 ^\infty y^2 e^{-y} dy = \frac{2}{\lambda^2}
+\]</span> using that the integral is <span class="math inline">\(\Gamma(3)=2!=2\)</span>. Hence, the variance is\[-2mm] <span class="math display">\[
+Var[X] = E[X^2] -\{E[X]\}^2
+= \frac{2}{\lambda^2} - \left\{ \frac{1}{\lambda} \right\}^2
+= \frac{1}{\lambda^2}.
+\]</span></p>
+
+<p>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+
+<p> </p>
+<p>The simplest continuous distribution is the uniform which is defined via its density as: <span class="math display">\[
+f_X(x) =
+\frac{1}{b-a}, \quad a\le x \le b; \quad 0 \mbox{ otherwise}
+\]</span> and is denoted <span class="math inline">\(U(a, b)\)</span>. The corresponding cumulative distribution function is % <span class="math display">\[
+F_X(x) =
+\left\{
+\begin{array}{ll}
+0 &amp; x&lt;a \\[2mm]
+{\displaystyle \frac{x-a}{b-a}} &amp; a\le x \le b \\[3mm]
+1 &amp; x&gt;b.
+\end{array}
+\right.
+\]</span></p>
+<p>It can be shown that %the expectation is given by <span class="math inline">\(E[X] = (a+b)/2\)</span> and %the variance by <span class="math inline">\(Var[X] = (b-a)^2/12.\)</span> </p>
+
+
+Starting with the definition of expectation and using the pdf of the uniform distributions gives\[-4mm] <span class="math display">\[
+E[X] = \int_{-\infty}^{\infty} \hspace{-4pt} x f_X(s) dx
+= \int_0^1 x \; \frac{1}{b-a} dx 
+= \left[ \frac{x^2}{2(b-a)} \right]_a^b
+=\frac{b^2-a^2}{2(b-a)}
+=\frac{(b-a)(b+a)}{2(b-a)}
+=\frac{a+b}{2}.
+\]</span> Next,
+<span class="math display">\[\begin{align*}
+E[X^2] = \int_{-\infty}^{\infty} \hspace{-4pt} x^2 f_X(s) dx
+&amp; = \int_0^1 x^2 \; \frac{1}{b-a} dx 
+= \left[ \frac{x^3}{3(b-a)} \right]_a^b
+%= \frac{b^3}{3(b-a)}-\frac{a^3}{3(b-a)} 
+=\frac{b^3-a^3}{3(b-a)}\\[3mm]
+&amp;=\frac{(b-a)(b^2+ab+a^2)}{3(b-a)}
+=\frac{b^2+ab+a^2}{3}
+\end{align*}\]</span>
+and hence
+<span class="math display">\[\begin{align*}
+Var[X] = E[X^2]-\{E[X\}^2
+&amp; =  \frac{b^2+ab+a^2}{3} - \left\{\frac{a+b}{2}\right\}^2\\
+%
+&amp; =  \frac{4(b^2+ab+a^2)-3(a^2+2ab+b^2)}{12}  \\
+%
+&amp; =  \frac{b^2  -2ab+a^2}{12}  =  \frac{(b-a)^2}{12}. \\
+\end{align*}\]</span>
+
+<p>When <span class="math inline">\(a=0\)</span> and <span class="math inline">\(b=1\)</span>, then <span class="math inline">\(X\)</span> has a {} with pdf <span class="math inline">\(f_X(x)=1\)</span> for <span class="math inline">\(0\le x \le 1\)</span>. Also, <span class="math inline">\(F_X(x) =0\)</span> for <span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(F_X(x) =x\)</span> for <span class="math inline">\(0\le x \le 1\)</span>, and <span class="math inline">\(F_X(x) =1\)</span> for <span class="math inline">\(x&gt;1\)</span>. Also, <span class="math inline">\(E[X]=1/2\)</span> and <span class="math inline">\(Var[X]=1/12\)</span>.</p>
+
+
+%  %
+
+
+<p> The beta distribution with positive-valued parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, denoted <span class="math inline">\({\rm{Beta}} (\alpha, \beta)\)</span>, is a generalization of the uniform distribution and is defined via its density: <span class="math display">\[
+f_X(x) =  \frac{1}{{\rm B}({\alpha, \beta})} \;  x^{\alpha-1} (1-x)^{\beta -1} \quad \mbox{for } 0 \le x \le 1.
+\]</span> It can be shown that the mean is given by <span class="math inline">\(E[X] = \alpha/(\alpha+\beta)\)</span> and the variance by <span class="math inline">\(Var[X] = \alpha\beta/\{(\alpha+\beta)^2(\alpha+\beta+1)\}\)</span>. </p>
+<p>The role of the term <span class="math inline">\({\rm B}({\alpha,\beta})\)</span> is merely to ensure  that <span class="math inline">\(\int f_X(x)dx = 1\)</span> -- it is a {} or {}. % That is, ( {}({,}) = _0^1 x^{-1} (1-x)^{-1} dx ) but it can be shown also to be given by ( {}({,}) = {()()}/{(+)} ) where <span class="math inline">\(\Gamma(\cdot)\)</span> denotes the gamma function. % The definition and properties of the gamma function are given in the Essential Directed Reading titled, {}. </p>
+<p>Notice that when <span class="math inline">\(\alpha=1\)</span> and <span class="math inline">\(\beta=1\)</span>, then the pdf does not depend on <span class="math inline">\(x\)</span>, that is it is a constant, and hence the beta distribution reduces to the uniform. Further, whenever <span class="math inline">\(\alpha=\beta\)</span>, the pdf is symmetric and the expectation is <span class="math inline">\(E[X]=1/2\)</span>. </p>
+
+
+
+<p></p>
+<p>This is the most widely used distribution. In a few cases it has been proven to be the correct distribution, in some cases it has been proven to be an approximation and in many it is simply used as a ``convenient model which seem to work well''.</p>
+
+%  %
+
+<p>If <span class="math inline">\(\mu=0\)</span> and <span class="math inline">\(\sigma^2=1\)</span>, then we obtain the  --- often this is denoted <span class="math inline">\(Z\)</span>. Clearly, <span class="math inline">\(Z\sim N(0,1)\)</span> has pdf  <span class="math display">\[
+f_Z(z) = \frac{1}{\sqrt{2\pi}}
+\exp \left\{
+- \frac{z^2}{2} \right\}, \quad -\infty &lt; x &lt; \infty.
+\]</span></p>
+<p>Although, clearly, <span class="math inline">\(f_X(x) \ge 0\)</span> (and <span class="math inline">\(f_Z(z)\ge0\)</span>) it is  difficult to show that the pdfs integrate to <span class="math inline">\(1\)</span>. Also, there is no equation for the cumulative distribution function --- instead statistical tables, or a computer program such as {R}, are needed.</p>
+<p>This distribution is so important that the pdf and cdf of the standard normal distribution have special notation <span class="math display">\[
+\phi(z) = f_Z(z) \quad \mbox{and} \quad 
+\Phi(z) = F_Z(z) = Pr(Z\le z).
+\]</span> </p>
+
+
+
+
+%  %
+
+<p>%%  Here we note three important points regarding the use of the normal distribution.</p>
+
+
+
+<p>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+
+<p> %  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="models-for-measurement-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bayesian-methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

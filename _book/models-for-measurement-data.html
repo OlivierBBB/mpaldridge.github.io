@@ -99,7 +99,7 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html"><i class="fa fa-check"></i><b>3</b> Conditional Probability and Independence</a><ul>
-<li class="chapter" data-level="3.1" data-path="eda.html"><a href="eda.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.1" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#indep-intro"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
 <li class="chapter" data-level="3.2" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#definitions"><i class="fa fa-check"></i><b>3.2</b> Definitions</a></li>
 <li class="chapter" data-level="3.3" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#independent-events"><i class="fa fa-check"></i><b>3.3</b> Independent events</a></li>
 <li class="chapter" data-level="3.4" data-path="conditional-probability-and-independence.html"><a href="conditional-probability-and-independence.html#theorem-of-total-probability-and-bayes-theorem"><i class="fa fa-check"></i><b>3.4</b> Theorem of total probability and Bayes’ theorem</a><ul>
@@ -119,7 +119,21 @@
 <li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#the-law-of-the-unconscious-statistician"><i class="fa fa-check"></i>The law of the unconscious statistician</a></li>
 <li class="chapter" data-level="" data-path="random-variables.html"><a href="random-variables.html#probability-generating-functions"><i class="fa fa-check"></i>Probability generating functions</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="models-for-count-data.html"><a href="models-for-count-data.html"><i class="fa fa-check"></i><b>5</b> Models for Count Data</a></li>
+<li class="chapter" data-level="5" data-path="models-for-count-data.html"><a href="models-for-count-data.html"><i class="fa fa-check"></i><b>5</b> Models for Count Data</a><ul>
+<li class="chapter" data-level="" data-path="eda.html"><a href="eda.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="5.1" data-path="models-for-count-data.html"><a href="models-for-count-data.html#bernoulli-trials-and-related-distributions"><i class="fa fa-check"></i><b>5.1</b> Bernoulli trials and related distributions</a><ul>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#the-binomial-distribution"><i class="fa fa-check"></i>The binomial distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#geometric-distribution"><i class="fa fa-check"></i>Geometric distribution</a></li>
+<li class="chapter" data-level="5.2" data-path="models-for-count-data.html"><a href="models-for-count-data.html#poisson-distribution-the-law-of-rare-events"><i class="fa fa-check"></i><b>5.2</b> Poisson distribution (the law of rare events)</a><ul>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#poisson-approximation-to-the-binomial"><i class="fa fa-check"></i>Poisson approximation to the binomial</a></li>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#poisson-processes"><i class="fa fa-check"></i>Poisson processes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#sampling-from-a-finite-population"><i class="fa fa-check"></i>Sampling from a finite population</a></li>
+<li class="chapter" data-level="5.3" data-path="models-for-count-data.html"><a href="models-for-count-data.html#additional-examples"><i class="fa fa-check"></i><b>5.3</b> Additional Examples</a></li>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#important-properties-for-sums-of-random-variables"><i class="fa fa-check"></i>Important properties for sums of random variables</a></li>
+<li class="chapter" data-level="" data-path="models-for-count-data.html"><a href="models-for-count-data.html#pgfs-of-standard-distributions"><i class="fa fa-check"></i>Pgfs of standard distributions</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="models-for-measurement-data.html"><a href="models-for-measurement-data.html"><i class="fa fa-check"></i><b>6</b> Models for Measurement Data</a></li>
 <li class="chapter" data-level="7" data-path="bayesian-methods.html"><a href="bayesian-methods.html"><i class="fa fa-check"></i><b>7</b> Bayesian Methods</a></li>
 </ul>
@@ -141,7 +155,759 @@
             <section class="normal" id="section-">
 <div id="models-for-measurement-data" class="section level1">
 <h1><span class="header-section-number">Chapter 6</span> Models for Measurement Data</h1>
-<p><em>To follow</em></p>
+<p><em>To follow.</em></p>
+<!--
+
+
+
+
+# Introduction {#measure-intro}
+
+So far we have considered only random variables which have finite or countably infinite sample spaces, for example
+\( \Omega = \{0,1,\ldots, n\}\) for the binomial distribution or 
+\( \Omega = \{0,1,\ldots\}\)   for the Poisson
+distribution --- that is, *discrete* random variables.
+
+\begin{minipage}{0.45\textwidth}
+
+%
+\includegraphics[width=\textwidth, trim=20 40 20 40, clip]{figures/binom_pmf}
+%
+
+\end{minipage}
+%
+\hspace{10mm}
+%
+\begin{minipage}{0.45\textwidth}
+
+%
+\includegraphics[width=\textwidth, trim=20 40 20 40, clip]{figures/poisson_pmf}
+%
+
+\end{minipage}
+
+\vspace{0mm}
+
+Many quantities of interest, however, can take values anywhere within some interval of the real
+line, for example:\\[-5mm]
+\begin{myitemize}
+\item
+Proportion of the UK population currently unemployed: 
+ \(\Omega = [0, 1]\).
+\item
+Time before the next shop customer arrives (min): 
+ \(\Omega  = [0,\infty) \).
+\item
+Total assets of a bank (\pounds): 
+ \(\Omega  = (-\infty,\infty) \).
+\end{myitemize}
+Such random quantities are called {\it continuous} random variables.
+
+Consider the probability that a random variable \(X\) lies within a small interval, $[a, b]$,  
+of width \( \delta x\) (with $\delta x \ge 0$) centred on the value \(x\):
+\[
+Pr(X \in [a, b] ) = 
+Pr\left(x-\frac12 \delta x \le X \le x+\frac12 \delta x \right).
+\]
+
+\vspace{-5mm}
+
+\begin{minipage}{0.45\textwidth}
+
+%
+\includegraphics[width=\textwidth, trim=20 40 20 40, clip]{figures/binom_pmf}
+%
+
+\end{minipage}
+%
+\hspace{10mm}
+%
+\begin{minipage}{0.45\textwidth}
+
+%
+\includegraphics[width=\textwidth, trim=20 40 20 40, clip]{figures/gamma_pdf}
+%
+
+\end{minipage}
+
+\index{Discrete}
+If \(X\) is discrete, then we can choose $\delta x$ to be sufficiently small that the interval contains just one
+element of the range space, \(x_i\) say. 
+So
+\begin{align*}
+Pr(X \in  [a, b]) 
+%= Pr\left(x-\frac12 \delta x \le X < x+\frac12 \delta x \right) 
+ = Pr(X=x_i), \quad \mbox{where $x_i \in[a,b]$}.
+\end{align*}
+
+\index{Continuous}
+For a continuous random variables this will never happen.
+Any interval, however small, contains infinitely many possible values.
+But choosing \(\delta x =0 \) gives
+\begin{align*}
+Pr(X \in [a,b])  
+% = Pr\left(x-\frac12 \delta x \le X < x+\frac12 \delta x \right) 
+= Pr(x\le X \le x) 
+ = Pr(X=x) = 0
+\end{align*}
+as $x$ is just one value out of an infinite number of values within even the smallest interval. 
+
+
+\subsection*{Probability density function (pdf)}
+\index{Probability density function}
+
+For a continuous random variable \(X\) we define the probability density function, \(f_X(x)\), through
+the following statement in terms of the cumulative distribution function, \(F_X(\cdot)\):
+\[
+F_X(b) = Pr(X \le b) =
+\int_{-\infty}^b f_X(x)dx, \quad \mbox{for for any \(b\)}.
+\]
+%, where  is the cumulative distribution function (cdf) of \(X\). 
+Note that for a continuous random
+variable we have \(Pr(X = x) = 0\) for any \(x\), 
+hence\\[-3mm]
+ \[Pr(X \le b) =
+Pr(X < b)+Pr(X = b) = Pr(X < b).\]
+
+
+\begin{minipage}{0.47\textwidth}
+
+%
+\includegraphics[width=\textwidth, trim=20 40 20 40, clip]{figures/gmix1}
+%
+\end{minipage}
+%
+\hspace{10mm}
+%
+\begin{minipage}{0.47\textwidth}
+
+%
+\includegraphics[width=\textwidth, trim=20 40 20 40, clip]{figures/gmix2}
+%
+
+\end{minipage}
+
+\medskip
+
+Alternatively, we can define the pdf through the following statement:
+\[
+Pr(a\le X \le b) = \int_a^b f_X(x) dx = F_X(b)-F_X(a),
+\quad \mbox{for any \(a<b\).}
+\]
+
+%
+Note that
+\[
+f_X(x) = \frac{d}{dx} F_X(x),
+\]
+so given the cdf we can find the pdf by differentiating.
+Equally, given the pdf we can (in principle) find the cdf by integration.
+
+Note also that, if \(F_X(x)\) is continuous and \(|\delta x|\) is small, we can approximate
+\[
+Pr\left( x - \frac12 |\delta x| \le X < x+\frac12 |\delta x|\right)
+\approx f(x) |\delta x|.
+\]
+
+\bigskip
+
+From the Axioms of Probability we have the following properties of the pdf:\\[-8mm] \index{Axioms of probability}\index{Probability density function}
+\begin{enumerate}
+\item[K1]
+\itemsep 0mm
+The pdf is always non-negative,
+\[f_X(x) \ge 0, \quad \mbox{for any $x\in \Omega_X$}.
+\]
+\item[K2]
+The integral over the range space is equal to \(1\),
+\[
+\int_{-\infty}^{\infty} f_X(x) dx = 1.
+\]
+\item[K3]
+For any non-overlapping subsets, $S_1$ and $S_2$, of the range space, $\Omega_X$, then
+\[
+\int _{S_1\cup S_2} f_X(x) dx = 
+\int _{S_1} f_X(x) dx + \int _{S_2} f_X(x) dx.
+\]
+Which is the equivalent of the addition rule for mutually exclusive events.
+\end{enumerate}
+
+
+
+%
+\begin{minipage}{0.47\textwidth}
+
+%
+\includegraphics[width=\textwidth, trim=20 40 20 40, clip]{figures/gmix3}
+%
+
+\end{minipage}
+%
+\hspace{10mm}
+%
+\begin{minipage}{0.47\textwidth}
+
+%
+\includegraphics[width=\textwidth, trim=20 40 20 40, clip]{figures/gmix4}
+%
+
+\end{minipage}
+
+\bigskip
+
+We also have the following properties of the cdf:\\[-6mm]
+\index{Cumulative distribution function}
+\begin{enumerate}
+\itemsep 0mm
+\item[C1]
+The cdf is bounded by 0 and 1,
+\[
+0 \le F_X(x) \le 1, \quad \mbox{for any $x\in \Omega_X$}.
+\]
+\item[C2]
+The cdf is a non-decreasing function, that is
+\[
+F_X(b) \ge F_X(a), \quad \mbox{where $b>a$}.
+\]
+\item[C3]
+The cdf has fixed points at the left and right,
+\[
+F_X(-\infty) = 0   \quad \mbox{and} \quad
+F_X(\infty ) = 1.
+%
+%F_X(x) \rightarrow 0 \mbox{ as } x\rightarrow -\infty \quad \mbox{and} \quad
+%F_X(x) \rightarrow 1 \mbox{ as } x\rightarrow \infty 
+\]
+\end{enumerate}
+
+
+
+\subsection{Expectation and variance of continuous random variables}
+\index{Expectation}\index{Variance}
+To define the mean and variance of a continuous random variable, we generalise the definitions given previously for discrete random variables. 
+
+The expected value of a continuous random variable \(X\) is given by:
+\[
+E[X] =
+\int_{-\infty}^{\infty}
+x \; f_X(x)dx. 
+\]
+Here we have simply replaced a summation by an integral. 
+The definition of variance, in terms of expectations, is unchanged:
+\[
+Var[X] = E[(X - \mu)^2]
+= E[X^2] - \{E[X]\}^2
+\]
+where \(\mu = E[X]\).
+Then, we can evaluate \(E[X^2]\) using the equation
+\[
+E[X^2] =
+\int _{-\infty}^{\infty}
+x^2 f_X(x)dx.
+\]
+We shall see examples of these later.
+
+
+\begin{boxit}
+Now complete Worksheet 8 on basics properties of continuous random variables 
+to check your understanding.
+\end{boxit}
+
+
+% Temp to match handouts
+%\addtocounter{exn}{-1}
+%\newpage
+\newlecture
+
+\renewcommand{\baselinestretch}{0.85}
+
+\subsection{The exponential distribution}
+\index{Exponential}
+
+\vspace*{-8mm}
+
+\begin{minipage}{0.5\textwidth}
+
+%
+An exponential random variable, \(X\), with rate \(\lambda\) is defined through its density,\index{Probability density function}
+\[
+f_X(x) = \lambda e^{-\lambda x}, \quad x\ge 0; \quad 0 \mbox{ otherwise}
+\]
+and is denoted \(X\sim{\rm Exp}(\lambda)\) ---
+if \(\lambda=1\),  this is called the {\it standard} exponential.
+%
+
+Clearly, \(f_x(x)\ge 0\)  for all \(x\) and it can be shown that \( \int_{-\infty} ^{\infty} f_X(x) dx = \int_0^{\infty} \lambda e^{-\lambda x}dx =1\).
+
+\end{minipage}
+%
+\hspace{5mm}
+%
+\begin{minipage}{0.45\textwidth}
+
+%
+\includegraphics[width=\textwidth, trim=20 40 20 40, clip]{figures/exponential_pdf}
+%
+
+\end{minipage}
+
+\index{Cumulative distribution function}
+The cdf can be derived from the definition of the cdf and using the exponential pdf,\\[-5mm]
+\begin{align*}
+F_X(b) 
+& = Pr(X\le b) 
+= \int_{-\infty} ^b f_X(x) dx 
+= \int_0 ^b \lambda e^{-\lambda x} dx = \left[ \frac{\lambda e^{-\lambda x}}{-\lambda} \right]_0 ^b
+= 1-e^{-\lambda b}, \quad b\ge 0.
+\end{align*}
+Note that in the derivation, the argument of the cdf has been changed to \(b\) to avoid any confusion between the variable of integration and the upper limit of the integral.
+%
+Hence, with more usual symbols, the cdf is given by
+\(F_X(x) = 1-e^{-\lambda x}\) for \(x\ge 0$; and \(0\) otherwise.
+
+\vspace{-5mm}
+
+\begin{example}
+Suppose that \(\lambda=1\), then what is \(Pr(1<X\le 2)\)?\\[-3mm]
+\[
+Pr(1<X\le 2) = \int_1^2 \lambda e^{-\lambda x} dx
+= F_X(2)-F_X(1)= (1-e^{-2})-(1-e^{-1}) = 0.2325.
+\]
+\end{example}
+
+
+\vspace{-8mm}
+
+\index{Expectation}\index{Variance}
+\index{Integration by parts}
+The mean and variance can be obtained in one of two equivalent ways: either by direct integration, where 
+\(E[X]\) requires integration by parts, and
+\(E[X^2]\) requires integration by parts twice,
+or by use of the gamma function.
+
+Before looking at these results, note that the gamma function is defined as\index{Gamma function}
+\[
+\Gamma(\alpha) = \int_0 ^{\infty} x^{\alpha-1} e^{-x} dx,
+\]
+with the properties that
+\(\Gamma(\alpha)=(\alpha-1)\Gamma(\alpha-1)\) and hence,
+for integer \(n\), \(\Gamma(n)=(n-1)!\)
+Special cases are
+\(\Gamma(1)=1\) and \(\Gamma(1/2)=\sqrt{\pi}\) --- see Essential Directed Reading for details.
+
+
+\subsubsection*{Expectation and variance}
+\index{Exponential}\index{Expectation}\index{Variance}
+
+\vspace*{-4mm}
+
+From the definition of expectation we have\\[-2mm]
+\[
+E[X]  = \int _0 ^\infty x \; \lambda e^{-\lambda x} dx
+ = \frac{1}{\lambda} \int _0 ^\infty y e^{-y} dy 
+ = \frac{1}{\lambda}
+\]
+where the first step uses the transformation \(y=\lambda x\), hence \(dy/dx=\lambda\), and the final step
+uses the fact that the integral gives \(\Gamma(2) = 1!=1\).
+
+For the variance we need the following,\\[-2mm]
+\[
+E[X^2]  = \int _0 ^\infty x^2 \; \lambda e^{-\lambda x} dx
+ = \frac{1}{\lambda^2} \int _0 ^\infty y^2 e^{-y} dy = \frac{2}{\lambda^2}
+\]
+using that the integral is \(\Gamma(3)=2!=2\).
+Hence, the variance is\\[-2mm]
+\[
+Var[X] = E[X^2] -\{E[X]\}^2
+= \frac{2}{\lambda^2} - \left\{ \frac{1}{\lambda} \right\}^2
+= \frac{1}{\lambda^2}.
+\]
+
+
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\rhead{Essential directed reading}
+\newpage
+\index{Exponential}\index{Moments}\index{Gamma function}\index{Essential directed reading}
+\input{exponential_moments_and_gamma_function}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{boxit}
+Now complete Worksheet 9 on more properties of continuous random variables 
+to check your understanding.
+\end{boxit}
+
+
+\newpage
+\newlecture
+\subsection{The uniform and beta distributions}
+\index{Uniform}\index{Beta}
+
+The simplest continuous distribution is the uniform which is defined via its density as:\index{Probability density function}
+\[
+f_X(x) =
+\frac{1}{b-a}, \quad a\le x \le b; \quad 0 \mbox{ otherwise}
+\]
+and is denoted \(U(a, b)\).
+The corresponding cumulative distribution function  is\index{Cumulative distribution function}
+%
+\[
+F_X(x) =
+\left\{
+\begin{array}{ll}
+0 & x<a \\[2mm]
+{\displaystyle \frac{x-a}{b-a}} & a\le x \le b \\[3mm]
+1 & x>b.
+\end{array}
+\right.
+\]
+
+It can be shown that %the expectation is given by
+\(E[X] = (a+b)/2\) and 
+%the variance by 
+\(Var[X] = (b-a)^2/12.\)
+\index{Expectation}\index{Variance}
+
+\vspace{-5mm}
+
+\paragraph{Proof:} 
+Starting with the definition of expectation and using the pdf of the uniform distributions gives\\[-4mm]
+\[
+E[X] = \int_{-\infty}^{\infty} \hspace{-4pt} x f_X(s) dx
+= \int_0^1 x \; \frac{1}{b-a} dx 
+= \left[ \frac{x^2}{2(b-a)} \right]_a^b
+%= \frac{b^2}{2(b-a)}-\frac{a^2}{2(b-a)} 
+=\frac{b^2-a^2}{2(b-a)}
+=\frac{(b-a)(b+a)}{2(b-a)}
+=\frac{a+b}{2}.
+\]
+Next,
+\begin{align*}
+E[X^2] = \int_{-\infty}^{\infty} \hspace{-4pt} x^2 f_X(s) dx
+& = \int_0^1 x^2 \; \frac{1}{b-a} dx 
+= \left[ \frac{x^3}{3(b-a)} \right]_a^b
+%= \frac{b^3}{3(b-a)}-\frac{a^3}{3(b-a)} 
+=\frac{b^3-a^3}{3(b-a)}\\[3mm]
+&=\frac{(b-a)(b^2+ab+a^2)}{3(b-a)}
+=\frac{b^2+ab+a^2}{3}
+\end{align*}
+and hence
+\begin{align*}
+Var[X] = E[X^2]-\{E[X\}^2
+& =  \frac{b^2+ab+a^2}{3} - \left\{\frac{a+b}{2}\right\}^2\\
+%
+& =  \frac{4(b^2+ab+a^2)-3(a^2+2ab+b^2)}{12}  \\
+%
+& =  \frac{b^2  -2ab+a^2}{12}  =  \frac{(b-a)^2}{12}. \\
+\end{align*}
+
+
+\medskip
+
+When \(a=0\) and \(b=1\), then \(X\) has a {\it standard uniform distribution} with pdf $f_X(x)=1$ for $0\le x \le 1$.
+Also,
+$F_X(x) =0$ for $x<0$,
+$F_X(x) =x$ for $0\le x \le 1$, and
+$F_X(x) =1$ for $x>1$.
+Also, \(E[X]=1/2\) and \(Var[X]=1/12\).
+
+
+
+
+
+
+
+\medskip
+
+\begin{minipage}{0.47\textwidth}
+
+%
+\includegraphics[width=\textwidth, trim=20 40 20 40, clip]{figures/uniform_pdf}
+%
+
+\end{minipage}
+%
+\hspace{10mm}
+%
+\begin{minipage}{0.47\textwidth}
+
+%
+\includegraphics[width=\textwidth, trim=20 40 20 40, clip]{figures/beta_pdf}
+%
+
+\end{minipage}
+
+\medskip
+
+\index{Beta}
+The beta distribution with positive-valued parameters \(\alpha\) and \(\beta\), denoted \({\rm{Beta}} (\alpha, \beta)\), is a generalization of the uniform distribution and is defined via its density:\index{Probability density function}
+\[
+f_X(x) =  \frac{1}{{\rm B}({\alpha, \beta})} \;  x^{\alpha-1} (1-x)^{\beta -1} \quad \mbox{for } 0 \le x \le 1.
+\]
+It can be shown that the mean is given by
+\(E[X] = \alpha/(\alpha+\beta)\) and
+the variance by \(Var[X] =
+\alpha\beta/\{(\alpha+\beta)^2(\alpha+\beta+1)\}\).
+\index{Expectation}\index{Variance}
+
+The role of the term ${\rm B}({\alpha,\beta})$ is merely to ensure
+\index{Beta function} that
+\(\int f_X(x)dx = 1\) -- it is a {\it constant of proportionality} or {\it normalizing constant}.\index{Constant of proportionality}
+%
+That is, 
+\(
+{\rm B}({\alpha,\beta}) =  \int_0^1 x^{\alpha-1} (1-x)^{\beta -1} dx
+\)
+but it can be shown also to be given by
+\(
+{\rm B}({\alpha,\beta}) = {\Gamma(\alpha)\Gamma(\beta)}/{\Gamma(\alpha+\beta)}
+\)
+where \(\Gamma(\cdot)\) denotes the gamma function.\index{Gamma function}
+%
+The definition and properties of the gamma function are 
+given in the Essential Directed Reading titled, 
+{\it Exponential distribution and the gamma function}.
+\index{Exponential}\index{Gamma function}\index{Essential directed reading}
+
+Notice that when \(\alpha=1\) and \(\beta=1\), then the pdf does not depend on \(x\), that is it is a constant, and 
+hence the beta distribution reduces to the uniform.
+Further, whenever \(\alpha=\beta\), the pdf is symmetric and the expectation is \(E[X]=1/2\).
+\index{Uniform}
+
+
+
+
+
+\newpage
+\newlecture
+
+\subsection{The normal (Gaussian) distribution}
+\index{Normal}\index{Gaussian}\index{Random variables}
+
+This is the most widely used distribution.
+In a few cases it has been proven to be the correct distribution, in some cases it has been proven to be an
+approximation and in many it is simply used as a ``convenient model which seem to work well''.
+
+
+
+\begin{minipage}{0.53\textwidth}
+Let random variable \(X\) be normally distributed with parameters \(\mu\) (say ``mu'') and \(\sigma^2\) (say ``sigma squared''), then we can write \(X\sim N(\mu, \sigma^2)\).
+
+The probability density function of \(X\) is
+\[
+f_X(x) = \frac{1}{\sqrt{2\pi \sigma^2}}
+\exp \left\{
+- \frac{(x-\mu)^2}{2\sigma^2} \right\}, 
+\]
+for \(-\infty < x < \infty\).
+
+\end{minipage}
+%
+\hspace{3mm}
+%
+\begin{minipage}{0.43\textwidth}
+
+%
+\includegraphics[width=\textwidth, trim=20 40 20 40, clip]{figures/normal_pdf}
+%
+
+\end{minipage}
+
+If \(\mu=0\) and \(\sigma^2=1\), then we obtain the
+\underline{standard normal} --- often this is denoted \(Z\).
+Clearly, \(Z\sim N(0,1)\) has pdf \index{Probability density function}
+\[
+f_Z(z) = \frac{1}{\sqrt{2\pi}}
+\exp \left\{
+- \frac{z^2}{2} \right\}, \quad -\infty < x < \infty.
+\]
+
+
+
+Although, clearly, \(f_X(x) \ge 0\) (and \(f_Z(z)\ge0\))
+it is \underline{very} difficult to show that the pdfs integrate to \(1\).
+Also, there is no equation for the cumulative distribution function
+--- instead statistical tables, or a computer program such as {\sf R}, are needed.
+
+This distribution is so important that the pdf and cdf of the standard normal distribution have special notation
+\[
+\phi(z) = f_Z(z) \quad \mbox{and} \quad 
+\Phi(z) = F_Z(z) = Pr(Z\le z).
+\]
+\index{Normal}\index{Gaussian}\index{Probability density function}\index{Cumulative distribution function}
+
+\vspace*{-8mm}
+
+\begin{example}
+Suppose that \(Z \sim N(0,1)\) then 
+\(Pr(Z\le 1)=0.8413\) (from tables).
+%
+From this we have, for example,
+\( Pr(Z> 1)=1-Pr(Z\le 1) = 0.1587\).
+\end{example}
+
+\vspace*{2mm}
+
+\begin{minipage}{0.55\textwidth}
+\paragraph{Properties of the normal:}
+\index{Normal}\index{Gaussian}
+
+\vspace*{-10mm}
+
+\begin{enumerate}
+\itemsep 0mm
+\item[(N1)]
+Symmetric about \(x=\mu\), hence, for example
+with the standard normal
+\(\phi(-z)=\phi(z)\)
+and
+\(\Phi(-z)=1-\Phi(z)\).
+
+\item[(N2)]
+Points of inflection in the pdf occur at \(x=\mu-\sigma\) and 
+\(x=\mu+\sigma\).
+
+\item[(N3)]
+If \(X\sim N(\mu, \sigma^2)\) then \(Z=(X-\mu)/\sigma\sim N(0,1)\)
+--- this transformation is called \underline{standardization}.
+\index{Standardization}
+
+Because of this,
+\(F_X(x) = Pr(X\le x)
+= Pr(Z \le (x-\mu)/\sigma) 
+= \Phi\left( (x-\mu)/\sigma \right)
+\).
+
+Note that it can be shown that 
+$E[X]=\mu$ and $Var[X]=\sigma^2$.
+\end{enumerate}
+\end{minipage}
+%
+\hspace{0mm}
+%
+\begin{minipage}{0.45\textwidth}
+
+%
+\includegraphics[width=1.1\textwidth, trim=20 40 20 40, clip]{figures/std_normal_pdf}
+%
+
+\end{minipage}
+
+
+
+%\newpage
+%\newlecture
+\paragraph{Normal approximations}
+\index{Normal}\index{Gaussian}\index{Binomial}\index{Approximations}
+Here we note three important points regarding the use of the normal distribution.
+
+\begin{enumerate}
+\item
+Suppose \(X\sim B(n,p)\) and that \(Y\sim N(\mu, \sigma^2)\).
+Then, when \(n\) is large and \(p\) close to \(1/2\), the
+binomial distribution can be approximated by
+\(N(\mu=np, \sigma^2=np(1-p))\).
+
+Note that \(X\) is a discrete random variable while \(Y\) is continuous.
+We can use a ``continuity correction'' to improve the accuracy of the approximation, so that
+\[
+Pr(X=x) \approx Pr(x-1/2 \le Y \le x+1/2)
+\]
+
+\begin{minipage}{0.45\textwidth}
+
+%
+\includegraphics[width=\textwidth, trim=20 40 20 40, clip]{figures/binom_4_norm}
+%
+
+\end{minipage}
+%
+\hspace{10mm}
+%
+\begin{minipage}{0.45\textwidth}
+
+%
+\includegraphics[width=\textwidth, trim=20 40 20 40, clip]{figures/binom_4_norm}
+%
+
+\end{minipage}
+
+Note: We always ``widen the interval'' then using the continuity correction, so \(Pr(X \le x)\approx Pr(Y \le x+1/2)\)
+or
+\(Pr(X \ge x)\approx Pr(Y \ge x-1/2)\).
+
+
+\begin{example}
+let \(X\sim B(n=100, p=1/2)\). 
+What then is \(Pr(X\le 58)\)?
+
+Clearly,
+\[
+Pr(X\le 58) = \sum_{x=0} ^{58}
+{100 \choose x} \left(\frac12\right)^x
+\left(\frac12\right)^{100-x}
+\]
+which is lengthy to calculate exactly.
+Instead we use the normal distribution
+\(Y\sim N(\mu=np=50, \sigma^2=np(1-p)=25)\) and apply the 
+continuity correction,
+\begin{align*}
+Pr(X\le 58) \approx Pr(Y\le 58.5)
+& =Pr(Z \le \frac{58.5-50}{\sqrt{25}})\\
+& =Pr(Z\le 1.7) = \Phi(1.7)=0.9554.
+\end{align*}
+The exact value, using {\sf R}, is \(Pr(X\le 58)=0.9557\).
+\end{example}
+
+\item
+Another important use of the normal distribution model
+arises because of the ``Central Limit Theorem'', which states that,
+
+If \(X_1,\ldots, X_n\) are independent observations from an
+arbitrary distribution with mean \(\mu\) and finite variance
+\(\sigma^2\), then as \(n\rightarrow \infty\)
+\[
+Z_n = \frac{\bar{X}-\mu}{\sqrt{\sigma^2/n}} \sim
+N(0,1)
+\]
+where \(\bar{X}=\frac{1}{n} (X_1+\cdots + X_n)\).
+Clearly, for finite sample sizes then we can say that \(Z_n\) is approximately normal.
+Note that, very importantly, the there is no assumption that the
+\(X_i's\) are normally distributed.
+
+This result can also be converted to apply to 
+\(\bar{X}\) itself, or to the sum
+\(X_1+\cdots + X_n\).
+
+%
+\item
+Often we wish to evaluate \(\Phi(z)=Pr(Z\le x)\) for a value of \(z\) which is not in the statistical tables.
+If we have access to {\sf R} then this is not a problem, but otherwise we would need to use linear interpolation to obtain an approximate value --- see the details as part of the printed normal tables.
+\end{enumerate}
+
+\begin{boxit}
+Now complete Worksheet 10 on basics of the normal distribution 
+to check your understanding.
+\end{boxit}
+
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\rhead{Additional reading}
+
+\index{Normal}\index{Gaussian}
+%\index{Essential directed reading}
+\input{normal_distribution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+-->
 
 </div>
             </section>
